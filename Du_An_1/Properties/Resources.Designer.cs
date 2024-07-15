@@ -63,6 +63,38 @@ namespace Du_An_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kisspng_clip_art_vector_graphics_plus_sign_computer_icons_5d3930a59a7f43_6036179515640290936328 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-clip-art-vector-graphics-plus-sign-computer-icons-5d3930a59a7f43.60361795" +
+                        "15640290936328", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_computer_icons_clip_art_check_mark_x_mark_astrolog_filegartoon_actions_cancel_svg_wikimedia_common_5c53792fbb7cb5_625824561548974383768 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-computer-icons-clip-art-check-mark-x-mark-astrolog-filegartoon-actions-ca" +
+                        "ncel-svg-wikimedia-common-5c53792fbb7cb5.625824561548974383768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-pencil-ico-icon-pencil-icon-png-5aa1fc84aca021.6696863715205653807071", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_fpt_fpt_polytechnic_tach_nen_dep_043151037 {
             get {
                 object obj = ResourceManager.GetObject("logo-fpt-fpt-polytechnic-tach-nen-dep_043151037", resourceCulture);
