@@ -59,5 +59,26 @@ namespace Du_An_1
                 }
             }
         }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button2_Click(sender, e);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QuenMK quenmk = new QuenMK();
+            quenmk.FormClosed += (a, b) => this.Show();
+            quenmk.Show();
+            this.Hide();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Close();
+        }
     }
 }

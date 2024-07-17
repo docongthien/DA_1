@@ -46,9 +46,9 @@
             label1.ForeColor = Color.Black;
             label1.Location = new Point(281, 9);
             label1.Name = "label1";
-            label1.Size = new Size(197, 47);
+            label1.Size = new Size(205, 47);
             label1.TabIndex = 0;
-            label1.Text = "User Login";
+            label1.Text = "Đăng Nhập";
             // 
             // pictureBox1
             // 
@@ -94,6 +94,7 @@
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(191, 27);
             textBox2.TabIndex = 5;
+            textBox2.KeyDown += textBox2_KeyDown;
             // 
             // button1
             // 
@@ -104,6 +105,7 @@
             button1.TabIndex = 6;
             button1.Text = "Quên Mật khẩu";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -132,6 +134,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
