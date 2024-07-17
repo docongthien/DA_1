@@ -136,6 +136,7 @@
             button4.TabIndex = 28;
             button4.Text = "Thoát";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -149,6 +150,7 @@
             button3.Text = "Xóa";
             button3.TextAlign = ContentAlignment.MiddleRight;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -162,6 +164,7 @@
             button2.Text = "Sửa";
             button2.TextAlign = ContentAlignment.MiddleRight;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -175,6 +178,7 @@
             button1.Text = "Thêm";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // textBox8
             // 
@@ -336,6 +340,7 @@
             dataGridView2.RowTemplate.Height = 29;
             dataGridView2.Size = new Size(831, 188);
             dataGridView2.TabIndex = 6;
+            dataGridView2.CellClick += dataGridView2_CellClick;
             // 
             // dataGridView1
             // 
@@ -346,6 +351,7 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(233, 271);
             dataGridView1.TabIndex = 5;
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
             // textBox2
             // 
@@ -368,7 +374,6 @@
             // 
             textBox1.Location = new Point(21, 43);
             textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 2;
             textBox1.TextChanged += textBox1_TextChanged;
@@ -400,6 +405,7 @@
             Controls.Add(tabControl1);
             Name = "Diem_SV";
             Text = "Diem_SV";
+            Load += Diem_SV_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();

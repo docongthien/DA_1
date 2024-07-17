@@ -114,6 +114,7 @@
             button2.TabIndex = 7;
             button2.Text = "Đăng nhập";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
@@ -131,6 +132,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
