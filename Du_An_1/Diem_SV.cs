@@ -215,6 +215,7 @@ namespace Du_An_1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            conn.Close();
             Form1 form = new Form1();
             form.FormClosed += (a, b) => this.Show();
             form.Show();

@@ -61,6 +61,22 @@
             textBox1 = new TextBox();
             label2 = new Label();
             tabPage2 = new TabPage();
+            Magv = new DataGridViewTextBoxColumn();
+            Masv = new DataGridViewTextBoxColumn();
+            TenSV = new DataGridViewTextBoxColumn();
+            Toan = new DataGridViewTextBoxColumn();
+            Van = new DataGridViewTextBoxColumn();
+            Su = new DataGridViewTextBoxColumn();
+            Dia = new DataGridViewTextBoxColumn();
+            Masvs = new DataGridViewTextBoxColumn();
+            MaTK = new DataGridViewTextBoxColumn();
+            Ten = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Sdt = new DataGridViewTextBoxColumn();
+            Que_quan = new DataGridViewTextBoxColumn();
+            ngay_sinh = new DataGridViewTextBoxColumn();
+            Img = new DataGridViewTextBoxColumn();
+            Lop = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -334,6 +350,7 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Magv, Masv, TenSV, Toan, Van, Su, Dia });
             dataGridView2.Location = new Point(21, 297);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
@@ -345,6 +362,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Masvs, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop });
             dataGridView1.Location = new Point(479, 15);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -397,6 +415,141 @@
             tabPage2.Text = "Thông tin giáo viên";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Magv
+            // 
+            Magv.DataPropertyName = "Magv";
+            Magv.HeaderText = "Mã GV";
+            Magv.MinimumWidth = 6;
+            Magv.Name = "Magv";
+            Magv.Width = 125;
+            // 
+            // Masv
+            // 
+            Masv.DataPropertyName = "Masv";
+            Masv.HeaderText = "Mã SV";
+            Masv.MinimumWidth = 6;
+            Masv.Name = "Masv";
+            Masv.Width = 125;
+            // 
+            // TenSV
+            // 
+            TenSV.DataPropertyName = "TenSV";
+            TenSV.HeaderText = "Tên SV";
+            TenSV.MinimumWidth = 6;
+            TenSV.Name = "TenSV";
+            TenSV.Width = 125;
+            // 
+            // Toan
+            // 
+            Toan.DataPropertyName = "Toan";
+            Toan.HeaderText = "Môn Toán";
+            Toan.MinimumWidth = 6;
+            Toan.Name = "Toan";
+            Toan.Width = 125;
+            // 
+            // Van
+            // 
+            Van.DataPropertyName = "Van";
+            Van.HeaderText = "Môn Văn";
+            Van.MinimumWidth = 6;
+            Van.Name = "Van";
+            Van.Width = 125;
+            // 
+            // Su
+            // 
+            Su.DataPropertyName = "Su";
+            Su.HeaderText = "Môn Sử";
+            Su.MinimumWidth = 6;
+            Su.Name = "Su";
+            Su.Width = 125;
+            // 
+            // Dia
+            // 
+            Dia.DataPropertyName = "Dia";
+            Dia.HeaderText = "Môn Địa";
+            Dia.MinimumWidth = 6;
+            Dia.Name = "Dia";
+            Dia.Width = 125;
+            // 
+            // Masvs
+            // 
+            Masvs.DataPropertyName = "Masv";
+            Masvs.HeaderText = "Mã SV";
+            Masvs.MinimumWidth = 6;
+            Masvs.Name = "Masvs";
+            Masvs.Width = 125;
+            // 
+            // MaTK
+            // 
+            MaTK.DataPropertyName = "MaTK";
+            MaTK.HeaderText = "Mã TK";
+            MaTK.MinimumWidth = 6;
+            MaTK.Name = "MaTK";
+            MaTK.Visible = false;
+            MaTK.Width = 125;
+            // 
+            // Ten
+            // 
+            Ten.DataPropertyName = "Ten";
+            Ten.HeaderText = "Tên SV";
+            Ten.MinimumWidth = 6;
+            Ten.Name = "Ten";
+            Ten.Width = 125;
+            // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.Visible = false;
+            Email.Width = 125;
+            // 
+            // Sdt
+            // 
+            Sdt.DataPropertyName = "Sdt";
+            Sdt.HeaderText = "Số ĐT";
+            Sdt.MinimumWidth = 6;
+            Sdt.Name = "Sdt";
+            Sdt.Visible = false;
+            Sdt.Width = 125;
+            // 
+            // Que_quan
+            // 
+            Que_quan.DataPropertyName = "Que_quan";
+            Que_quan.HeaderText = "Quê Quán";
+            Que_quan.MinimumWidth = 6;
+            Que_quan.Name = "Que_quan";
+            Que_quan.Visible = false;
+            Que_quan.Width = 125;
+            // 
+            // ngay_sinh
+            // 
+            ngay_sinh.DataPropertyName = "ngay_sinh";
+            ngay_sinh.HeaderText = "Ngày sinh";
+            ngay_sinh.MinimumWidth = 6;
+            ngay_sinh.Name = "ngay_sinh";
+            ngay_sinh.Visible = false;
+            ngay_sinh.Width = 125;
+            // 
+            // Img
+            // 
+            Img.DataPropertyName = "Img";
+            Img.HeaderText = "Img";
+            Img.MinimumWidth = 6;
+            Img.Name = "Img";
+            Img.Visible = false;
+            Img.Width = 125;
+            // 
+            // Lop
+            // 
+            Lop.DataPropertyName = "Lop";
+            Lop.HeaderText = "Lop";
+            Lop.MinimumWidth = 6;
+            Lop.Name = "Lop";
+            Lop.Visible = false;
+            Lop.Width = 125;
+            // 
             // Diem_SV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -448,5 +601,21 @@
         private Button button3;
         private Button button2;
         private Button button1;
+        private DataGridViewTextBoxColumn Magv;
+        private DataGridViewTextBoxColumn Masv;
+        private DataGridViewTextBoxColumn TenSV;
+        private DataGridViewTextBoxColumn Toan;
+        private DataGridViewTextBoxColumn Van;
+        private DataGridViewTextBoxColumn Su;
+        private DataGridViewTextBoxColumn Dia;
+        private DataGridViewTextBoxColumn Masvs;
+        private DataGridViewTextBoxColumn MaTK;
+        private DataGridViewTextBoxColumn Ten;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Sdt;
+        private DataGridViewTextBoxColumn Que_quan;
+        private DataGridViewTextBoxColumn ngay_sinh;
+        private DataGridViewTextBoxColumn Img;
+        private DataGridViewTextBoxColumn Lop;
     }
 }
