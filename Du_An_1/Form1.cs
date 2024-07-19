@@ -35,7 +35,7 @@ namespace Du_An_1
                     if (reader.HasRows)
                     {
                         reader.Close();
-                        string query2 = $"SELECT * FROM TK WHERE  Macv = 'CV2'";
+                        string query2 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV2'";
                         using (SqlCommand cmd = new SqlCommand(query2, conn))
                         {
                             using (SqlDataReader render2 = cmd.ExecuteReader())
@@ -43,6 +43,38 @@ namespace Du_An_1
                                 if (render2.HasRows)
                                 {
                                     render2.Close();
+                                    MessageBox.Show("Đăng nhập thành công!");
+                                    Diem_SV diem = new Diem_SV();
+                                    diem.FormClosed += (a, b) => this.Show();
+                                    diem.Show();
+                                    this.Hide();
+                                }
+                            }
+                        }
+                        string query3 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV1'";
+                        using (SqlCommand cmd3 = new SqlCommand(query3, conn))
+                        {
+                            using (SqlDataReader render3 = cmd3.ExecuteReader())
+                            {
+                                if (render3.HasRows)
+                                {
+                                    render3.Close();
+                                    MessageBox.Show("Đăng nhập thành công!");
+                                    Diem_SV diem = new Diem_SV();
+                                    diem.FormClosed += (a, b) => this.Show();
+                                    diem.Show();
+                                    this.Hide();
+                                }
+                            }
+                        }
+                        string query4 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV3'";
+                        using (SqlCommand cmd4 = new SqlCommand(query4, conn))
+                        {
+                            using (SqlDataReader render4 = cmd4.ExecuteReader())
+                            {
+                                if (render4.HasRows)
+                                {
+                                    render4.Close();
                                     MessageBox.Show("Đăng nhập thành công!");
                                     Diem_SV diem = new Diem_SV();
                                     diem.FormClosed += (a, b) => this.Show();
