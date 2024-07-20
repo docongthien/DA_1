@@ -22,13 +22,8 @@ namespace Du_An_1
         {
             InitializeComponent();
         }
-        private void Diem_SV_Load(object sender, EventArgs e)
+        private void laoddiemsv()
         {
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-
             string query = "select * from Qldiem";
             SqlCommand sqlmd = new SqlCommand(query, conn);
 
@@ -39,7 +34,9 @@ namespace Du_An_1
             ds.Tables.Add(dt);
             dataGridView2.DataSource = ds.Tables[0];
             reader.Close();
-
+        }
+        private void loadsv()
+        {
             string query2 = "select * from SV";
             SqlCommand sqlmd2 = new SqlCommand(query2, conn);
 
@@ -50,6 +47,15 @@ namespace Du_An_1
             ds2.Tables.Add(dt2);
             dataGridView1.DataSource = ds2.Tables[0];
             reader2.Close();
+        }
+        private void Diem_SV_Load(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            laoddiemsv();
+            loadsv();
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -220,7 +226,7 @@ namespace Du_An_1
                 textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
-            catch(Exception ex) { }
+            catch (Exception ex) { }
 
         }
 
@@ -260,7 +266,7 @@ namespace Du_An_1
                     check = 0;
                     break;
 
-                }             
+                }
             }
             if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
             {
@@ -289,6 +295,78 @@ namespace Du_An_1
                 MessageBox.Show("Điểm không phải là một số và > 0 <= 10");
             }
         }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox10.Text == "")
+            {
+                loadsv();
+            }
+            else
+            {
+                string query = $"select * from SV where Masv like '%{textBox10.Text}%' or Ten like N'%{textBox10.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView1.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox7.Text == "")
+            {
+                laoddiemsv();
+            }
+            else
+            {
+                string query = $"select * from Qldiem where Masv like '%{textBox10.Text}%' or TenSV like N'%{textBox10.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView2.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+        private void textBox7_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBox7.Text == "")
+            {
+                laoddiemsv();
+            }
+            else
+            {
+                string query = $"select * from Qldiem where Masv like '%{textBox7.Text}%' or TenSV like N'%{textBox7.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView2.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+
+        private void Diem_SV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+        }
+
+
     }
 }
 
