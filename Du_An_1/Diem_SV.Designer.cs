@@ -32,6 +32,10 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label13 = new Label();
+            textBox10 = new TextBox();
+            label12 = new Label();
+            textBox7 = new TextBox();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
@@ -55,12 +59,6 @@
             label4 = new Label();
             label5 = new Label();
             dataGridView2 = new DataGridView();
-            dataGridView1 = new DataGridView();
-            textBox2 = new TextBox();
-            label3 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            tabPage2 = new TabPage();
             Magv = new DataGridViewTextBoxColumn();
             Masv = new DataGridViewTextBoxColumn();
             TenSV = new DataGridViewTextBoxColumn();
@@ -68,6 +66,7 @@
             Van = new DataGridViewTextBoxColumn();
             Su = new DataGridViewTextBoxColumn();
             Dia = new DataGridViewTextBoxColumn();
+            dataGridView1 = new DataGridView();
             Masvs = new DataGridViewTextBoxColumn();
             MaTK = new DataGridViewTextBoxColumn();
             Ten = new DataGridViewTextBoxColumn();
@@ -77,6 +76,11 @@
             ngay_sinh = new DataGridViewTextBoxColumn();
             Img = new DataGridViewTextBoxColumn();
             Lop = new DataGridViewTextBoxColumn();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            tabPage2 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -99,12 +103,16 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(866, 524);
+            tabControl1.Size = new Size(866, 564);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.Turquoise;
+            tabPage1.Controls.Add(label13);
+            tabPage1.Controls.Add(textBox10);
+            tabPage1.Controls.Add(label12);
+            tabPage1.Controls.Add(textBox7);
             tabPage1.Controls.Add(button4);
             tabPage1.Controls.Add(button3);
             tabPage1.Controls.Add(button2);
@@ -137,11 +145,45 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(858, 491);
+            tabPage1.Size = new Size(858, 531);
             tabPage1.TabIndex = 0;
             tabPage1.Tag = "";
             tabPage1.Text = "Điểm Sinh viên";
             tabPage1.Click += tabPage1_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(479, 25);
+            label13.Name = "label13";
+            label13.Size = new Size(70, 20);
+            label13.TabIndex = 32;
+            label13.Text = "Tìm kiếm";
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(562, 22);
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(150, 27);
+            textBox10.TabIndex = 31;
+            textBox10.TextChanged += textBox10_TextChanged;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(21, 298);
+            label12.Name = "label12";
+            label12.Size = new Size(70, 20);
+            label12.TabIndex = 30;
+            label12.Text = "Tìm kiếm";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(103, 295);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(240, 27);
+            textBox7.TabIndex = 29;
+            textBox7.TextChanged += textBox7_TextChanged_1;
             // 
             // button4
             // 
@@ -351,69 +393,13 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Magv, Masv, TenSV, Toan, Van, Su, Dia });
-            dataGridView2.Location = new Point(21, 297);
+            dataGridView2.Location = new Point(21, 337);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
             dataGridView2.Size = new Size(831, 188);
             dataGridView2.TabIndex = 6;
             dataGridView2.CellClick += dataGridView2_CellClick;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Masvs, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop });
-            dataGridView1.Location = new Point(479, 15);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(233, 271);
-            dataGridView1.TabIndex = 5;
-            dataGridView1.CellClick += dataGridView1_CellClick_1;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(164, 43);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(166, 15);
-            label3.Name = "label3";
-            label3.Size = new Size(93, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Mã Sinh viên";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(21, 43);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Mã Giáo viên";
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(858, 491);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Thông tin giáo viên";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // Magv
             // 
@@ -470,6 +456,18 @@
             Dia.MinimumWidth = 6;
             Dia.Name = "Dia";
             Dia.Width = 125;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Masvs, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop });
+            dataGridView1.Location = new Point(479, 76);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(233, 238);
+            dataGridView1.TabIndex = 5;
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
             // Masvs
             // 
@@ -550,14 +548,59 @@
             Lop.Visible = false;
             Lop.Width = 125;
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(164, 43);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(125, 27);
+            textBox2.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(166, 15);
+            label3.Name = "label3";
+            label3.Size = new Size(93, 20);
+            label3.TabIndex = 3;
+            label3.Text = "Mã Sinh viên";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(21, 43);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 2;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(23, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Mã Giáo viên";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(858, 531);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Thông tin giáo viên";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Diem_SV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(890, 548);
+            ClientSize = new Size(890, 588);
             Controls.Add(tabControl1);
             Name = "Diem_SV";
             Text = "Diem_SV";
+            FormClosing += Diem_SV_FormClosing;
             Load += Diem_SV_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -617,5 +660,9 @@
         private DataGridViewTextBoxColumn ngay_sinh;
         private DataGridViewTextBoxColumn Img;
         private DataGridViewTextBoxColumn Lop;
+        private Label label13;
+        private TextBox textBox10;
+        private Label label12;
+        private TextBox textBox7;
     }
 }

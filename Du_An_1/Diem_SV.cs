@@ -22,13 +22,8 @@ namespace Du_An_1
         {
             InitializeComponent();
         }
-        private void Diem_SV_Load(object sender, EventArgs e)
+        private void laoddiemsv()
         {
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-
             string query = "select * from Qldiem";
             SqlCommand sqlmd = new SqlCommand(query, conn);
 
@@ -39,7 +34,9 @@ namespace Du_An_1
             ds.Tables.Add(dt);
             dataGridView2.DataSource = ds.Tables[0];
             reader.Close();
-
+        }
+        private void loadsv()
+        {
             string query2 = "select * from SV";
             SqlCommand sqlmd2 = new SqlCommand(query2, conn);
 
@@ -50,6 +47,15 @@ namespace Du_An_1
             ds2.Tables.Add(dt2);
             dataGridView1.DataSource = ds2.Tables[0];
             reader2.Close();
+        }
+        private void Diem_SV_Load(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            laoddiemsv();
+            loadsv();
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -86,7 +92,11 @@ namespace Du_An_1
                         string anh = textBox6.Text;
                         string su = textBox9.Text;
                         string dia = textBox8.Text;
-
+                        int checktoan = int.Parse(toan);
+                        int checkvan = int.Parse(van);
+                        int checkanh = int.Parse(anh);
+                        int checksu = int.Parse(su);
+                        int checkdia = int.Parse(dia);
                         string[] diem = { toan, van, anh, su, dia };
                         int check = 0;
                         foreach (string diemMon in diem)
@@ -104,7 +114,7 @@ namespace Du_An_1
                             }
 
                         }
-                        if (check == 1)
+                        if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
                         {
                             string query1 = "insert into Qldiem(Magv,Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
                             $"values('{magv}', '{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
@@ -122,6 +132,7 @@ namespace Du_An_1
                             dataGridView1.DataSource = ds.Tables[0];
                             reader2.Close();
                             MessageBox.Show("Lưu thành công");
+                            load();
                             Diem_SV_Load(sender, e);
                         }
                         else
@@ -164,6 +175,7 @@ namespace Du_An_1
                             dataGridView1.DataSource = ds.Tables[0];
                             reader2.Close();
                             MessageBox.Show("Xóa thành công");
+                            load();
                             Diem_SV_Load(sender, e);
                         }
                         else
@@ -177,8 +189,7 @@ namespace Du_An_1
             }
             catch (Exception ex) { MessageBox.Show("Bạn phải chọn sinh viên để xóa"); }
         }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void load()
         {
             textBox1.Text = "";
             textBox2.Text = "";
@@ -188,29 +199,35 @@ namespace Du_An_1
             textBox6.Text = "";
             textBox8.Text = "";
             textBox9.Text = "";
-            textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-            textBox2.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
-            textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
-            textBox4.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
-            textBox5.Text = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
-            textBox6.Text = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
-            textBox9.Text = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
-            textBox8.Text = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+        }
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                load();
+                textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                textBox2.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textBox4.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textBox5.Text = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textBox6.Text = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textBox9.Text = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+                textBox8.Text = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+            }
+            catch (Exception ex) { }
 
         }
 
         private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            textBox8.Text = "";
-            textBox9.Text = "";
-            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            try
+            {
+                load();
+                textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (Exception ex) { }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -230,7 +247,11 @@ namespace Du_An_1
             string anh = textBox6.Text;
             string su = textBox9.Text;
             string dia = textBox8.Text;
-
+            int checktoan = int.Parse(toan);
+            int checkvan = int.Parse(van);
+            int checkanh = int.Parse(anh);
+            int checksu = int.Parse(su);
+            int checkdia = int.Parse(dia);
             string[] diem = { toan, van, anh, su, dia };
             int check = 0;
             foreach (string diemMon in diem)
@@ -245,9 +266,9 @@ namespace Du_An_1
                     check = 0;
                     break;
 
-                }             
+                }
             }
-            if (check == 1)
+            if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
             {
                 string query1 = "update Qldiem " +
                                $"set Toan = '{toan}',Van = '{van}',Anh = '{anh}',Su = '{su}',Dia = '{dia}' " +
@@ -266,13 +287,86 @@ namespace Du_An_1
                 dataGridView1.DataSource = ds.Tables[0];
                 reader2.Close();
                 MessageBox.Show("sửa thành công");
+                load();
                 Diem_SV_Load(sender, e);
             }
             else
             {
-                MessageBox.Show("Điểm không phải là một số.");
+                MessageBox.Show("Điểm không phải là một số và > 0 <= 10");
             }
         }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox10.Text == "")
+            {
+                loadsv();
+            }
+            else
+            {
+                string query = $"select * from SV where Masv like '%{textBox10.Text}%' or Ten like N'%{textBox10.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView1.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox7.Text == "")
+            {
+                laoddiemsv();
+            }
+            else
+            {
+                string query = $"select * from Qldiem where Masv like '%{textBox10.Text}%' or TenSV like N'%{textBox10.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView2.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+        private void textBox7_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBox7.Text == "")
+            {
+                laoddiemsv();
+            }
+            else
+            {
+                string query = $"select * from Qldiem where Masv like '%{textBox7.Text}%' or TenSV like N'%{textBox7.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dataGridView2.DataSource = ds.Tables[0];
+                reader.Close();
+            }
+        }
+
+        private void Diem_SV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+        }
+
+
     }
 }
 
