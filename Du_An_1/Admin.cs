@@ -371,5 +371,36 @@ namespace Du_An_1
                 }
             }
         }
+
+        private void btnSapXep_Click(object sender, EventArgs e)
+        {
+            string query = @"
+            SELECT SV.Masv, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop,
+                   Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
+                   (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+            FROM SV
+            INNER JOIN Qldiem ON SV.Masv = Qldiem.Masv
+            ORDER BY DiemTrungBinh DESC"; // Sắp xếp theo điểm trung bình từ cao đến thấp
+
+            using (SqlCommand sqlmd = new SqlCommand(query, conn))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = sqlmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    dgvThongKe.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi sắp xếp dữ liệu: {ex.Message}");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

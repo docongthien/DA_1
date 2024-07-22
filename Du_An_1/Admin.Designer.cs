@@ -514,6 +514,7 @@
             btnSapXep.TabIndex = 8;
             btnSapXep.Text = "Sắp xếp theo điểm";
             btnSapXep.UseVisualStyleBackColor = true;
+            btnSapXep.Click += btnSapXep_Click;
             // 
             // rdoTb
             // 
