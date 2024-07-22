@@ -60,9 +60,9 @@ namespace Du_An_1
                                 {
                                     render3.Close();
                                     MessageBox.Show("Đăng nhập thành công!");
-                                    Admin ad = new Admin();
-                                    ad.FormClosed += (a, b) => this.Show();
-                                    ad.Show();
+                                    Menu mn = new Menu();
+                                    mn.FormClosed += (a, b) => this.Show();
+                                    mn.Show();
                                     this.Hide();
                                 }
                             }
