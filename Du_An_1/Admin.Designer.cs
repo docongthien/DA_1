@@ -31,9 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            txtQueQuan = new TextBox();
+            label20 = new Label();
+            txtSDT = new TextBox();
+            label19 = new Label();
+            label18 = new Label();
+            txtDiemDia = new TextBox();
+            txtDiemSu = new TextBox();
+            label12 = new Label();
             dgvDanhSachSV = new DataGridView();
-            btnhienthi = new Button();
-            btnReset = new Button();
             txtTimkiem = new TextBox();
             btnTimKiem = new Button();
             btnThoat = new Button();
@@ -47,9 +53,9 @@
             label10 = new Label();
             dtpNgaySinh = new DateTimePicker();
             txtDiemTB = new TextBox();
-            txtDiemDuAn = new TextBox();
+            txtDiemVan = new TextBox();
             txtDiemTiengAnh = new TextBox();
-            txtDiemIT = new TextBox();
+            txtDiemToan = new TextBox();
             txtEmail = new TextBox();
             txtLop = new TextBox();
             txtTenSv = new TextBox();
@@ -104,9 +110,15 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtQueQuan);
+            tabPage1.Controls.Add(label20);
+            tabPage1.Controls.Add(txtSDT);
+            tabPage1.Controls.Add(label19);
+            tabPage1.Controls.Add(label18);
+            tabPage1.Controls.Add(txtDiemDia);
+            tabPage1.Controls.Add(txtDiemSu);
+            tabPage1.Controls.Add(label12);
             tabPage1.Controls.Add(dgvDanhSachSV);
-            tabPage1.Controls.Add(btnhienthi);
-            tabPage1.Controls.Add(btnReset);
             tabPage1.Controls.Add(txtTimkiem);
             tabPage1.Controls.Add(btnTimKiem);
             tabPage1.Controls.Add(btnThoat);
@@ -120,9 +132,9 @@
             tabPage1.Controls.Add(label10);
             tabPage1.Controls.Add(dtpNgaySinh);
             tabPage1.Controls.Add(txtDiemTB);
-            tabPage1.Controls.Add(txtDiemDuAn);
+            tabPage1.Controls.Add(txtDiemVan);
             tabPage1.Controls.Add(txtDiemTiengAnh);
-            tabPage1.Controls.Add(txtDiemIT);
+            tabPage1.Controls.Add(txtDiemToan);
             tabPage1.Controls.Add(txtEmail);
             tabPage1.Controls.Add(txtLop);
             tabPage1.Controls.Add(txtTenSv);
@@ -145,6 +157,78 @@
             tabPage1.Text = "Thông tin sinh viên";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtQueQuan
+            // 
+            txtQueQuan.Location = new Point(101, 412);
+            txtQueQuan.Margin = new Padding(2);
+            txtQueQuan.Name = "txtQueQuan";
+            txtQueQuan.Size = new Size(175, 23);
+            txtQueQuan.TabIndex = 112;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(13, 420);
+            label20.Margin = new Padding(2, 0, 2, 0);
+            label20.Name = "label20";
+            label20.Size = new Size(61, 15);
+            label20.TabIndex = 111;
+            label20.Text = "Quê Quán";
+            // 
+            // txtSDT
+            // 
+            txtSDT.Location = new Point(100, 385);
+            txtSDT.Margin = new Padding(2);
+            txtSDT.Name = "txtSDT";
+            txtSDT.Size = new Size(175, 23);
+            txtSDT.TabIndex = 110;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(42, 393);
+            label19.Margin = new Padding(2, 0, 2, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(27, 15);
+            label19.TabIndex = 109;
+            label19.Text = "SĐT";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(349, 357);
+            label18.Margin = new Padding(2, 0, 2, 0);
+            label18.Name = "label18";
+            label18.Size = new Size(55, 15);
+            label18.TabIndex = 108;
+            label18.Text = "Điểm Địa";
+            // 
+            // txtDiemDia
+            // 
+            txtDiemDia.Location = new Point(440, 350);
+            txtDiemDia.Margin = new Padding(2);
+            txtDiemDia.Name = "txtDiemDia";
+            txtDiemDia.Size = new Size(191, 23);
+            txtDiemDia.TabIndex = 107;
+            // 
+            // txtDiemSu
+            // 
+            txtDiemSu.Location = new Point(440, 323);
+            txtDiemSu.Margin = new Padding(2);
+            txtDiemSu.Name = "txtDiemSu";
+            txtDiemSu.Size = new Size(191, 23);
+            txtDiemSu.TabIndex = 106;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(353, 333);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(51, 15);
+            label12.TabIndex = 105;
+            label12.Text = "Điểm Sử";
+            // 
             // dgvDanhSachSV
             // 
             dgvDanhSachSV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -155,30 +239,11 @@
             dgvDanhSachSV.RowTemplate.Height = 33;
             dgvDanhSachSV.Size = new Size(904, 167);
             dgvDanhSachSV.TabIndex = 71;
-            // 
-            // btnhienthi
-            // 
-            btnhienthi.Location = new Point(788, 361);
-            btnhienthi.Margin = new Padding(2);
-            btnhienthi.Name = "btnhienthi";
-            btnhienthi.Size = new Size(79, 20);
-            btnhienthi.TabIndex = 104;
-            btnhienthi.Text = "Hiển thị";
-            btnhienthi.UseVisualStyleBackColor = true;
-            // 
-            // btnReset
-            // 
-            btnReset.Location = new Point(668, 361);
-            btnReset.Margin = new Padding(2);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(79, 20);
-            btnReset.TabIndex = 104;
-            btnReset.Text = "reset";
-            btnReset.UseVisualStyleBackColor = true;
+            dgvDanhSachSV.CellClick += dgvDanhSachSV_CellClick;
             // 
             // txtTimkiem
             // 
-            txtTimkiem.Location = new Point(440, 175);
+            txtTimkiem.Location = new Point(440, 178);
             txtTimkiem.Margin = new Padding(2);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(272, 23);
@@ -196,38 +261,40 @@
             // 
             // btnThoat
             // 
-            btnThoat.Location = new Point(788, 320);
+            btnThoat.Location = new Point(789, 304);
             btnThoat.Margin = new Padding(2);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(79, 20);
+            btnThoat.Size = new Size(79, 44);
             btnThoat.TabIndex = 101;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
             // 
             // btnXoa
             // 
-            btnXoa.Location = new Point(668, 320);
+            btnXoa.Location = new Point(789, 247);
             btnXoa.Margin = new Padding(2);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(79, 20);
+            btnXoa.Size = new Size(79, 37);
             btnXoa.TabIndex = 100;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(788, 286);
+            btnSua.Location = new Point(668, 304);
             btnSua.Margin = new Padding(2);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(79, 20);
+            btnSua.Size = new Size(79, 42);
             btnSua.TabIndex = 99;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // cboMonHoc
             // 
             cboMonHoc.FormattingEnabled = true;
-            cboMonHoc.Location = new Point(450, 226);
+            cboMonHoc.Location = new Point(440, 211);
             cboMonHoc.Margin = new Padding(2);
             cboMonHoc.Name = "cboMonHoc";
             cboMonHoc.Size = new Size(191, 23);
@@ -235,13 +302,14 @@
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(668, 286);
+            btnThem.Location = new Point(668, 247);
             btnThem.Margin = new Padding(2);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(79, 20);
+            btnThem.Size = new Size(79, 37);
             btnThem.TabIndex = 97;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // rdoNu
             // 
@@ -270,7 +338,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(350, 231);
+            label11.Location = new Point(352, 219);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
             label11.Size = new Size(54, 15);
@@ -280,7 +348,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(356, 365);
+            label10.Location = new Point(352, 385);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
             label10.Size = new Size(48, 15);
@@ -299,35 +367,35 @@
             // 
             // txtDiemTB
             // 
-            txtDiemTB.Location = new Point(450, 358);
+            txtDiemTB.Location = new Point(440, 377);
             txtDiemTB.Margin = new Padding(2);
             txtDiemTB.Name = "txtDiemTB";
             txtDiemTB.Size = new Size(191, 23);
             txtDiemTB.TabIndex = 89;
             // 
-            // txtDiemDuAn
+            // txtDiemVan
             // 
-            txtDiemDuAn.Location = new Point(450, 320);
-            txtDiemDuAn.Margin = new Padding(2);
-            txtDiemDuAn.Name = "txtDiemDuAn";
-            txtDiemDuAn.Size = new Size(191, 23);
-            txtDiemDuAn.TabIndex = 88;
+            txtDiemVan.Location = new Point(440, 296);
+            txtDiemVan.Margin = new Padding(2);
+            txtDiemVan.Name = "txtDiemVan";
+            txtDiemVan.Size = new Size(191, 23);
+            txtDiemVan.TabIndex = 88;
             // 
             // txtDiemTiengAnh
             // 
-            txtDiemTiengAnh.Location = new Point(450, 292);
+            txtDiemTiengAnh.Location = new Point(440, 269);
             txtDiemTiengAnh.Margin = new Padding(2);
             txtDiemTiengAnh.Name = "txtDiemTiengAnh";
             txtDiemTiengAnh.Size = new Size(191, 23);
             txtDiemTiengAnh.TabIndex = 87;
             // 
-            // txtDiemIT
+            // txtDiemToan
             // 
-            txtDiemIT.Location = new Point(450, 261);
-            txtDiemIT.Margin = new Padding(2);
-            txtDiemIT.Name = "txtDiemIT";
-            txtDiemIT.Size = new Size(191, 23);
-            txtDiemIT.TabIndex = 86;
+            txtDiemToan.Location = new Point(440, 239);
+            txtDiemToan.Margin = new Padding(2);
+            txtDiemToan.Name = "txtDiemToan";
+            txtDiemToan.Size = new Size(191, 23);
+            txtDiemToan.TabIndex = 86;
             // 
             // txtEmail
             // 
@@ -364,47 +432,47 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(339, 328);
+            label9.Location = new Point(349, 304);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(65, 15);
+            label9.Size = new Size(57, 15);
             label9.TabIndex = 79;
-            label9.Text = "DiemDuAn";
+            label9.Text = "Điểm Văn";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(320, 300);
+            label8.Location = new Point(314, 277);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(86, 15);
+            label8.Size = new Size(92, 15);
             label8.TabIndex = 78;
-            label8.Text = "DiemTiengAnh";
+            label8.Text = "Diểm Tiếng Anh";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(361, 267);
+            label7.Location = new Point(341, 247);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(44, 15);
+            label7.Size = new Size(63, 15);
             label7.TabIndex = 77;
-            label7.Text = "DiemIT";
+            label7.Text = "Điểm Toán";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(38, 365);
+            label6.Location = new Point(42, 365);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(27, 15);
             label6.TabIndex = 76;
-            label6.Text = "Lop";
+            label6.Text = "Lớp";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(29, 333);
+            label5.Location = new Point(33, 331);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(36, 15);
@@ -417,9 +485,9 @@
             label4.Location = new Point(18, 296);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(51, 15);
+            label4.Size = new Size(54, 15);
             label4.TabIndex = 74;
-            label4.Text = "GioiTinh";
+            label4.Text = "Giới Tính";
             // 
             // label3
             // 
@@ -427,9 +495,9 @@
             label3.Location = new Point(13, 264);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(58, 15);
+            label3.Size = new Size(61, 15);
             label3.TabIndex = 73;
-            label3.Text = "NgaySinh";
+            label3.Text = "Ngày Sinh";
             // 
             // label2
             // 
@@ -437,9 +505,9 @@
             label2.Location = new Point(31, 232);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(41, 15);
             label2.TabIndex = 80;
-            label2.Text = "TenSV";
+            label2.Text = "Tên SV";
             // 
             // label1
             // 
@@ -447,9 +515,9 @@
             label1.Location = new Point(33, 196);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(37, 15);
+            label1.Size = new Size(40, 15);
             label1.TabIndex = 72;
-            label1.Text = "MaSV";
+            label1.Text = "Mã SV";
             // 
             // tabPage2
             // 
@@ -465,7 +533,7 @@
             tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(907, 330);
+            tabPage2.Size = new Size(907, 452);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thống kê";
             tabPage2.UseVisualStyleBackColor = true;
@@ -575,7 +643,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(907, 330);
+            tabPage3.Size = new Size(907, 452);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Hỗ Trợ ";
             tabPage3.UseVisualStyleBackColor = true;
@@ -698,8 +766,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private DataGridView dgvDanhSachSV;
-        private Button btnhienthi;
-        private Button btnReset;
         private TextBox txtTimkiem;
         private Button btnTimKiem;
         private Button btnThoat;
@@ -713,9 +779,9 @@
         private Label label10;
         private DateTimePicker dtpNgaySinh;
         private TextBox txtDiemTB;
-        private TextBox txtDiemDuAn;
+        private TextBox txtDiemVan;
         private TextBox txtDiemTiengAnh;
-        private TextBox txtDiemIT;
+        private TextBox txtDiemToan;
         private TextBox txtEmail;
         private TextBox txtLop;
         private TextBox txtTenSv;
@@ -748,5 +814,13 @@
         private Label label16;
         private TextBox tb_ch;
         private Label label17;
+        private Label label18;
+        private TextBox txtDiemDia;
+        private TextBox txtDiemSu;
+        private Label label12;
+        private TextBox txtSDT;
+        private Label label19;
+        private TextBox txtQueQuan;
+        private Label label20;
     }
 }
