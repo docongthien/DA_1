@@ -13,7 +13,7 @@ namespace Du_An_1
 {
     public partial class Admin : Form
     {
-        static string connect = @"Server=XUANTRUONG\\SQLEXPRESS;Catalog=QLSVDA1;User ID=sa;Password=123456;TrustServerCertificate=True";
+        static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
         static SqlConnection conn = new SqlConnection(connect);
         public Admin()
         {
@@ -23,7 +23,7 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop,
+            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
                    Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
                    (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
             FROM SV
@@ -50,11 +50,11 @@ namespace Du_An_1
             }
         }
 
-        private void AddStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop)
+        private void AddStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
         {
             string query = @"
-            INSERT INTO SV (Masv, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop)
-            VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Img, @Lop)";
+            INSERT INTO SV (Masv, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop, Gioi_tinh)
+            VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Img, @Lop, @Gioi_tinh)";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -65,7 +65,7 @@ namespace Du_An_1
                 cmd.Parameters.AddWithValue("@Sdt", sdt);
                 cmd.Parameters.AddWithValue("@Que_quan", que_quan);
                 cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
-
+                cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
                 cmd.Parameters.AddWithValue("@Lop", lop);
 
                 conn.Open();
@@ -76,11 +76,11 @@ namespace Du_An_1
             LoadData(); // Refresh data after adding
         }
 
-        private void UpdateStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop)
+        private void UpdateStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
         {
             string query = @"
             UPDATE SV
-            SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Img = @Img, Lop = @Lop
+            SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Lop = @Lop, Gioi_tinh = @Gioi_tinh
             WHERE Masv = @Masv";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -91,6 +91,7 @@ namespace Du_An_1
                 cmd.Parameters.AddWithValue("@Sdt", sdt);
                 cmd.Parameters.AddWithValue("@Que_quan", que_quan);
                 cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
+                cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
 
                 cmd.Parameters.AddWithValue("@Lop", lop);
 
@@ -124,16 +125,24 @@ namespace Du_An_1
             if (ValidateStudentInput())
             {
                 string masv = txtMaSv.Text;
-
                 string ten = txtTenSv.Text;
                 string email = txtEmail.Text;
                 string sdt = txtSDT.Text;
                 string que_quan = txtQueQuan.Text;
                 DateTime ngay_sinh = dtpNgaySinh.Value;
+                string gioitinh = "";
+                if(rdoNam.Checked == true)
+                {
+                    gioitinh = "Nam";
+                }
+                if (rdoNu.Checked == true)
+                {
+                    gioitinh = "Nữ";
+                }
 
                 string lop = txtLop.Text;
 
-                AddStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop);
+                AddStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
             }
         }
 
@@ -147,10 +156,18 @@ namespace Du_An_1
                 string sdt = txtSDT.Text;
                 string que_quan = txtQueQuan.Text;
                 DateTime ngay_sinh = dtpNgaySinh.Value;
-
+                string gioitinh = "";
+                if (rdoNam.Checked == true)
+                {
+                    gioitinh = "Nam";
+                }
+                if (rdoNu.Checked == true)
+                {
+                    gioitinh = "Nữ";
+                }
                 string lop = txtLop.Text;
 
-                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop);
+                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop,gioitinh);
             }
         }
 
@@ -179,12 +196,27 @@ namespace Du_An_1
                 DataGridViewRow row = dgvDanhSachSV.Rows[e.RowIndex];
 
                 txtMaSv.Text = row.Cells["Masv"].Value.ToString();
-
                 txtTenSv.Text = row.Cells["TenSV"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtSDT.Text = row.Cells["Sdt"].Value.ToString();
                 txtQueQuan.Text = row.Cells["Que_quan"].Value.ToString();
+                txtDiemToan.Text = row.Cells["Toan"].Value.ToString();
+                txtDiemVan.Text = row.Cells["Van"].Value.ToString();
+                txtDiemTiengAnh.Text = row.Cells["Anh"].Value.ToString();
+                txtDiemSu.Text = row.Cells["Su"].Value.ToString();
+                txtDiemDia.Text = row.Cells["Dia"].Value.ToString();
+                label10.Text = row.Cells["DiemTrungBinh"].Value.ToString();
+
                 dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+                string gioitinh = row.Cells["Gioi_tinh"].Value.ToString();
+                if (gioitinh == "Nam")
+                {
+                    rdoNam.Checked = true;
+                }
+                if (gioitinh == "Nữ")
+                {
+                    rdoNu.Checked = true;
+                }
 
                 txtLop.Text = row.Cells["Lop"].Value.ToString();
             }
@@ -248,7 +280,7 @@ namespace Du_An_1
         private void SearchStudent(string searchTerm)
         {
             string query = @"
-            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop
+            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Lop
             FROM SV
             WHERE SV.Ten LIKE @SearchTerm OR 
                   SV.Email LIKE @SearchTerm OR 
