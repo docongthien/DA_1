@@ -45,14 +45,10 @@
             btnThoat = new Button();
             btnXoa = new Button();
             btnSua = new Button();
-            cboMonHoc = new ComboBox();
             btnThem = new Button();
             rdoNu = new RadioButton();
             rdoNam = new RadioButton();
-            label11 = new Label();
-            label10 = new Label();
             dtpNgaySinh = new DateTimePicker();
-            txtDiemTB = new TextBox();
             txtDiemVan = new TextBox();
             txtDiemTiengAnh = new TextBox();
             txtDiemToan = new TextBox();
@@ -70,7 +66,7 @@
             label2 = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
-            button4 = new Button();
+            bntThongKe = new Button();
             btnSapXep = new Button();
             rdoTb = new RadioButton();
             rdoKha = new RadioButton();
@@ -124,14 +120,10 @@
             tabPage1.Controls.Add(btnThoat);
             tabPage1.Controls.Add(btnXoa);
             tabPage1.Controls.Add(btnSua);
-            tabPage1.Controls.Add(cboMonHoc);
             tabPage1.Controls.Add(btnThem);
             tabPage1.Controls.Add(rdoNu);
             tabPage1.Controls.Add(rdoNam);
-            tabPage1.Controls.Add(label11);
-            tabPage1.Controls.Add(label10);
             tabPage1.Controls.Add(dtpNgaySinh);
-            tabPage1.Controls.Add(txtDiemTB);
             tabPage1.Controls.Add(txtDiemVan);
             tabPage1.Controls.Add(txtDiemTiengAnh);
             tabPage1.Controls.Add(txtDiemToan);
@@ -196,7 +188,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(349, 357);
+            label18.Location = new Point(349, 370);
             label18.Margin = new Padding(2, 0, 2, 0);
             label18.Name = "label18";
             label18.Size = new Size(55, 15);
@@ -205,7 +197,7 @@
             // 
             // txtDiemDia
             // 
-            txtDiemDia.Location = new Point(440, 350);
+            txtDiemDia.Location = new Point(440, 362);
             txtDiemDia.Margin = new Padding(2);
             txtDiemDia.Name = "txtDiemDia";
             txtDiemDia.Size = new Size(191, 23);
@@ -213,7 +205,7 @@
             // 
             // txtDiemSu
             // 
-            txtDiemSu.Location = new Point(440, 323);
+            txtDiemSu.Location = new Point(440, 333);
             txtDiemSu.Margin = new Padding(2);
             txtDiemSu.Name = "txtDiemSu";
             txtDiemSu.Size = new Size(191, 23);
@@ -222,7 +214,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(353, 333);
+            label12.Location = new Point(353, 341);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
             label12.Size = new Size(51, 15);
@@ -237,13 +229,13 @@
             dgvDanhSachSV.Name = "dgvDanhSachSV";
             dgvDanhSachSV.RowHeadersWidth = 62;
             dgvDanhSachSV.RowTemplate.Height = 33;
-            dgvDanhSachSV.Size = new Size(904, 167);
+            dgvDanhSachSV.Size = new Size(904, 174);
             dgvDanhSachSV.TabIndex = 71;
             dgvDanhSachSV.CellClick += dgvDanhSachSV_CellClick;
             // 
             // txtTimkiem
             // 
-            txtTimkiem.Location = new Point(440, 178);
+            txtTimkiem.Location = new Point(440, 193);
             txtTimkiem.Margin = new Padding(2);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(272, 23);
@@ -251,7 +243,7 @@
             // 
             // btnTimKiem
             // 
-            btnTimKiem.Location = new Point(327, 178);
+            btnTimKiem.Location = new Point(327, 196);
             btnTimKiem.Margin = new Padding(2);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(79, 20);
@@ -268,6 +260,7 @@
             btnThoat.TabIndex = 101;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoa
             // 
@@ -290,15 +283,6 @@
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
-            // 
-            // cboMonHoc
-            // 
-            cboMonHoc.FormattingEnabled = true;
-            cboMonHoc.Location = new Point(440, 211);
-            cboMonHoc.Margin = new Padding(2);
-            cboMonHoc.Name = "cboMonHoc";
-            cboMonHoc.Size = new Size(191, 23);
-            cboMonHoc.TabIndex = 98;
             // 
             // btnThem
             // 
@@ -335,26 +319,6 @@
             rdoNam.Text = "Nam";
             rdoNam.UseVisualStyleBackColor = true;
             // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(352, 219);
-            label11.Margin = new Padding(2, 0, 2, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(54, 15);
-            label11.TabIndex = 93;
-            label11.Text = "MonHoc";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(352, 385);
-            label10.Margin = new Padding(2, 0, 2, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(48, 15);
-            label10.TabIndex = 92;
-            label10.Text = "DiemTB";
-            // 
             // dtpNgaySinh
             // 
             dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
@@ -365,17 +329,9 @@
             dtpNgaySinh.Size = new Size(174, 23);
             dtpNgaySinh.TabIndex = 91;
             // 
-            // txtDiemTB
-            // 
-            txtDiemTB.Location = new Point(440, 377);
-            txtDiemTB.Margin = new Padding(2);
-            txtDiemTB.Name = "txtDiemTB";
-            txtDiemTB.Size = new Size(191, 23);
-            txtDiemTB.TabIndex = 89;
-            // 
             // txtDiemVan
             // 
-            txtDiemVan.Location = new Point(440, 296);
+            txtDiemVan.Location = new Point(440, 301);
             txtDiemVan.Margin = new Padding(2);
             txtDiemVan.Name = "txtDiemVan";
             txtDiemVan.Size = new Size(191, 23);
@@ -432,7 +388,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(349, 304);
+            label9.Location = new Point(347, 309);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
             label9.Size = new Size(57, 15);
@@ -521,7 +477,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(button4);
+            tabPage2.Controls.Add(bntThongKe);
             tabPage2.Controls.Add(btnSapXep);
             tabPage2.Controls.Add(rdoTb);
             tabPage2.Controls.Add(rdoKha);
@@ -538,22 +494,23 @@
             tabPage2.Text = "Thống kê";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // bntThongKe
             // 
-            button4.Location = new Point(394, 135);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(79, 20);
-            button4.TabIndex = 9;
-            button4.Text = "Thống kê";
-            button4.UseVisualStyleBackColor = true;
+            bntThongKe.Location = new Point(466, 98);
+            bntThongKe.Margin = new Padding(2);
+            bntThongKe.Name = "bntThongKe";
+            bntThongKe.Size = new Size(131, 32);
+            bntThongKe.TabIndex = 9;
+            bntThongKe.Text = "Thống kê";
+            bntThongKe.UseVisualStyleBackColor = true;
+            bntThongKe.Click += bntThongKe_Click;
             // 
             // btnSapXep
             // 
-            btnSapXep.Location = new Point(466, 56);
+            btnSapXep.Location = new Point(466, 35);
             btnSapXep.Margin = new Padding(2);
             btnSapXep.Name = "btnSapXep";
-            btnSapXep.Size = new Size(131, 20);
+            btnSapXep.Size = new Size(131, 41);
             btnSapXep.TabIndex = 8;
             btnSapXep.Text = "Sắp xếp theo điểm";
             btnSapXep.UseVisualStyleBackColor = true;
@@ -626,7 +583,7 @@
             dgvThongKe.Name = "dgvThongKe";
             dgvThongKe.RowHeadersWidth = 62;
             dgvThongKe.RowTemplate.Height = 33;
-            dgvThongKe.Size = new Size(901, 135);
+            dgvThongKe.Size = new Size(901, 250);
             dgvThongKe.TabIndex = 2;
             // 
             // tabPage3
@@ -771,14 +728,10 @@
         private Button btnThoat;
         private Button btnXoa;
         private Button btnSua;
-        private ComboBox cboMonHoc;
         private Button btnThem;
         private RadioButton rdoNu;
         private RadioButton rdoNam;
-        private Label label11;
-        private Label label10;
         private DateTimePicker dtpNgaySinh;
-        private TextBox txtDiemTB;
         private TextBox txtDiemVan;
         private TextBox txtDiemTiengAnh;
         private TextBox txtDiemToan;
@@ -796,7 +749,7 @@
         private Label label2;
         private Label label1;
         private TabPage tabPage2;
-        private Button button4;
+        private Button bntThongKe;
         private Button btnSapXep;
         private RadioButton rdoTb;
         private RadioButton rdoKha;

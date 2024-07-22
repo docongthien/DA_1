@@ -23,8 +23,11 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop
-            FROM SV";
+            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop,
+                   Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
+                   (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+            FROM SV
+            INNER JOIN Qldiem ON SV.Masv = Qldiem.Masv";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
             {
@@ -121,13 +124,13 @@ namespace Du_An_1
             if (ValidateStudentInput())
             {
                 string masv = txtMaSv.Text;
-                
+
                 string ten = txtTenSv.Text;
                 string email = txtEmail.Text;
                 string sdt = txtSDT.Text;
                 string que_quan = txtQueQuan.Text;
                 DateTime ngay_sinh = dtpNgaySinh.Value;
-                
+
                 string lop = txtLop.Text;
 
                 AddStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop);
@@ -144,7 +147,7 @@ namespace Du_An_1
                 string sdt = txtSDT.Text;
                 string que_quan = txtQueQuan.Text;
                 DateTime ngay_sinh = dtpNgaySinh.Value;
-                
+
                 string lop = txtLop.Text;
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop);
@@ -168,36 +171,36 @@ namespace Du_An_1
 
         private void dgvDanhSachSV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-                // Kiểm tra xem người dùng có nhấp vào hàng không
-                if (e.RowIndex >= 0)
-                {
-                    // Lấy thông tin sinh viên từ hàng đã chọn
-                    DataGridViewRow row = dgvDanhSachSV.Rows[e.RowIndex];
 
-                    txtMaSv.Text = row.Cells["Masv"].Value.ToString();
-                    
-                    txtTenSv.Text = row.Cells["TenSV"].Value.ToString();
-                    txtEmail.Text = row.Cells["Email"].Value.ToString();
-                    txtSDT.Text = row.Cells["Sdt"].Value.ToString();
-                    txtQueQuan.Text = row.Cells["Que_quan"].Value.ToString();
-                    dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
-                    
-                    txtLop.Text = row.Cells["Lop"].Value.ToString();
-                }
-            
+            // Kiểm tra xem người dùng có nhấp vào hàng không
+            if (e.RowIndex >= 0)
+            {
+                // Lấy thông tin sinh viên từ hàng đã chọn
+                DataGridViewRow row = dgvDanhSachSV.Rows[e.RowIndex];
+
+                txtMaSv.Text = row.Cells["Masv"].Value.ToString();
+
+                txtTenSv.Text = row.Cells["TenSV"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                txtSDT.Text = row.Cells["Sdt"].Value.ToString();
+                txtQueQuan.Text = row.Cells["Que_quan"].Value.ToString();
+                dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+
+                txtLop.Text = row.Cells["Lop"].Value.ToString();
+            }
+
 
         }
         private bool ValidateStudentInput()
         {
             // Kiểm tra các trường thông tin cần thiết
             if (string.IsNullOrWhiteSpace(txtMaSv.Text) ||
-                
+
                 string.IsNullOrWhiteSpace(txtTenSv.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
                 string.IsNullOrWhiteSpace(txtSDT.Text) ||
                 string.IsNullOrWhiteSpace(txtQueQuan.Text) ||
-                
+
                 string.IsNullOrWhiteSpace(txtLop.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ các trường thông tin.");
@@ -245,13 +248,13 @@ namespace Du_An_1
         private void SearchStudent(string searchTerm)
         {
             string query = @"
-        SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop
-        FROM SV
-        WHERE SV.Ten LIKE @SearchTerm OR 
-              SV.Email LIKE @SearchTerm OR 
-              SV.Sdt LIKE @SearchTerm OR 
-              SV.Que_quan LIKE @SearchTerm OR 
-              SV.Lop LIKE @SearchTerm";
+            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop
+            FROM SV
+            WHERE SV.Ten LIKE @SearchTerm OR 
+                  SV.Email LIKE @SearchTerm OR 
+                  SV.Sdt LIKE @SearchTerm OR 
+                  SV.Que_quan LIKE @SearchTerm OR 
+                  SV.Lop LIKE @SearchTerm";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -291,5 +294,82 @@ namespace Du_An_1
             }
         }
 
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bntThongKe_Click(object sender, EventArgs e)
+        {
+            string query = @"
+            SELECT SV.Masv AS ID, 
+                   SV.Ten AS HoTen, 
+                   SV.ngay_sinh AS NgaySinh, 
+                   CASE 
+                       WHEN (YEAR(GETDATE()) - YEAR(SV.ngay_sinh)) % 2 = 0 THEN 'Nam'
+                       ELSE 'Nu'
+                   END AS GioiTinh,
+                   SV.Email, 
+                   SV.Lop,
+                   QL.Toan, 
+                   QL.Van, 
+                   QL.Anh, 
+                   QL.Su, 
+                   QL.Dia,
+                   (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 AS DiemTrungBinh
+            FROM SV
+            INNER JOIN Qldiem QL ON SV.Masv = QL.Masv
+            WHERE (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 >= @MinDiemTb
+            AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 < @MaxDiemTb";
+
+            double minDiemTb = 0;
+            double maxDiemTb = 10;
+
+            if (rdoXuatSac.Checked)
+            {
+                minDiemTb = 9;
+                maxDiemTb = 10;
+            }
+            else if (rdoGioi.Checked)
+            {
+                minDiemTb = 8;
+                maxDiemTb = 9;
+            }
+            else if (rdoKha.Checked)
+            {
+                minDiemTb = 6.5;
+                maxDiemTb = 8;
+            }
+            else if (rdoTb.Checked)
+            {
+                minDiemTb = 5;
+                maxDiemTb = 6.5;
+            }
+            else if (rdoTruot.Checked)
+            {
+                minDiemTb = 0;
+                maxDiemTb = 5;
+            }
+            else
+            {
+                MessageBox.Show("Chọn loại bạn muốn thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(connect))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MinDiemTb", minDiemTb);
+                    command.Parameters.AddWithValue("@MaxDiemTb", maxDiemTb);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    dgvThongKe.DataSource = dataTable;
+                }
+            }
+        }
     }
 }
