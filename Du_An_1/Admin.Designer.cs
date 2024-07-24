@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            txtMaTK = new TextBox();
+            label21 = new Label();
             label11 = new Label();
             label10 = new Label();
             txtQueQuan = new TextBox();
@@ -43,7 +45,6 @@
             label12 = new Label();
             dgvDanhSachSV = new DataGridView();
             txtTimkiem = new TextBox();
-            btnTimKiem = new Button();
             btnThoat = new Button();
             btnXoa = new Button();
             btnSua = new Button();
@@ -86,8 +87,7 @@
             label16 = new Label();
             tb_ch = new TextBox();
             label17 = new Label();
-            txtMaTK = new TextBox();
-            label21 = new Label();
+            label22 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachSV).BeginInit();
@@ -110,6 +110,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label22);
             tabPage1.Controls.Add(txtMaTK);
             tabPage1.Controls.Add(label21);
             tabPage1.Controls.Add(label11);
@@ -124,7 +125,6 @@
             tabPage1.Controls.Add(label12);
             tabPage1.Controls.Add(dgvDanhSachSV);
             tabPage1.Controls.Add(txtTimkiem);
-            tabPage1.Controls.Add(btnTimKiem);
             tabPage1.Controls.Add(btnThoat);
             tabPage1.Controls.Add(btnXoa);
             tabPage1.Controls.Add(btnSua);
@@ -157,6 +157,24 @@
             tabPage1.Text = "Thông tin sinh viên";
             tabPage1.UseVisualStyleBackColor = true;
             tabPage1.Click += tabPage1_Click;
+            // 
+            // txtMaTK
+            // 
+            txtMaTK.Location = new Point(115, 301);
+            txtMaTK.Margin = new Padding(2, 3, 2, 3);
+            txtMaTK.Name = "txtMaTK";
+            txtMaTK.Size = new Size(198, 27);
+            txtMaTK.TabIndex = 116;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(38, 306);
+            label21.Margin = new Padding(2, 0, 2, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(51, 20);
+            label21.TabIndex = 115;
+            label21.Text = "Mã TK";
             // 
             // label11
             // 
@@ -269,16 +287,7 @@
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(310, 27);
             txtTimkiem.TabIndex = 103;
-            // 
-            // btnTimKiem
-            // 
-            btnTimKiem.Location = new Point(374, 265);
-            btnTimKiem.Margin = new Padding(2, 3, 2, 3);
-            btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(90, 27);
-            btnTimKiem.TabIndex = 102;
-            btnTimKiem.Text = "Tìm Kiếm";
-            btnTimKiem.UseVisualStyleBackColor = true;
+            txtTimkiem.TextChanged += txtTimkiem_TextChanged_1;
             // 
             // btnThoat
             // 
@@ -518,7 +527,7 @@
             tabPage2.Margin = new Padding(2, 3, 2, 3);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2, 3, 2, 3);
-            tabPage2.Size = new Size(1038, 607);
+            tabPage2.Size = new Size(1038, 629);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thống kê";
             tabPage2.UseVisualStyleBackColor = true;
@@ -630,7 +639,7 @@
             tabPage3.Location = new Point(4, 29);
             tabPage3.Margin = new Padding(2, 3, 2, 3);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1038, 607);
+            tabPage3.Size = new Size(1038, 629);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Hỗ Trợ ";
             tabPage3.UseVisualStyleBackColor = true;
@@ -729,23 +738,14 @@
             label17.TabIndex = 18;
             label17.Text = "Hỗ Trợ";
             // 
-            // txtMaTK
+            // label22
             // 
-            txtMaTK.Location = new Point(115, 301);
-            txtMaTK.Margin = new Padding(2, 3, 2, 3);
-            txtMaTK.Name = "txtMaTK";
-            txtMaTK.Size = new Size(198, 27);
-            txtMaTK.TabIndex = 116;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(38, 306);
-            label21.Margin = new Padding(2, 0, 2, 0);
-            label21.Name = "label21";
-            label21.Size = new Size(51, 20);
-            label21.TabIndex = 115;
-            label21.Text = "Mã TK";
+            label22.AutoSize = true;
+            label22.Location = new Point(413, 264);
+            label22.Name = "label22";
+            label22.Size = new Size(70, 20);
+            label22.TabIndex = 117;
+            label22.Text = "Tìm kiếm";
             // 
             // Admin
             // 
@@ -774,7 +774,6 @@
         private TabPage tabPage1;
         private DataGridView dgvDanhSachSV;
         private TextBox txtTimkiem;
-        private Button btnTimKiem;
         private Button btnThoat;
         private Button btnXoa;
         private Button btnSua;
@@ -829,5 +828,6 @@
         private Label label11;
         private TextBox txtMaTK;
         private Label label21;
+        private Label label22;
     }
 }

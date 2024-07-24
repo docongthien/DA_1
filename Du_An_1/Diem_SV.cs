@@ -145,50 +145,7 @@ namespace Du_An_1
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string checkmasv = textBox2.Text;
-                string query = $"select * from Qldiem where Masv = '{checkmasv}'";
-                using (SqlCommand command = new SqlCommand(query, conn))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
 
-                    {
-                        if (reader.HasRows)
-                        {
-                            reader.Close();
-                            string masv = textBox2.Text;
-                            string query1 = $"delete from Qldiem where Masv = '{masv}'";
-                            SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                            sqlCommand1.ExecuteNonQuery();
-
-                            string query2 = "select * from Qldiem";
-                            SqlCommand sqlmd2 = new SqlCommand(query2, conn);
-
-                            SqlDataReader reader2 = sqlmd2.ExecuteReader();
-                            DataSet ds = new DataSet();
-                            DataTable dt = new DataTable();
-                            dt.Load(reader2);
-                            ds.Tables.Add(dt);
-                            dataGridView1.DataSource = ds.Tables[0];
-                            reader2.Close();
-                            MessageBox.Show("Xóa thành công");
-                            load();
-                            Diem_SV_Load(sender, e);
-                        }
-                        else
-                        {
-                            reader.Close();
-                            MessageBox.Show("Không tìm thấy sinh viên bạn muốn xóa!");
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex) { MessageBox.Show("Bạn phải chọn sinh viên để xóa"); }
-        }
         public void load()
         {
             textBox1.Text = "";
@@ -239,62 +196,7 @@ namespace Du_An_1
             this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string masv = textBox2.Text;
-            string toan = textBox4.Text;
-            string van = textBox5.Text;
-            string anh = textBox6.Text;
-            string su = textBox9.Text;
-            string dia = textBox8.Text;
-            int checktoan = int.Parse(toan);
-            int checkvan = int.Parse(van);
-            int checkanh = int.Parse(anh);
-            int checksu = int.Parse(su);
-            int checkdia = int.Parse(dia);
-            string[] diem = { toan, van, anh, su, dia };
-            int check = 0;
-            foreach (string diemMon in diem)
-            {
-                float diemSo;
-                if (float.TryParse(diemMon, out diemSo))
-                {
-                    check = 1;
-                }
-                else
-                {
-                    check = 0;
-                    break;
-
-                }
-            }
-            if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
-            {
-                string query1 = "update Qldiem " +
-                               $"set Toan = '{toan}',Van = '{van}',Anh = '{anh}',Su = '{su}',Dia = '{dia}' " +
-                               $"where Masv = '{masv}' ";
-                SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                sqlCommand1.ExecuteNonQuery();
-
-                string query2 = "select * from Qldiem";
-                SqlCommand sqlmd2 = new SqlCommand(query2, conn);
-
-                SqlDataReader reader2 = sqlmd2.ExecuteReader();
-                DataSet ds = new DataSet();
-                DataTable dt = new DataTable();
-                dt.Load(reader2);
-                ds.Tables.Add(dt);
-                dataGridView1.DataSource = ds.Tables[0];
-                reader2.Close();
-                MessageBox.Show("sửa thành công");
-                load();
-                Diem_SV_Load(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Điểm không phải là một số và > 0 <= 10");
-            }
-        }
+        
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
