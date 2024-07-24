@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Du_An_1
 {
@@ -101,6 +103,49 @@ namespace Du_An_1
 
             LoadData(); // Refresh data after updating
         }
+        private void UpdatediemStudent(int toan, int van, int anh, int su, int dia, string masv)
+        {
+            conn.Open();
+            string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
+            using (SqlCommand command = new SqlCommand(querycheckmasv, conn))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Close();
+                        string query = @"
+                            update Qldiem 
+                            SET Toan = @Toan ,Van = @Van ,Anh = @Anh ,Su = @Su ,Dia = @Dia  
+                            WHERE Masv = @Masv ";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Masv", masv);
+                            cmd.Parameters.AddWithValue("@Toan", toan);
+                            cmd.Parameters.AddWithValue("@Van", van);
+                            cmd.Parameters.AddWithValue("@Anh", anh);
+                            cmd.Parameters.AddWithValue("@Su", su);
+                            cmd.Parameters.AddWithValue("@dia", dia);
+
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sinh viên có mã vừa nhập Không tồn tại!");
+
+                    }
+                }
+            }
+
+
+
+            LoadData(); // Refresh data after updating
+        }
         private void DeleteStudent(string masv)
         {
             string query = @"
@@ -142,9 +187,10 @@ namespace Du_An_1
 
                 string lop = txtLop.Text;
 
-                AddStudent(masv,matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
+                AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
                 clear();
             }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -169,8 +215,19 @@ namespace Du_An_1
                 string lop = txtLop.Text;
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
-                clear();
             }
+            if (validatediem())
+            {
+                int toan = int.Parse(txtDiemToan.Text);
+                int van = int.Parse(txtDiemVan.Text);
+                int anh = int.Parse(txtDiemTiengAnh.Text);
+                int su = int.Parse(txtDiemSu.Text);
+                int dia = int.Parse(txtDiemDia.Text);
+                string masv = txtMaSv.Text;
+
+                UpdatediemStudent(toan, van, anh, su, dia, masv);
+            }
+            clear();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -264,6 +321,66 @@ namespace Du_An_1
             // Thực hiện các kiểm tra khác nếu cần
 
             return true;
+        }
+        private bool validatediem()
+        {
+            if (string.IsNullOrEmpty(txtMaSv.Text))
+            {
+                MessageBox.Show("Mã sinh viên không được để trống.");
+                txtMaSv.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtDiemToan.Text)
+                && string.IsNullOrEmpty(txtDiemVan.Text)
+                && string.IsNullOrEmpty(txtDiemTiengAnh.Text)
+                && string.IsNullOrEmpty(txtDiemSu.Text)
+                && string.IsNullOrEmpty(txtDiemDia.Text))
+            {
+                txtDiemToan.Text = "0";
+                txtDiemVan.Text = "0";
+                txtDiemTiengAnh.Text = "0";
+                txtDiemSu.Text = "0";
+                txtDiemDia.Text = "0";
+                return true;
+            }
+
+            if (int.TryParse(txtDiemToan.Text, out int diemtoan)
+                && int.TryParse(txtDiemVan.Text, out int diemvan)
+                && int.TryParse(txtDiemTiengAnh.Text, out int diemanh)
+                && int.TryParse(txtDiemSu.Text, out int diemsu)
+                && int.TryParse(txtDiemDia.Text, out int diemdia))
+            {
+                if (diemtoan >= 0 && diemtoan <= 10
+                    && diemvan >= 0 && diemvan <= 10
+                    && diemanh >= 0 && diemanh <= 10
+                    && diemsu >= 0 && diemsu <= 10
+                    && diemdia >= 0 && diemdia <= 10)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show($"Điểm phải từ 0 đến 10.");
+                    txtDiemToan.Focus();
+                    txtDiemVan.Focus();
+                    txtDiemTiengAnh.Focus();
+                    txtDiemSu.Focus();
+                    txtDiemDia.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Điểm phải là số.");
+                txtDiemToan.Focus();
+                txtDiemVan.Focus();
+                txtDiemTiengAnh.Focus();
+                txtDiemSu.Focus();
+                txtDiemDia.Focus();
+                return false;
+            }
+
+
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -460,6 +577,35 @@ namespace Du_An_1
             label10.Text = "";
             rdoNam.Checked = true;
             dtpNgaySinh.Value = DateTime.Now;
+        }
+
+        private void txtTimkiem_TextChanged_1(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "")
+            {
+                LoadData();
+            }
+            else
+            {
+                string query = @$"SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+                                Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
+                                (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+                                FROM SV
+                                LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+                                where SV.Masv like '%{txtTimkiem.Text}%' 
+                                or TenSV like N'%{txtTimkiem.Text}%'
+                                or SV.MaTK like N'%{txtTimkiem.Text}%'";
+                SqlCommand sqlmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = sqlmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                ds.Tables.Add(dt);
+                dgvDanhSachSV.DataSource = ds.Tables[0];
+                reader.Close();
+                conn.Close();
+            }
         }
     }
 }
