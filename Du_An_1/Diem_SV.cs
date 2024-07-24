@@ -223,8 +223,8 @@ namespace Du_An_1
             try
             {
                 load();
-                textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["Masvs"].Value.ToString();
+                textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
             }
             catch (Exception ex) { }
 
