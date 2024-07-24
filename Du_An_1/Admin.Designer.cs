@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label11 = new Label();
             label10 = new Label();
             txtQueQuan = new TextBox();
             label20 = new Label();
@@ -85,7 +86,8 @@
             label16 = new Label();
             tb_ch = new TextBox();
             label17 = new Label();
-            label11 = new Label();
+            txtMaTK = new TextBox();
+            label21 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachSV).BeginInit();
@@ -103,11 +105,13 @@
             tabControl1.Margin = new Padding(2, 3, 2, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1046, 640);
+            tabControl1.Size = new Size(1046, 662);
             tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtMaTK);
+            tabPage1.Controls.Add(label21);
             tabPage1.Controls.Add(label11);
             tabPage1.Controls.Add(label10);
             tabPage1.Controls.Add(txtQueQuan);
@@ -148,16 +152,27 @@
             tabPage1.Margin = new Padding(2, 3, 2, 3);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(2, 3, 2, 3);
-            tabPage1.Size = new Size(1038, 607);
+            tabPage1.Size = new Size(1038, 629);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Thông tin sinh viên";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(403, 567);
+            label11.Margin = new Padding(2, 0, 2, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(122, 20);
+            label11.TabIndex = 114;
+            label11.Text = "Điểm Trung bình:";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(584, 544);
+            label10.Location = new Point(584, 562);
             label10.Name = "label10";
             label10.Size = new Size(64, 35);
             label10.TabIndex = 113;
@@ -165,7 +180,7 @@
             // 
             // txtQueQuan
             // 
-            txtQueQuan.Location = new Point(115, 549);
+            txtQueQuan.Location = new Point(115, 590);
             txtQueQuan.Margin = new Padding(2, 3, 2, 3);
             txtQueQuan.Name = "txtQueQuan";
             txtQueQuan.Size = new Size(199, 27);
@@ -174,7 +189,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(15, 560);
+            label20.Location = new Point(15, 601);
             label20.Margin = new Padding(2, 0, 2, 0);
             label20.Name = "label20";
             label20.Size = new Size(75, 20);
@@ -183,7 +198,7 @@
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(114, 513);
+            txtSDT.Location = new Point(114, 554);
             txtSDT.Margin = new Padding(2, 3, 2, 3);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(199, 27);
@@ -192,7 +207,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(48, 524);
+            label19.Location = new Point(48, 565);
             label19.Margin = new Padding(2, 0, 2, 0);
             label19.Name = "label19";
             label19.Size = new Size(36, 20);
@@ -202,7 +217,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(399, 493);
+            label18.Location = new Point(399, 511);
             label18.Margin = new Padding(2, 0, 2, 0);
             label18.Name = "label18";
             label18.Size = new Size(72, 20);
@@ -211,7 +226,7 @@
             // 
             // txtDiemDia
             // 
-            txtDiemDia.Location = new Point(503, 483);
+            txtDiemDia.Location = new Point(503, 501);
             txtDiemDia.Margin = new Padding(2, 3, 2, 3);
             txtDiemDia.Name = "txtDiemDia";
             txtDiemDia.Size = new Size(218, 27);
@@ -219,7 +234,7 @@
             // 
             // txtDiemSu
             // 
-            txtDiemSu.Location = new Point(503, 444);
+            txtDiemSu.Location = new Point(503, 462);
             txtDiemSu.Margin = new Padding(2, 3, 2, 3);
             txtDiemSu.Name = "txtDiemSu";
             txtDiemSu.Size = new Size(218, 27);
@@ -228,7 +243,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(403, 455);
+            label12.Location = new Point(403, 473);
             label12.Margin = new Padding(2, 0, 2, 0);
             label12.Name = "label12";
             label12.Size = new Size(66, 20);
@@ -249,7 +264,7 @@
             // 
             // txtTimkiem
             // 
-            txtTimkiem.Location = new Point(503, 257);
+            txtTimkiem.Location = new Point(503, 261);
             txtTimkiem.Margin = new Padding(2, 3, 2, 3);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(310, 27);
@@ -257,7 +272,7 @@
             // 
             // btnTimKiem
             // 
-            btnTimKiem.Location = new Point(374, 261);
+            btnTimKiem.Location = new Point(374, 265);
             btnTimKiem.Margin = new Padding(2, 3, 2, 3);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(90, 27);
@@ -267,7 +282,7 @@
             // 
             // btnThoat
             // 
-            btnThoat.Location = new Point(902, 405);
+            btnThoat.Location = new Point(902, 423);
             btnThoat.Margin = new Padding(2, 3, 2, 3);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(90, 59);
@@ -278,7 +293,7 @@
             // 
             // btnXoa
             // 
-            btnXoa.Location = new Point(902, 329);
+            btnXoa.Location = new Point(902, 347);
             btnXoa.Margin = new Padding(2, 3, 2, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(90, 49);
@@ -289,7 +304,7 @@
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(763, 405);
+            btnSua.Location = new Point(763, 423);
             btnSua.Margin = new Padding(2, 3, 2, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(90, 56);
@@ -300,7 +315,7 @@
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(763, 329);
+            btnThem.Location = new Point(763, 347);
             btnThem.Margin = new Padding(2, 3, 2, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(90, 49);
@@ -312,7 +327,7 @@
             // rdoNu
             // 
             rdoNu.AutoSize = true;
-            rdoNu.Location = new Point(224, 395);
+            rdoNu.Location = new Point(224, 436);
             rdoNu.Margin = new Padding(2, 3, 2, 3);
             rdoNu.Name = "rdoNu";
             rdoNu.Size = new Size(50, 24);
@@ -324,7 +339,7 @@
             // rdoNam
             // 
             rdoNam.AutoSize = true;
-            rdoNam.Location = new Point(117, 395);
+            rdoNam.Location = new Point(117, 436);
             rdoNam.Margin = new Padding(2, 3, 2, 3);
             rdoNam.Name = "rdoNam";
             rdoNam.Size = new Size(62, 24);
@@ -337,7 +352,7 @@
             // 
             dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
             dtpNgaySinh.Format = DateTimePickerFormat.Custom;
-            dtpNgaySinh.Location = new Point(115, 348);
+            dtpNgaySinh.Location = new Point(115, 389);
             dtpNgaySinh.Margin = new Padding(2, 3, 2, 3);
             dtpNgaySinh.Name = "dtpNgaySinh";
             dtpNgaySinh.Size = new Size(198, 27);
@@ -345,7 +360,7 @@
             // 
             // txtDiemVan
             // 
-            txtDiemVan.Location = new Point(503, 401);
+            txtDiemVan.Location = new Point(503, 419);
             txtDiemVan.Margin = new Padding(2, 3, 2, 3);
             txtDiemVan.Name = "txtDiemVan";
             txtDiemVan.Size = new Size(218, 27);
@@ -353,7 +368,7 @@
             // 
             // txtDiemTiengAnh
             // 
-            txtDiemTiengAnh.Location = new Point(503, 359);
+            txtDiemTiengAnh.Location = new Point(503, 377);
             txtDiemTiengAnh.Margin = new Padding(2, 3, 2, 3);
             txtDiemTiengAnh.Name = "txtDiemTiengAnh";
             txtDiemTiengAnh.Size = new Size(218, 27);
@@ -361,7 +376,7 @@
             // 
             // txtDiemToan
             // 
-            txtDiemToan.Location = new Point(503, 319);
+            txtDiemToan.Location = new Point(503, 337);
             txtDiemToan.Margin = new Padding(2, 3, 2, 3);
             txtDiemToan.Name = "txtDiemToan";
             txtDiemToan.Size = new Size(218, 27);
@@ -369,7 +384,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(115, 433);
+            txtEmail.Location = new Point(115, 474);
             txtEmail.Margin = new Padding(2, 3, 2, 3);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(198, 27);
@@ -377,7 +392,7 @@
             // 
             // txtLop
             // 
-            txtLop.Location = new Point(115, 476);
+            txtLop.Location = new Point(115, 517);
             txtLop.Margin = new Padding(2, 3, 2, 3);
             txtLop.Name = "txtLop";
             txtLop.Size = new Size(199, 27);
@@ -385,7 +400,7 @@
             // 
             // txtTenSv
             // 
-            txtTenSv.Location = new Point(117, 301);
+            txtTenSv.Location = new Point(117, 342);
             txtTenSv.Margin = new Padding(2, 3, 2, 3);
             txtTenSv.Name = "txtTenSv";
             txtTenSv.Size = new Size(198, 27);
@@ -393,7 +408,7 @@
             // 
             // txtMaSv
             // 
-            txtMaSv.Location = new Point(115, 256);
+            txtMaSv.Location = new Point(115, 260);
             txtMaSv.Margin = new Padding(2, 3, 2, 3);
             txtMaSv.Name = "txtMaSv";
             txtMaSv.Size = new Size(198, 27);
@@ -402,7 +417,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(397, 412);
+            label9.Location = new Point(397, 430);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
             label9.Size = new Size(73, 20);
@@ -412,7 +427,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(359, 369);
+            label8.Location = new Point(359, 387);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(116, 20);
@@ -422,7 +437,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(390, 329);
+            label7.Location = new Point(390, 347);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(81, 20);
@@ -432,7 +447,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(48, 487);
+            label6.Location = new Point(48, 528);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(34, 20);
@@ -442,7 +457,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 441);
+            label5.Location = new Point(38, 482);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(46, 20);
@@ -452,7 +467,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 395);
+            label4.Location = new Point(21, 436);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(68, 20);
@@ -462,7 +477,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(15, 352);
+            label3.Location = new Point(15, 393);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(76, 20);
@@ -472,7 +487,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 309);
+            label2.Location = new Point(35, 350);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
@@ -482,7 +497,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(38, 261);
+            label1.Location = new Point(38, 265);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(51, 20);
@@ -714,21 +729,29 @@
             label17.TabIndex = 18;
             label17.Text = "Hỗ Trợ";
             // 
-            // label11
+            // txtMaTK
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(403, 549);
-            label11.Margin = new Padding(2, 0, 2, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(122, 20);
-            label11.TabIndex = 114;
-            label11.Text = "Điểm Trung bình:";
+            txtMaTK.Location = new Point(115, 301);
+            txtMaTK.Margin = new Padding(2, 3, 2, 3);
+            txtMaTK.Name = "txtMaTK";
+            txtMaTK.Size = new Size(198, 27);
+            txtMaTK.TabIndex = 116;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(38, 306);
+            label21.Margin = new Padding(2, 0, 2, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(51, 20);
+            label21.TabIndex = 115;
+            label21.Text = "Mã TK";
             // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1049, 669);
+            ClientSize = new Size(1049, 679);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin";
@@ -804,5 +827,7 @@
         private Label label20;
         private Label label10;
         private Label label11;
+        private TextBox txtMaTK;
+        private Label label21;
     }
 }

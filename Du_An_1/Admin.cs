@@ -24,10 +24,10 @@ namespace Du_An_1
         {
             string query = @"
             SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
-                   Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
-                   (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+            Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
+            (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
             FROM SV
-            INNER JOIN Qldiem ON SV.Masv = Qldiem.Masv";
+            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv;";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
             {
@@ -50,16 +50,16 @@ namespace Du_An_1
             }
         }
 
-        private void AddStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
+        private void AddStudent(string masv, string matk, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
         {
             string query = @"
-            INSERT INTO SV (Masv, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop, Gioi_tinh)
-            VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Img, @Lop, @Gioi_tinh)";
+            INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Lop, Gioi_tinh)
+            VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Lop, @Gioi_tinh)";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Masv", masv);
-
+                cmd.Parameters.AddWithValue("@MaTK", matk);
                 cmd.Parameters.AddWithValue("@Ten", ten);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Sdt", sdt);
@@ -67,7 +67,6 @@ namespace Du_An_1
                 cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
                 cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
                 cmd.Parameters.AddWithValue("@Lop", lop);
-
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -125,13 +124,14 @@ namespace Du_An_1
             if (ValidateStudentInput())
             {
                 string masv = txtMaSv.Text;
+                string matk = txtMaTK.Text;
                 string ten = txtTenSv.Text;
                 string email = txtEmail.Text;
                 string sdt = txtSDT.Text;
                 string que_quan = txtQueQuan.Text;
                 DateTime ngay_sinh = dtpNgaySinh.Value;
                 string gioitinh = "";
-                if(rdoNam.Checked == true)
+                if (rdoNam.Checked == true)
                 {
                     gioitinh = "Nam";
                 }
@@ -142,7 +142,8 @@ namespace Du_An_1
 
                 string lop = txtLop.Text;
 
-                AddStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
+                AddStudent(masv,matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
+                clear();
             }
         }
 
@@ -167,7 +168,8 @@ namespace Du_An_1
                 }
                 string lop = txtLop.Text;
 
-                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop,gioitinh);
+                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
+                clear();
             }
         }
 
@@ -184,6 +186,7 @@ namespace Du_An_1
             // Thực hiện kiểm tra thêm nếu cần
 
             DeleteStudent(masv);
+            clear();
         }
 
         private void dgvDanhSachSV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -196,6 +199,7 @@ namespace Du_An_1
                 DataGridViewRow row = dgvDanhSachSV.Rows[e.RowIndex];
 
                 txtMaSv.Text = row.Cells["Masv"].Value.ToString();
+                txtMaTK.Text = row.Cells["MaTk"].Value.ToString();
                 txtTenSv.Text = row.Cells["TenSV"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtSDT.Text = row.Cells["Sdt"].Value.ToString();
@@ -433,6 +437,29 @@ namespace Du_An_1
                     conn.Close();
                 }
             }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void clear()
+        {
+            txtMaSv.Text = "";
+            txtMaTK.Text = "";
+            txtTenSv.Text = "";
+            txtEmail.Text = "";
+            txtLop.Text = "";
+            txtSDT.Text = "";
+            txtQueQuan.Text = "";
+            txtDiemToan.Text = "";
+            txtDiemVan.Text = "";
+            txtDiemTiengAnh.Text = "";
+            txtDiemSu.Text = "";
+            txtDiemDia.Text = "";
+            label10.Text = "";
+            rdoNam.Checked = true;
+            dtpNgaySinh.Value = DateTime.Now;
         }
     }
 }
