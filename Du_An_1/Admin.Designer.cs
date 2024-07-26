@@ -465,7 +465,7 @@
             tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(907, 330);
+            tabPage2.Size = new Size(907, 452);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thống kê";
             tabPage2.UseVisualStyleBackColor = true;
@@ -575,7 +575,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(907, 330);
+            tabPage3.Size = new Size(907, 452);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Hỗ Trợ ";
             tabPage3.UseVisualStyleBackColor = true;
@@ -681,6 +681,7 @@
             Controls.Add(tabControl1);
             Name = "Admin";
             Text = "Admin";
+            Load += Admin_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();

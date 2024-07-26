@@ -16,5 +16,10 @@ namespace Du_An_1
         {
             InitializeComponent();
         }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

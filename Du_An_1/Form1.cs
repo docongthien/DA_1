@@ -6,7 +6,7 @@ namespace Du_An_1
 {
     public partial class Form1 : Form
     {
-        static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True;";
+        static string connect = @"Data Source=TRONG2K5\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True;";
         static SqlConnection conn = new SqlConnection(connect);
         public Form1()
         {
