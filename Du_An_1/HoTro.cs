@@ -29,15 +29,15 @@ namespace Du_An_1
             {
                 if (DialogResult.Yes == MessageBox.Show("Bạn thực sự muốn thao tác", "Xác nhận", MessageBoxButtons.YesNo))
                 {
-                    string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\c#2_2\thithu2\{textBox1.Text}.txt";
+                    string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\Dự án 1\Help\{textBox1.Text}.txt";
                     FileStream fr = new FileStream(path, FileMode.Create, FileAccess.Write);
                     StreamWriter sw = new StreamWriter(fr);
 
                     try
                     {
-                        sw.Write(textBox1.Text);
-                        sw.Write(comboBox1.Text);
-                        sw.Write(tb_ch.Text);
+                        sw.WriteLine("Mã GV,SV: "+textBox1.Text);
+                        sw.WriteLine("Loại hỗ trợ: "+comboBox1.Text);
+                        sw.WriteLine("Câu hỏi hỗ trợ: "+tb_ch.Text);
                         MessageBox.Show("Ghi thành công");
                         sw.Close();
                         fr.Close();
@@ -52,7 +52,12 @@ namespace Du_An_1
             {
                 MessageBox.Show(" Các Trường dữ liệu không được để trống");
             }
-            
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

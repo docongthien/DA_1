@@ -63,6 +63,16 @@ namespace Du_An_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap green_add_button_12023 {
+            get {
+                object obj = ResourceManager.GetObject("green-add-button-12023", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kisspng_clip_art_vector_graphics_plus_sign_computer_icons_5d3930a59a7f43_6036179515640290936328 {
             get {
                 object obj = ResourceManager.GetObject("kisspng-clip-art-vector-graphics-plus-sign-computer-icons-5d3930a59a7f43.60361795" +
