@@ -56,135 +56,128 @@
             label1.AutoSize = true;
             label1.Font = new Font("Raleway ExtraBold", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(241, 42);
+            label1.Location = new Point(275, 56);
             label1.Name = "label1";
-            label1.Size = new Size(293, 37);
+            label1.Size = new Size(370, 47);
             label1.TabIndex = 1;
             label1.Text = "Thông Tin Giảng Viên";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(185, 114);
+            label4.Location = new Point(211, 152);
             label4.Name = "label4";
-            label4.Size = new Size(40, 15);
+            label4.Size = new Size(51, 20);
             label4.TabIndex = 9;
             label4.Text = "Mã TK";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(185, 185);
+            label2.Location = new Point(211, 247);
             label2.Name = "label2";
-            label2.Size = new Size(40, 15);
+            label2.Size = new Size(51, 20);
             label2.TabIndex = 10;
             label2.Text = "TênGV";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(185, 251);
+            label3.Location = new Point(211, 335);
             label3.Name = "label3";
-            label3.Size = new Size(27, 15);
+            label3.Size = new Size(36, 20);
             label3.TabIndex = 11;
             label3.Text = "SĐT";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(561, 114);
+            label5.Location = new Point(641, 152);
             label5.Name = "label5";
-            label5.Size = new Size(36, 15);
+            label5.Size = new Size(46, 20);
             label5.TabIndex = 12;
             label5.Text = "Email";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(550, 185);
+            label6.Location = new Point(629, 247);
             label6.Name = "label6";
-            label6.Size = new Size(61, 15);
+            label6.Size = new Size(76, 20);
             label6.TabIndex = 13;
             label6.Text = "Ngày Sinh";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(558, 251);
+            label7.Location = new Point(638, 335);
             label7.Name = "label7";
-            label7.Size = new Size(39, 15);
+            label7.Size = new Size(49, 20);
             label7.TabIndex = 14;
             label7.Text = "MãGV";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(102, 131);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
+            textBox2.Location = new Point(117, 175);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(214, 23);
+            textBox2.Size = new Size(244, 27);
             textBox2.TabIndex = 15;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(102, 202);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Location = new Point(117, 269);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(214, 23);
+            textBox1.Size = new Size(244, 27);
             textBox1.TabIndex = 16;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(102, 268);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Location = new Point(117, 357);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(214, 23);
+            textBox3.Size = new Size(244, 27);
             textBox3.TabIndex = 17;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(476, 131);
-            textBox4.Margin = new Padding(3, 2, 3, 2);
+            textBox4.Location = new Point(544, 175);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(207, 23);
+            textBox4.Size = new Size(236, 27);
             textBox4.TabIndex = 18;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(476, 202);
-            textBox5.Margin = new Padding(3, 2, 3, 2);
+            textBox5.Location = new Point(544, 269);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
-            textBox5.Size = new Size(207, 23);
+            textBox5.Size = new Size(236, 27);
             textBox5.TabIndex = 19;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(476, 268);
-            textBox6.Margin = new Padding(3, 2, 3, 2);
+            textBox6.Location = new Point(544, 357);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
-            textBox6.Size = new Size(207, 23);
+            textBox6.Size = new Size(236, 27);
             textBox6.TabIndex = 20;
             // 
             // dgvGiangVien
             // 
             dgvGiangVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGiangVien.Columns.AddRange(new DataGridViewColumn[] { txbMatk, txbMagv, Txbsdt, txbemail, txbNgaysinh, txbTengv });
-            dgvGiangVien.Location = new Point(12, 298);
-            dgvGiangVien.Margin = new Padding(3, 2, 3, 2);
+            dgvGiangVien.Location = new Point(14, 397);
             dgvGiangVien.Name = "dgvGiangVien";
             dgvGiangVien.RowHeadersWidth = 51;
             dgvGiangVien.RowTemplate.Height = 29;
-            dgvGiangVien.Size = new Size(776, 141);
+            dgvGiangVien.Size = new Size(887, 188);
             dgvGiangVien.TabIndex = 21;
             // 
             // txbMatk
             // 
-            txbMatk.DataPropertyName = "Ma TK";
+            txbMatk.DataPropertyName = "MaTK";
             txbMatk.HeaderText = "Mã TK";
             txbMatk.MinimumWidth = 6;
             txbMatk.Name = "txbMatk";
@@ -232,10 +225,10 @@
             // 
             // Admin2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Turquoise;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(dgvGiangVien);
             Controls.Add(textBox6);
             Controls.Add(textBox5);
@@ -250,6 +243,7 @@
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Admin2";
             Text = "Admin2";
             Load += Admin2_Load;

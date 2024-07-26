@@ -133,4 +133,7 @@
   <data name="kisspng-computer-icons-clip-art-check-mark-x-mark-astrolog-filegartoon-actions-cancel-svg-wikimedia-common-5c53792fbb7cb5.625824561548974383768" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kisspng-computer-icons-clip-art-check-mark-x-mark-astrolog-filegartoon-actions-cancel-svg-wikimedia-common-5c53792fbb7cb5.625824561548974383768.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="green-add-button-12023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\green-add-button-12023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
