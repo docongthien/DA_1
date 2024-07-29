@@ -76,9 +76,9 @@ namespace Du_An_1
                                 {
                                     render4.Close();
                                     MessageBox.Show("Đăng nhập thành công!");
-                                    Diem_SV diem = new Diem_SV();
-                                    diem.FormClosed += (a, b) => this.Show();
-                                    diem.Show();
+                                    MenuSV mnsv = new MenuSV();
+                                    mnsv.FormClosed += (a, b) => this.Show();
+                                    mnsv.Show();
                                     this.Hide();
                                 }
                             }
