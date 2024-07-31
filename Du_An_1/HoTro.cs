@@ -29,7 +29,7 @@ namespace Du_An_1
             {
                 if (DialogResult.Yes == MessageBox.Show("Bạn thực sự muốn thao tác", "Xác nhận", MessageBoxButtons.YesNo))
                 {
-                    string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\Dự án 1\Help\{textBox1.Text}.txt";
+                    string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\Dự án 1\DA_1\DA_1\Help\{textBox1.Text}.txt";
                     if (File.Exists(path))
                     {
                         FileStream fr = new FileStream(path, FileMode.Append, FileAccess.Write);
@@ -41,6 +41,7 @@ namespace Du_An_1
                             sw.WriteLine("Mã GV,SV: " + textBox1.Text);
                             sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
                             sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
+                            sw.WriteLine("");
                             MessageBox.Show("Ghi thành công");
                             sw.Close();
                             fr.Close();
@@ -61,6 +62,7 @@ namespace Du_An_1
                             sw.WriteLine("Mã GV,SV: " + textBox1.Text);
                             sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
                             sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
+                            sw.WriteLine("");
                             MessageBox.Show("Ghi thành công");
                             sw.Close();
                             fr.Close();

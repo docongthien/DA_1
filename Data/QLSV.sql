@@ -43,7 +43,7 @@ CREATE TABLE SV (
     Ten NVARCHAR(50) not null,
     Email VARCHAR(100) not null,
     Sdt VARCHAR(15) not null,
-    Que_quan VARCHAR(100) not null,
+    Que_quan NVARCHAR(100) not null,
     ngay_sinh DATETIME not null,
 	Gioi_tinh NVARCHAR(10),
     Lop VARCHAR(20) not null,
@@ -211,3 +211,4 @@ INSERT INTO Qldiem (Magv, Masv, TenSV, Toan, Van, Anh, Su, Dia) VALUES
 ('GV04', 'SV18', N'Lê Thị W', 7.0, 8.0, 7.5, 8.0, 8.5),
 ('GV04', 'SV19', N'Đặng Văn X', 8.5, 9.0, 8.0, 8.0, 8.5),
 ('GV04', 'SV20', N'Phạm Thị Y', 7.5, 8.5, 8.0, 7.0, 8.0);
+

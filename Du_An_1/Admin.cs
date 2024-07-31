@@ -25,11 +25,13 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+            SELECT SV.Masv, TK.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
             Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
             (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
-            FROM SV
-            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv;";
+            FROM TK
+			LEFT JOIN SV ON TK.MaTK = SV.MaTK
+            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+			WHERE TK.Macv = 'CV3';";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
             {
@@ -268,7 +270,15 @@ namespace Du_An_1
                 txtDiemDia.Text = row.Cells["Dia"].Value.ToString();
                 label10.Text = row.Cells["DiemTrungBinh"].Value.ToString();
 
-                dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+                string checkngaysinh = row.Cells["ngay_sinh"].Value.ToString();
+                if (checkngaysinh == "")
+                {
+                    dtpNgaySinh.Value = DateTime.Now;
+                }
+                else
+                {
+                    dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+                }
                 string gioitinh = row.Cells["Gioi_tinh"].Value.ToString();
                 if (gioitinh == "Nam")
                 {
