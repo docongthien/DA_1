@@ -89,6 +89,7 @@
             Controls.Add(button1);
             Name = "MenuSV";
             Text = "MenuSV";
+            Load += MenuSV_Load;
             ResumeLayout(false);
         }
 

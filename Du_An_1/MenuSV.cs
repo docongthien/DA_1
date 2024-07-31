@@ -12,14 +12,18 @@ namespace Du_An_1
 {
     public partial class MenuSV : Form
     {
-        public MenuSV()
+        private string Tk;
+        private string Mk;
+        public MenuSV(string Tk, string Mk)
         {
             InitializeComponent();
+            this.Tk = Tk;
+            this.Mk = Mk;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thongtinsv ttsv = new Thongtinsv();
+            Thongtinsv ttsv = new Thongtinsv(Tk, Mk);
             ttsv.FormClosed += (a, b) => this.Show();
             ttsv.Show();
             this.Hide();
@@ -27,7 +31,7 @@ namespace Du_An_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Diemsv diemsv = new Diemsv();
+            Diemsv diemsv = new Diemsv(Tk, Mk);
             diemsv.FormClosed += (a, b) => this.Show();
             diemsv.Show();
             this.Hide();
@@ -36,6 +40,11 @@ namespace Du_An_1
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void MenuSV_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

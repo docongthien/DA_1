@@ -6,12 +6,15 @@ namespace Du_An_1
 {
     public partial class Form1 : Form
     {
-        static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True;";
+        static string connect = @"Data Source=MINH\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
         static SqlConnection conn = new SqlConnection(connect);
         public Form1()
         {
             InitializeComponent();
         }
+        private string Tk = "";
+        private string Mk = "";
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -27,6 +30,8 @@ namespace Du_An_1
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
+            Tk = username;
+            Mk = password;
             string query = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}'";
             using (SqlCommand command = new SqlCommand(query, conn))
             {
@@ -76,7 +81,7 @@ namespace Du_An_1
                                 {
                                     render4.Close();
                                     MessageBox.Show("Đăng nhập thành công!");
-                                    MenuSV mnsv = new MenuSV();
+                                    MenuSV mnsv = new MenuSV(Tk,Mk);
                                     mnsv.FormClosed += (a, b) => this.Show();
                                     mnsv.Show();
                                     this.Hide();
