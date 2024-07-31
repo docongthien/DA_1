@@ -555,6 +555,7 @@
             ClientSize = new Size(890, 588);
             Controls.Add(tabControl1);
             Name = "Diem_SV";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Diem_SV";
             FormClosing += Diem_SV_FormClosing;
             Load += Diem_SV_Load;

@@ -44,18 +44,22 @@
             // 
             // button2
             // 
-            button2.Location = new Point(129, 528);
+            button2.BackColor = Color.Lime;
+            button2.Image = Properties.Resources.green_add_button_12023;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(85, 519);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(86, 29);
             button2.TabIndex = 35;
             button2.Text = "Gửi";
-            button2.UseVisualStyleBackColor = true;
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(337, 528);
+            button3.Location = new Point(293, 519);
             button3.Margin = new Padding(2, 3, 2, 3);
             button3.Name = "button3";
             button3.Size = new Size(89, 35);
@@ -68,7 +72,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Times New Roman", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label13.Location = new Point(490, 407);
+            label13.Location = new Point(446, 398);
             label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
             label13.Size = new Size(433, 160);
@@ -79,7 +83,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "DvSV", "Khảo Thí", "Đào Tạo ", "Hành Chính", "IT" });
-            comboBox1.Location = new Point(608, 128);
+            comboBox1.Location = new Point(564, 119);
             comboBox1.Margin = new Padding(2, 3, 2, 3);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(263, 28);
@@ -89,7 +93,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(608, 363);
+            label14.Location = new Point(564, 354);
             label14.Margin = new Padding(2, 0, 2, 0);
             label14.Name = "label14";
             label14.Size = new Size(154, 23);
@@ -100,7 +104,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(129, 197);
+            label15.Location = new Point(85, 188);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
             label15.Size = new Size(79, 23);
@@ -111,7 +115,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(608, 100);
+            label16.Location = new Point(564, 91);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
             label16.Size = new Size(98, 23);
@@ -120,7 +124,7 @@
             // 
             // tb_ch
             // 
-            tb_ch.Location = new Point(129, 225);
+            tb_ch.Location = new Point(85, 216);
             tb_ch.Margin = new Padding(2, 3, 2, 3);
             tb_ch.Multiline = true;
             tb_ch.Name = "tb_ch";
@@ -132,7 +136,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Times New Roman", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = Color.Red;
-            label17.Location = new Point(424, 31);
+            label17.Location = new Point(380, 22);
             label17.Margin = new Padding(2, 0, 2, 0);
             label17.Name = "label17";
             label17.Size = new Size(81, 27);
@@ -143,7 +147,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(126, 100);
+            label1.Location = new Point(82, 91);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(146, 23);
@@ -152,7 +156,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(129, 132);
+            textBox1.Location = new Point(85, 123);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(321, 27);
@@ -162,7 +166,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            BackColor = Color.Turquoise;
+            ClientSize = new Size(940, 579);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button2);
@@ -176,6 +181,7 @@
             Controls.Add(label17);
             Margin = new Padding(3, 4, 3, 4);
             Name = "HoTro";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "HoTro";
             Load += HoTro_Load;
             ResumeLayout(false);

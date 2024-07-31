@@ -6,7 +6,7 @@ namespace Du_An_1
 {
     public partial class Form1 : Form
     {
-        static string connect = @"Data Source=MINH\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
+        static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
         static SqlConnection conn = new SqlConnection(connect);
         public Form1()
         {
@@ -49,7 +49,7 @@ namespace Du_An_1
                                 {
                                     render2.Close();
                                     MessageBox.Show("Đăng nhập thành công!");
-                                    MenuGV mngv = new MenuGV();
+                                    MenuGV mngv = new MenuGV(Tk,Mk);
                                     mngv.FormClosed += (a, b) => this.Show();
                                     mngv.Show();
                                     this.Hide();

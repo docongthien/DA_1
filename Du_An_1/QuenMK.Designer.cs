@@ -147,6 +147,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "QuenMK";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "QuenMK";
             FormClosing += QuenMK_FormClosing;
             Load += QuenMK_Load;

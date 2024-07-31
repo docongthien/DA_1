@@ -12,6 +12,7 @@ namespace Du_An_1
 {
     public partial class Menu : Form
     {
+
         public Menu()
         {
             InitializeComponent();
@@ -27,18 +28,15 @@ namespace Du_An_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Admin2 ad2 = new Admin2();
-            ad2.FormClosed += (a, b) => this.Show();
-            ad2.Show();
+            thongtingv ttgv = new thongtingv();
+            ttgv.FormClosed += (a, b) => this.Show();
+            ttgv.Show();
             this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
-            form.FormClosed += (a, b) => this.Show();
-            form.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

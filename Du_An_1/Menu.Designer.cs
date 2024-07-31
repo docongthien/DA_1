@@ -52,7 +52,7 @@
             button1.Name = "button1";
             button1.Size = new Size(173, 95);
             button1.TabIndex = 2;
-            button1.Text = "Thông tin sinh viên";
+            button1.Text = "Nhập Thông tin sinh viên";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -63,7 +63,7 @@
             button2.Name = "button2";
             button2.Size = new Size(173, 95);
             button2.TabIndex = 3;
-            button2.Text = "Thông tin Giáo viên";
+            button2.Text = "Xem Thông tin Giáo viên";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -88,6 +88,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Name = "Menu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
             ResumeLayout(false);
             PerformLayout();

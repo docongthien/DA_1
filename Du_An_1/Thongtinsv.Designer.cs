@@ -50,7 +50,7 @@
             // 
             // txtDiaChi
             // 
-            txtDiaChi.Location = new Point(690, 213);
+            txtDiaChi.Location = new Point(690, 224);
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.ReadOnly = true;
             txtDiaChi.Size = new Size(236, 27);
@@ -59,7 +59,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(775, 191);
+            label8.Location = new Point(775, 202);
             label8.Name = "label8";
             label8.Size = new Size(57, 20);
             label8.TabIndex = 69;
@@ -68,7 +68,7 @@
             // datNgaySinh
             // 
             datNgaySinh.AutoSize = true;
-            datNgaySinh.Location = new Point(787, 96);
+            datNgaySinh.Location = new Point(787, 107);
             datNgaySinh.Name = "datNgaySinh";
             datNgaySinh.Size = new Size(76, 20);
             datNgaySinh.TabIndex = 68;
@@ -77,17 +77,17 @@
             // dgvTTSinhVien
             // 
             dgvTTSinhVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTTSinhVien.Location = new Point(26, 341);
+            dgvTTSinhVien.Location = new Point(26, 352);
             dgvTTSinhVien.Name = "dgvTTSinhVien";
             dgvTTSinhVien.RowHeadersWidth = 51;
             dgvTTSinhVien.RowTemplate.Height = 29;
             dgvTTSinhVien.Size = new Size(887, 188);
             dgvTTSinhVien.TabIndex = 67;
-            dgvTTSinhVien.CellClick += dgvTTSinhVien_CellClick;
+            dgvTTSinhVien.CurrentCellChanged += dgvTTSinhVien_CurrentCellChanged;
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(383, 213);
+            txtSDT.Location = new Point(383, 224);
             txtSDT.Name = "txtSDT";
             txtSDT.ReadOnly = true;
             txtSDT.Size = new Size(236, 27);
@@ -95,7 +95,7 @@
             // 
             // txtTen
             // 
-            txtTen.Location = new Point(383, 119);
+            txtTen.Location = new Point(383, 130);
             txtTen.Name = "txtTen";
             txtTen.ReadOnly = true;
             txtTen.Size = new Size(236, 27);
@@ -103,7 +103,7 @@
             // 
             // txtLop
             // 
-            txtLop.Location = new Point(56, 301);
+            txtLop.Location = new Point(56, 312);
             txtLop.Name = "txtLop";
             txtLop.ReadOnly = true;
             txtLop.Size = new Size(244, 27);
@@ -111,7 +111,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(56, 213);
+            txtEmail.Location = new Point(56, 224);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(244, 27);
@@ -119,7 +119,7 @@
             // 
             // txtMasv
             // 
-            txtMasv.Location = new Point(56, 119);
+            txtMasv.Location = new Point(56, 130);
             txtMasv.Name = "txtMasv";
             txtMasv.ReadOnly = true;
             txtMasv.Size = new Size(244, 27);
@@ -128,7 +128,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(468, 191);
+            label6.Location = new Point(468, 202);
             label6.Name = "label6";
             label6.Size = new Size(102, 20);
             label6.TabIndex = 59;
@@ -137,7 +137,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(467, 96);
+            label5.Location = new Point(467, 107);
             label5.Name = "label5";
             label5.Size = new Size(97, 20);
             label5.TabIndex = 58;
@@ -147,7 +147,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(150, 279);
+            label3.Location = new Point(150, 290);
             label3.Name = "label3";
             label3.Size = new Size(34, 20);
             label3.TabIndex = 57;
@@ -156,7 +156,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(150, 191);
+            label2.Location = new Point(150, 202);
             label2.Name = "label2";
             label2.Size = new Size(46, 20);
             label2.TabIndex = 56;
@@ -165,7 +165,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(150, 96);
+            label4.Location = new Point(150, 107);
             label4.Name = "label4";
             label4.Size = new Size(95, 20);
             label4.TabIndex = 55;
@@ -177,7 +177,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Raleway ExtraBold", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(293, 0);
+            label1.Location = new Point(293, 33);
             label1.Name = "label1";
             label1.Size = new Size(345, 47);
             label1.TabIndex = 54;
@@ -185,14 +185,15 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(705, 119);
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(705, 130);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(221, 27);
             dateTimePicker1.TabIndex = 72;
             // 
             // btnThoat
             // 
-            btnThoat.Location = new Point(724, 288);
+            btnThoat.Location = new Point(819, 290);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(94, 29);
             btnThoat.TabIndex = 73;
@@ -204,7 +205,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(953, 529);
+            BackColor = Color.Turquoise;
+            ClientSize = new Size(953, 572);
             Controls.Add(btnThoat);
             Controls.Add(dateTimePicker1);
             Controls.Add(txtDiaChi);
@@ -223,6 +225,7 @@
             Controls.Add(label4);
             Controls.Add(label1);
             Name = "Thongtinsv";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Thongtinsv";
             Load += Thongtinsv_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTTSinhVien).EndInit();

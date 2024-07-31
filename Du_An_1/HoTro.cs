@@ -30,22 +30,47 @@ namespace Du_An_1
                 if (DialogResult.Yes == MessageBox.Show("Bạn thực sự muốn thao tác", "Xác nhận", MessageBoxButtons.YesNo))
                 {
                     string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\Dự án 1\Help\{textBox1.Text}.txt";
-                    FileStream fr = new FileStream(path, FileMode.Create, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fr);
+                    if (File.Exists(path))
+                    {
+                        FileStream fr = new FileStream(path, FileMode.Append, FileAccess.Write);
+                        StreamWriter sw = new StreamWriter(fr);
 
-                    try
-                    {
-                        sw.WriteLine("Mã GV,SV: "+textBox1.Text);
-                        sw.WriteLine("Loại hỗ trợ: "+comboBox1.Text);
-                        sw.WriteLine("Câu hỏi hỗ trợ: "+tb_ch.Text);
-                        MessageBox.Show("Ghi thành công");
-                        sw.Close();
-                        fr.Close();
+                        try
+                        {
+                            sw.WriteLine("Ngày gửi:" + DateTime.Now);
+                            sw.WriteLine("Mã GV,SV: " + textBox1.Text);
+                            sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
+                            sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
+                            MessageBox.Show("Ghi thành công");
+                            sw.Close();
+                            fr.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ghi thất bại");
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Ghi thất bại");
+                        FileStream fr = new FileStream(path, FileMode.Create, FileAccess.Write);
+                        StreamWriter sw = new StreamWriter(fr);
+
+                        try
+                        {
+                            sw.WriteLine("Ngày gửi:" + DateTime.Now);
+                            sw.WriteLine("Mã GV,SV: " + textBox1.Text);
+                            sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
+                            sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
+                            MessageBox.Show("Ghi thành công");
+                            sw.Close();
+                            fr.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ghi thất bại");
+                        }
                     }
+
                 }
             }
             else

@@ -46,5 +46,13 @@ namespace Du_An_1
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HoTro ht = new HoTro();
+            ht.FormClosed += (a, b) => this.Show();
+            ht.Show();
+            this.Hide();
+        }
     }
 }

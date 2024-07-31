@@ -12,14 +12,19 @@ namespace Du_An_1
 {
     public partial class MenuGV : Form
     {
-        public MenuGV()
+        private string Tk;
+        private string Mk;
+        public MenuGV(string tk, string mk)
         {
             InitializeComponent();
+            Tk = tk; 
+            Mk = mk;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Admin2 ttgv = new Admin2();
+            Admin2 ttgv = new Admin2(Tk,Mk);
             ttgv.FormClosed += (a, b) => this.Show();
             ttgv.Show();
             this.Hide();

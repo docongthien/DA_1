@@ -54,6 +54,7 @@
             button3.TabIndex = 6;
             button3.Text = "Hỗ Trợ";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -62,7 +63,7 @@
             button2.Name = "button2";
             button2.Size = new Size(170, 88);
             button2.TabIndex = 5;
-            button2.Text = "Điểm Sinh Viên";
+            button2.Text = "Xem Điểm Sinh Viên";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -73,7 +74,7 @@
             button1.Name = "button1";
             button1.Size = new Size(170, 88);
             button1.TabIndex = 4;
-            button1.Text = "Thông Tin Sinh viên";
+            button1.Text = "Xem Thông Tin Sinh viên";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -88,6 +89,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "MenuSV";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MenuSV";
             Load += MenuSV_Load;
             ResumeLayout(false);

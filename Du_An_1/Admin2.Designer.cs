@@ -35,19 +35,23 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            TbxMaTK = new TextBox();
+            TbxTenGV = new TextBox();
+            TbxSDT = new TextBox();
+            TbxEmail = new TextBox();
+            TbxMaGV = new TextBox();
             dgvGiangVien = new DataGridView();
             txbMatk = new DataGridViewTextBoxColumn();
             txbMagv = new DataGridViewTextBoxColumn();
-            Txbsdt = new DataGridViewTextBoxColumn();
-            txbemail = new DataGridViewTextBoxColumn();
-            txbNgaysinh = new DataGridViewTextBoxColumn();
             txbTengv = new DataGridViewTextBoxColumn();
+            txbNgaysinh = new DataGridViewTextBoxColumn();
+            Gioi_tinh = new DataGridViewTextBoxColumn();
+            txbemail = new DataGridViewTextBoxColumn();
+            Txbsdt = new DataGridViewTextBoxColumn();
+            label8 = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
+            dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvGiangVien).BeginInit();
             SuspendLayout();
             // 
@@ -65,7 +69,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(211, 152);
+            label4.Location = new Point(131, 152);
             label4.Name = "label4";
             label4.Size = new Size(51, 20);
             label4.TabIndex = 9;
@@ -74,7 +78,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(211, 247);
+            label2.Location = new Point(131, 235);
             label2.Name = "label2";
             label2.Size = new Size(51, 20);
             label2.TabIndex = 10;
@@ -83,7 +87,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(211, 335);
+            label3.Location = new Point(448, 319);
             label3.Name = "label3";
             label3.Size = new Size(36, 20);
             label3.TabIndex = 11;
@@ -92,7 +96,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(641, 152);
+            label5.Location = new Point(448, 152);
             label5.Name = "label5";
             label5.Size = new Size(46, 20);
             label5.TabIndex = 12;
@@ -101,7 +105,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(629, 247);
+            label6.Location = new Point(430, 235);
             label6.Name = "label6";
             label6.Size = new Size(76, 20);
             label6.TabIndex = 13;
@@ -110,70 +114,63 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(638, 335);
+            label7.Location = new Point(131, 319);
             label7.Name = "label7";
             label7.Size = new Size(49, 20);
             label7.TabIndex = 14;
             label7.Text = "MãGV";
             // 
-            // textBox2
+            // TbxMaTK
             // 
-            textBox2.Location = new Point(117, 175);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(244, 27);
-            textBox2.TabIndex = 15;
+            TbxMaTK.Location = new Point(52, 175);
+            TbxMaTK.Name = "TbxMaTK";
+            TbxMaTK.ReadOnly = true;
+            TbxMaTK.Size = new Size(211, 27);
+            TbxMaTK.TabIndex = 15;
             // 
-            // textBox1
+            // TbxTenGV
             // 
-            textBox1.Location = new Point(117, 269);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(244, 27);
-            textBox1.TabIndex = 16;
+            TbxTenGV.Location = new Point(52, 258);
+            TbxTenGV.Name = "TbxTenGV";
+            TbxTenGV.ReadOnly = true;
+            TbxTenGV.Size = new Size(211, 27);
+            TbxTenGV.TabIndex = 16;
             // 
-            // textBox3
+            // TbxSDT
             // 
-            textBox3.Location = new Point(117, 357);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(244, 27);
-            textBox3.TabIndex = 17;
+            TbxSDT.Location = new Point(363, 342);
+            TbxSDT.Name = "TbxSDT";
+            TbxSDT.ReadOnly = true;
+            TbxSDT.Size = new Size(211, 27);
+            TbxSDT.TabIndex = 17;
             // 
-            // textBox4
+            // TbxEmail
             // 
-            textBox4.Location = new Point(544, 175);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(236, 27);
-            textBox4.TabIndex = 18;
+            TbxEmail.Location = new Point(363, 175);
+            TbxEmail.Name = "TbxEmail";
+            TbxEmail.ReadOnly = true;
+            TbxEmail.Size = new Size(211, 27);
+            TbxEmail.TabIndex = 18;
             // 
-            // textBox5
+            // TbxMaGV
             // 
-            textBox5.Location = new Point(544, 269);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new Size(236, 27);
-            textBox5.TabIndex = 19;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(544, 357);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new Size(236, 27);
-            textBox6.TabIndex = 20;
+            TbxMaGV.Location = new Point(52, 342);
+            TbxMaGV.Name = "TbxMaGV";
+            TbxMaGV.ReadOnly = true;
+            TbxMaGV.Size = new Size(211, 27);
+            TbxMaGV.TabIndex = 20;
             // 
             // dgvGiangVien
             // 
             dgvGiangVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGiangVien.Columns.AddRange(new DataGridViewColumn[] { txbMatk, txbMagv, Txbsdt, txbemail, txbNgaysinh, txbTengv });
+            dgvGiangVien.Columns.AddRange(new DataGridViewColumn[] { txbMatk, txbMagv, txbTengv, txbNgaysinh, Gioi_tinh, txbemail, Txbsdt });
             dgvGiangVien.Location = new Point(14, 397);
             dgvGiangVien.Name = "dgvGiangVien";
             dgvGiangVien.RowHeadersWidth = 51;
             dgvGiangVien.RowTemplate.Height = 29;
             dgvGiangVien.Size = new Size(887, 188);
             dgvGiangVien.TabIndex = 21;
+            dgvGiangVien.CurrentCellChanged += dgvGiangVien_CurrentCellChanged;
             // 
             // txbMatk
             // 
@@ -191,21 +188,13 @@
             txbMagv.Name = "txbMagv";
             txbMagv.Width = 125;
             // 
-            // Txbsdt
+            // txbTengv
             // 
-            Txbsdt.DataPropertyName = "Sdt";
-            Txbsdt.HeaderText = "SĐT";
-            Txbsdt.MinimumWidth = 6;
-            Txbsdt.Name = "Txbsdt";
-            Txbsdt.Width = 125;
-            // 
-            // txbemail
-            // 
-            txbemail.DataPropertyName = "Email";
-            txbemail.HeaderText = "Email";
-            txbemail.MinimumWidth = 6;
-            txbemail.Name = "txbemail";
-            txbemail.Width = 125;
+            txbTengv.DataPropertyName = "Ten";
+            txbTengv.HeaderText = "TênGV";
+            txbTengv.MinimumWidth = 6;
+            txbTengv.Name = "txbTengv";
+            txbTengv.Width = 125;
             // 
             // txbNgaysinh
             // 
@@ -215,13 +204,72 @@
             txbNgaysinh.Name = "txbNgaysinh";
             txbNgaysinh.Width = 125;
             // 
-            // txbTengv
+            // Gioi_tinh
             // 
-            txbTengv.DataPropertyName = "Ten";
-            txbTengv.HeaderText = "TênGV";
-            txbTengv.MinimumWidth = 6;
-            txbTengv.Name = "txbTengv";
-            txbTengv.Width = 125;
+            Gioi_tinh.DataPropertyName = "Gioi_tinh";
+            Gioi_tinh.HeaderText = "Giới tính";
+            Gioi_tinh.MinimumWidth = 6;
+            Gioi_tinh.Name = "Gioi_tinh";
+            Gioi_tinh.Width = 125;
+            // 
+            // txbemail
+            // 
+            txbemail.DataPropertyName = "Email";
+            txbemail.HeaderText = "Email";
+            txbemail.MinimumWidth = 6;
+            txbemail.Name = "txbemail";
+            txbemail.Width = 125;
+            // 
+            // Txbsdt
+            // 
+            Txbsdt.DataPropertyName = "Sdt";
+            Txbsdt.HeaderText = "SĐT";
+            Txbsdt.MinimumWidth = 6;
+            Txbsdt.Name = "Txbsdt";
+            Txbsdt.Width = 125;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(728, 152);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 20);
+            label8.TabIndex = 22;
+            label8.Text = "Giới tính";
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Enabled = false;
+            radioButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton1.Location = new Point(674, 178);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(62, 24);
+            radioButton1.TabIndex = 23;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Nam";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Enabled = false;
+            radioButton2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton2.Location = new Point(788, 178);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(50, 24);
+            radioButton2.TabIndex = 24;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Nữ";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(363, 258);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(211, 27);
+            dateTimePicker1.TabIndex = 25;
             // 
             // Admin2
             // 
@@ -229,13 +277,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Turquoise;
             ClientSize = new Size(914, 600);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
+            Controls.Add(label8);
             Controls.Add(dgvGiangVien);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
-            Controls.Add(textBox2);
+            Controls.Add(TbxMaGV);
+            Controls.Add(TbxEmail);
+            Controls.Add(TbxSDT);
+            Controls.Add(TbxTenGV);
+            Controls.Add(TbxMaTK);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -245,6 +296,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin2";
             Load += Admin2_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGiangVien).EndInit();
@@ -261,18 +313,22 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox TbxMaTK;
+        private TextBox TbxTenGV;
+        private TextBox TbxSDT;
+        private TextBox TbxEmail;
+        private TextBox TbxMaGV;
         private DataGridView dgvGiangVien;
         private DataGridViewTextBoxColumn txbMatk;
         private DataGridViewTextBoxColumn txbMagv;
-        private DataGridViewTextBoxColumn Txbsdt;
-        private DataGridViewTextBoxColumn txbemail;
-        private DataGridViewTextBoxColumn txbNgaysinh;
         private DataGridViewTextBoxColumn txbTengv;
+        private DataGridViewTextBoxColumn txbNgaysinh;
+        private DataGridViewTextBoxColumn Gioi_tinh;
+        private DataGridViewTextBoxColumn txbemail;
+        private DataGridViewTextBoxColumn Txbsdt;
+        private Label label8;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private DateTimePicker dateTimePicker1;
     }
 }

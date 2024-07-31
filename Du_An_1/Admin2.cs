@@ -16,17 +16,26 @@ namespace Du_An_1
     {
         static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True;";
         static SqlConnection conn = new SqlConnection(connect);
-
-        public Admin2()
+        private string Tk;
+        private string Mk;
+        public Admin2(string tK, string mk)
         {
             InitializeComponent();
+            Tk = tK;
+            Mk = mk;
         }
-       
+
 
         private void Admin2_Load(object sender, EventArgs e)
         {
             conn.Open();
-            string query = "select * from GV";
+            string query = @$"SELECT 
+                                g.Magv, g.Ten, g.Ngaysinh, g.Gioi_tinh, g.Email, g.Sdt , t.MaTK
+                            FROM GV g
+                            JOIN 
+                                TK t ON g.MaTK = t.MaTK
+                            WHERE 
+                                t.Taikhoan = '{Tk}' AND t.Matkhau = '{Mk}';";
             SqlCommand sqlmd = new SqlCommand(query, conn);
 
             SqlDataReader reader = sqlmd.ExecuteReader();
@@ -38,22 +47,25 @@ namespace Du_An_1
             reader.Close();
             conn.Close();
         }
-        private void dgvGiangVien_CellClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void dgvGiangVien_CurrentCellChanged(object sender, EventArgs e)
         {
-            try
+            TbxTenGV.Text = dgvGiangVien.Rows[0].Cells["txbTengv"].Value.ToString();
+            TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
+            TbxSDT.Text = dgvGiangVien.Rows[0].Cells["Txbsdt"].Value.ToString();
+            TbxEmail.Text = dgvGiangVien.Rows[0].Cells["txbemail"].Value.ToString();
+            dateTimePicker1.Value = Convert.ToDateTime(dgvGiangVien.Rows[0].Cells["txbNgaysinh"].Value);
+            TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
+            string gioitinh = dgvGiangVien.Rows[0].Cells["Gioi_tinh"].Value.ToString();
+            if (gioitinh.ToLower() == "nam")
             {
-               
-                textBox1.Text = dgvGiangVien.Rows[e.RowIndex].Cells[0].Value.ToString();
-                textBox2.Text = dgvGiangVien.Rows[e.RowIndex].Cells[1].Value.ToString();
-                textBox3.Text = dgvGiangVien.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textBox4.Text = dgvGiangVien.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textBox5.Text = dgvGiangVien.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textBox6.Text = dgvGiangVien.Rows[e.RowIndex].Cells[5].Value.ToString();
-             
+                radioButton1.Checked = true;
             }
-            catch (Exception ex) { }
-
+            if (gioitinh.ToLower() == "nữ")
+            {
+                radioButton2.Checked = true;
+            }
         }
-
     }
 }
