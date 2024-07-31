@@ -223,7 +223,7 @@
             // button4
             // 
             button4.BackColor = Color.Transparent;
-            button4.Location = new Point(740, 232);
+            button4.Location = new Point(713, 289);
             button4.Name = "button4";
             button4.Size = new Size(112, 29);
             button4.TabIndex = 28;
@@ -429,7 +429,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(233, 238);
+            dataGridView1.Size = new Size(304, 196);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 

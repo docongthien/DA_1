@@ -37,7 +37,10 @@ namespace Du_An_1
         }
         private void loadsv()
         {
-            string query2 = "select * from SV";
+            string query2 = @"SELECT s.Masv, s.Ten
+                            FROM SV s
+                            LEFT JOIN Qldiem q ON s.Masv = q.Masv
+                            WHERE q.Masv IS NULL;";
             SqlCommand sqlmd2 = new SqlCommand(query2, conn);
 
             SqlDataReader reader2 = sqlmd2.ExecuteReader();

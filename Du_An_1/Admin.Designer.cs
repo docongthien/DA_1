@@ -38,6 +38,7 @@
             rdoTruot = new RadioButton();
             dgvThongKe = new DataGridView();
             tabPage1 = new TabPage();
+            comboBox1 = new ComboBox();
             label22 = new Label();
             txtMaTK = new TextBox();
             txtQueQuan = new TextBox();
@@ -49,7 +50,6 @@
             txtDiemTiengAnh = new TextBox();
             txtDiemToan = new TextBox();
             txtEmail = new TextBox();
-            txtLop = new TextBox();
             txtTenSv = new TextBox();
             txtMaSv = new TextBox();
             label21 = new Label();
@@ -199,6 +199,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Turquoise;
+            tabPage1.Controls.Add(comboBox1);
             tabPage1.Controls.Add(label22);
             tabPage1.Controls.Add(txtMaTK);
             tabPage1.Controls.Add(txtQueQuan);
@@ -210,7 +211,6 @@
             tabPage1.Controls.Add(txtDiemTiengAnh);
             tabPage1.Controls.Add(txtDiemToan);
             tabPage1.Controls.Add(txtEmail);
-            tabPage1.Controls.Add(txtLop);
             tabPage1.Controls.Add(txtTenSv);
             tabPage1.Controls.Add(txtMaSv);
             tabPage1.Controls.Add(label21);
@@ -246,6 +246,15 @@
             tabPage1.Text = "Thông tin sinh viên";
             tabPage1.Click += tabPage1_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "L01", "L02", "L03" });
+            comboBox1.Location = new Point(115, 509);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(198, 28);
+            comboBox1.TabIndex = 118;
+            // 
             // label22
             // 
             label22.AutoSize = true;
@@ -274,7 +283,7 @@
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(114, 554);
+            txtSDT.Location = new Point(114, 550);
             txtSDT.Margin = new Padding(2, 3, 2, 3);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(199, 27);
@@ -331,19 +340,11 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(115, 474);
+            txtEmail.Location = new Point(115, 466);
             txtEmail.Margin = new Padding(2, 3, 2, 3);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(198, 27);
             txtEmail.TabIndex = 83;
-            // 
-            // txtLop
-            // 
-            txtLop.Location = new Point(115, 517);
-            txtLop.Margin = new Padding(2, 3, 2, 3);
-            txtLop.Name = "txtLop";
-            txtLop.Size = new Size(199, 27);
-            txtLop.TabIndex = 82;
             // 
             // txtTenSv
             // 
@@ -404,7 +405,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(48, 565);
+            label19.Location = new Point(48, 561);
             label19.Margin = new Padding(2, 0, 2, 0);
             label19.Name = "label19";
             label19.Size = new Size(36, 20);
@@ -502,7 +503,7 @@
             // rdoNu
             // 
             rdoNu.AutoSize = true;
-            rdoNu.Location = new Point(224, 436);
+            rdoNu.Location = new Point(224, 426);
             rdoNu.Margin = new Padding(2, 3, 2, 3);
             rdoNu.Name = "rdoNu";
             rdoNu.Size = new Size(50, 24);
@@ -514,7 +515,7 @@
             // rdoNam
             // 
             rdoNam.AutoSize = true;
-            rdoNam.Location = new Point(117, 436);
+            rdoNam.Location = new Point(117, 426);
             rdoNam.Margin = new Padding(2, 3, 2, 3);
             rdoNam.Name = "rdoNam";
             rdoNam.Size = new Size(62, 24);
@@ -527,7 +528,7 @@
             // 
             dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
             dtpNgaySinh.Format = DateTimePickerFormat.Custom;
-            dtpNgaySinh.Location = new Point(115, 389);
+            dtpNgaySinh.Location = new Point(115, 384);
             dtpNgaySinh.Margin = new Padding(2, 3, 2, 3);
             dtpNgaySinh.Name = "dtpNgaySinh";
             dtpNgaySinh.Size = new Size(198, 27);
@@ -551,7 +552,7 @@
             label8.Name = "label8";
             label8.Size = new Size(116, 20);
             label8.TabIndex = 78;
-            label8.Text = "Diểm Tiếng Anh";
+            label8.Text = "Điểm Tiếng Anh";
             // 
             // label7
             // 
@@ -566,7 +567,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(48, 528);
+            label6.Location = new Point(48, 517);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(34, 20);
@@ -576,7 +577,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(38, 482);
+            label5.Location = new Point(38, 474);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(46, 20);
@@ -586,7 +587,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(21, 436);
+            label4.Location = new Point(21, 426);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(68, 20);
@@ -596,7 +597,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(15, 393);
+            label3.Location = new Point(15, 388);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(76, 20);
@@ -677,7 +678,6 @@
         private TextBox txtDiemTiengAnh;
         private TextBox txtDiemToan;
         private TextBox txtEmail;
-        private TextBox txtLop;
         private TextBox txtTenSv;
         private TextBox txtMaSv;
         private Label label21;
@@ -705,5 +705,6 @@
         private Label label2;
         private Label label1;
         private TabControl tabControl1;
+        private ComboBox comboBox1;
     }
 }
