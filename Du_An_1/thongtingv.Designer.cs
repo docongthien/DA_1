@@ -52,6 +52,8 @@
             label2 = new Label();
             label4 = new Label();
             label1 = new Label();
+            label9 = new Label();
+            txbtimkiem = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvGiangVien).BeginInit();
             SuspendLayout();
             // 
@@ -108,6 +110,7 @@
             dgvGiangVien.RowTemplate.Height = 29;
             dgvGiangVien.Size = new Size(887, 188);
             dgvGiangVien.TabIndex = 38;
+            dgvGiangVien.CellClick += dgvGiangVien_CellClick;
             // 
             // txbMatk
             // 
@@ -270,12 +273,31 @@
             label1.TabIndex = 26;
             label1.Text = "Thông Tin Giảng Viên";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(775, 292);
+            label9.Name = "label9";
+            label9.Size = new Size(70, 20);
+            label9.TabIndex = 43;
+            label9.Text = "Tìm kiếm";
+            // 
+            // txbtimkiem
+            // 
+            txbtimkiem.Location = new Point(706, 315);
+            txbtimkiem.Name = "txbtimkiem";
+            txbtimkiem.Size = new Size(211, 27);
+            txbtimkiem.TabIndex = 44;
+            txbtimkiem.TextChanged += txbtimkiem_TextChanged;
+            // 
             // thongtingv
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Turquoise;
             ClientSize = new Size(979, 587);
+            Controls.Add(txbtimkiem);
+            Controls.Add(label9);
             Controls.Add(dateTimePicker1);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
@@ -328,5 +350,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Label label9;
+        private TextBox txbtimkiem;
     }
 }

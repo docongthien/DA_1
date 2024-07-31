@@ -51,21 +51,26 @@ namespace Du_An_1
 
         private void dgvGiangVien_CurrentCellChanged(object sender, EventArgs e)
         {
-            TbxTenGV.Text = dgvGiangVien.Rows[0].Cells["txbTengv"].Value.ToString();
-            TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
-            TbxSDT.Text = dgvGiangVien.Rows[0].Cells["Txbsdt"].Value.ToString();
-            TbxEmail.Text = dgvGiangVien.Rows[0].Cells["txbemail"].Value.ToString();
-            dateTimePicker1.Value = Convert.ToDateTime(dgvGiangVien.Rows[0].Cells["txbNgaysinh"].Value);
-            TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
-            string gioitinh = dgvGiangVien.Rows[0].Cells["Gioi_tinh"].Value.ToString();
-            if (gioitinh.ToLower() == "nam")
+            try
             {
-                radioButton1.Checked = true;
+                TbxTenGV.Text = dgvGiangVien.Rows[0].Cells["txbTengv"].Value.ToString();
+                TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
+                TbxSDT.Text = dgvGiangVien.Rows[0].Cells["Txbsdt"].Value.ToString();
+                TbxEmail.Text = dgvGiangVien.Rows[0].Cells["txbemail"].Value.ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(dgvGiangVien.Rows[0].Cells["txbNgaysinh"].Value);
+                TbxMaTK.Text = dgvGiangVien.Rows[0].Cells["txbMatk"].Value.ToString();
+                string gioitinh = dgvGiangVien.Rows[0].Cells["Gioi_tinh"].Value.ToString();
+                if (gioitinh.ToLower() == "nam")
+                {
+                    radioButton1.Checked = true;
+                }
+                if (gioitinh.ToLower() == "nữ")
+                {
+                    radioButton2.Checked = true;
+                }
             }
-            if (gioitinh.ToLower() == "nữ")
-            {
-                radioButton2.Checked = true;
-            }
+            catch(Exception ex) { }
+
         }
     }
 }

@@ -67,13 +67,18 @@ namespace Du_An_1
 
         private void dgvTTSinhVien_CurrentCellChanged(object sender, EventArgs e)
         {
-            txtEmail.Text = dgvTTSinhVien.Rows[0].Cells[2].Value.ToString();
-            txtMasv.Text = dgvTTSinhVien.Rows[0].Cells[0].Value.ToString();
-            txtLop.Text = dgvTTSinhVien.Rows[0].Cells[6].Value.ToString();
-            txtTen.Text = dgvTTSinhVien.Rows[0].Cells[1].Value.ToString();
-            txtSDT.Text = dgvTTSinhVien.Rows[0].Cells[3].Value.ToString();
-            dateTimePicker1.Value = Convert.ToDateTime(dgvTTSinhVien.Rows[0].Cells[5].Value);
-            txtDiaChi.Text = dgvTTSinhVien.Rows[0].Cells[4].Value.ToString();
+            try
+            {
+                txtEmail.Text = dgvTTSinhVien.Rows[0].Cells[2].Value.ToString();
+                txtMasv.Text = dgvTTSinhVien.Rows[0].Cells[0].Value.ToString();
+                txtLop.Text = dgvTTSinhVien.Rows[0].Cells[6].Value.ToString();
+                txtTen.Text = dgvTTSinhVien.Rows[0].Cells[1].Value.ToString();
+                txtSDT.Text = dgvTTSinhVien.Rows[0].Cells[3].Value.ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(dgvTTSinhVien.Rows[0].Cells[5].Value);
+                txtDiaChi.Text = dgvTTSinhVien.Rows[0].Cells[4].Value.ToString();
+            }
+            catch(Exception ex) { }
+
         }
     }
 }

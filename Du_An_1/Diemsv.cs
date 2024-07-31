@@ -76,14 +76,19 @@ namespace Du_An_1
 
         private void dgvDiemSinhVien_CurrentCellChanged(object sender, EventArgs e)
         {
-            txtMaTK.Text = dgvDiemSinhVien.Rows[0].Cells[0].Value.ToString();
-            txtMasv.Text = dgvDiemSinhVien.Rows[0].Cells[1].Value.ToString();
-            txtTen.Text = dgvDiemSinhVien.Rows[0].Cells[2].Value.ToString();
-            txtToan.Text = dgvDiemSinhVien.Rows[0].Cells[3].Value.ToString();
-            txtVan.Text = dgvDiemSinhVien.Rows[0].Cells[4].Value.ToString();
-            txtAnh.Text = dgvDiemSinhVien.Rows[0].Cells[5].Value.ToString();
-            txtSu.Text = dgvDiemSinhVien.Rows[0].Cells[6].Value.ToString();
-            txtDia.Text = dgvDiemSinhVien.Rows[0].Cells[7].Value.ToString();
+            try
+            {
+                txtMaTK.Text = dgvDiemSinhVien.Rows[0].Cells[0].Value.ToString();
+                txtMasv.Text = dgvDiemSinhVien.Rows[0].Cells[1].Value.ToString();
+                txtTen.Text = dgvDiemSinhVien.Rows[0].Cells[2].Value.ToString();
+                txtToan.Text = dgvDiemSinhVien.Rows[0].Cells[3].Value.ToString();
+                txtVan.Text = dgvDiemSinhVien.Rows[0].Cells[4].Value.ToString();
+                txtAnh.Text = dgvDiemSinhVien.Rows[0].Cells[5].Value.ToString();
+                txtSu.Text = dgvDiemSinhVien.Rows[0].Cells[6].Value.ToString();
+                txtDia.Text = dgvDiemSinhVien.Rows[0].Cells[7].Value.ToString();
+            }
+            catch(Exception ex) { }
+
         }
     }
 }
