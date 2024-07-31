@@ -260,6 +260,7 @@
             txtMaTK.Location = new Point(115, 301);
             txtMaTK.Margin = new Padding(2, 3, 2, 3);
             txtMaTK.Name = "txtMaTK";
+            txtMaTK.ReadOnly = true;
             txtMaTK.Size = new Size(198, 27);
             txtMaTK.TabIndex = 116;
             // 

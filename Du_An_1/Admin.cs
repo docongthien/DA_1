@@ -597,14 +597,16 @@ namespace Du_An_1
             }
             else
             {
-                string query = @$"SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+                string query = @$"SELECT SV.Masv, TK.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
                                 Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
                                 (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
-                                FROM SV
+                                FROM TK
+			                    LEFT JOIN SV ON TK.MaTK = SV.MaTK
                                 LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
-                                where SV.Masv like '%{txtTimkiem.Text}%' 
-                                or TenSV like N'%{txtTimkiem.Text}%'
-                                or SV.MaTK like N'%{txtTimkiem.Text}%'";
+			                    WHERE TK.Macv = 'CV3'
+                                and TK.MaTK like '%{txtTimkiem.Text}%' 
+								or SV.Masv like '%{txtTimkiem.Text}%' 
+                                or TenSV like N'%{txtTimkiem.Text}%' ";
                 SqlCommand sqlmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataReader reader = sqlmd.ExecuteReader();
