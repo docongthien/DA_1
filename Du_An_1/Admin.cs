@@ -123,7 +123,7 @@ namespace Du_An_1
 
             LoadData(); // Refresh data after updating
         }
-        private void UpdatediemStudent(int toan, int van, int anh, int su, int dia, string masv)
+        private void UpdatediemStudent(float toan, float van, float anh, float su, float dia, string masv)
         {
             conn.Open();
             string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
@@ -209,13 +209,14 @@ namespace Du_An_1
 
                 AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
                 clear();
+                MessageBox.Show("Thêm thành công");
             }
 
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (ValidateStudentInput())
+            if (ValidateStudentInput() && validatediem())
             {
                 string masv = txtMaSv.Text;
                 string ten = txtTenSv.Text;
@@ -235,17 +236,18 @@ namespace Du_An_1
                 string lop = comboBox1.Text;
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
-            }
-            if (validatediem())
-            {
-                int toan = int.Parse(txtDiemToan.Text);
-                int van = int.Parse(txtDiemVan.Text);
-                int anh = int.Parse(txtDiemTiengAnh.Text);
-                int su = int.Parse(txtDiemSu.Text);
-                int dia = int.Parse(txtDiemDia.Text);
-                string masv = txtMaSv.Text;
 
+                float toan = float.Parse(txtDiemToan.Text);
+                float van = float.Parse(txtDiemVan.Text);
+                float anh = float.Parse(txtDiemTiengAnh.Text);
+                float su = float.Parse(txtDiemSu.Text);
+                float dia = float.Parse(txtDiemDia.Text);
                 UpdatediemStudent(toan, van, anh, su, dia, masv);
+                MessageBox.Show("Sửa thành công");
+            }
+            else
+            {
+                MessageBox.Show("Sửa Thất bại");
             }
             clear();
         }
@@ -264,6 +266,7 @@ namespace Du_An_1
 
             DeleteStudent(masv);
             clear();
+            MessageBox.Show("Xóa thành công");
         }
 
         private void dgvDanhSachSV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -372,11 +375,11 @@ namespace Du_An_1
                 return true;
             }
 
-            if (int.TryParse(txtDiemToan.Text, out int diemtoan)
-                && int.TryParse(txtDiemVan.Text, out int diemvan)
-                && int.TryParse(txtDiemTiengAnh.Text, out int diemanh)
-                && int.TryParse(txtDiemSu.Text, out int diemsu)
-                && int.TryParse(txtDiemDia.Text, out int diemdia))
+            if (float.TryParse(txtDiemToan.Text, out float diemtoan)
+                && float.TryParse(txtDiemVan.Text, out float diemvan)
+                && float.TryParse(txtDiemTiengAnh.Text, out float diemanh)
+                && float.TryParse(txtDiemSu.Text, out float diemsu)
+                && float.TryParse(txtDiemDia.Text, out float diemdia))
             {
                 if (diemtoan >= 0 && diemtoan <= 10
                     && diemvan >= 0 && diemvan <= 10

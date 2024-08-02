@@ -25,7 +25,7 @@ CREATE TABLE GV (
     Magv VARCHAR(20) PRIMARY KEY not null,
     Ten NVARCHAR(50) not null,
     Ngaysinh DATETIME not null,
-	Gioi_tinh NVARCHAR(10) not null,
+	Gioi_tinh NVARCHAR(10),
     Email VARCHAR(100) not null,
     Sdt VARCHAR(15) not null,
 	FOREIGN KEY (MaTK) REFERENCES TK(MaTK),
@@ -43,7 +43,7 @@ CREATE TABLE SV (
     Ten NVARCHAR(50) not null,
     Email VARCHAR(100) not null,
     Sdt VARCHAR(15) not null,
-    Que_quan NVARCHAR(100) not null,
+    Que_quan VARCHAR(100) not null,
     ngay_sinh DATETIME not null,
 	Gioi_tinh NVARCHAR(10),
     Lop VARCHAR(20) not null,
@@ -51,16 +51,7 @@ CREATE TABLE SV (
 	FOREIGN KEY (Lop) REFERENCES Lop(Malop),
 )
 go
-CREATE TABLE Lopchitiet (
-	lopgv INT IDENTITY(1,1) PRIMARY KEY,
-	Malop VARCHAR(20) not null,
-	Tenlop NVARCHAR(50) not null,
-	Magv VARCHAR(20) not null,
-	Masv VARCHAR(20) not null,
-	FOREIGN KEY (Magv) REFERENCES GV(Magv),
-	FOREIGN KEY (Masv) REFERENCES SV(Masv),
-)
-go
+
 -- Tạo bảng Qldiem (Quản lý điểm)
 CREATE TABLE Qldiem (
 	Magv VARCHAR(20) not null,
@@ -161,34 +152,6 @@ INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Gioi_tinh, Lop
 ('SV24', 'TK30', N'Đặng Thị CC', 'cc@gmail.com', '0912345679', N'Cần Thơ', '2008-03-08', N'Nữ', 'L03'),
 ('SV25', 'TK31', N'Phạm Văn DD', 'dd@gmail.com', '0987654320', N'Ninh Bình', '2008-07-12', N'Nam', 'L01');
 
--- Thêm dữ liệu mẫu cho bảng Lopchitiet
-INSERT INTO Lopchitiet (Malop, Tenlop, Magv, Masv) VALUES
-('L01', N'Lớp A', 'GV01', 'SV01'),
-('L02', N'Lớp B', 'GV01', 'SV02'),
-('L03', N'Lớp C', 'GV01', 'SV03'),
-('L01', N'Lớp A', 'GV02', 'SV04'),
-('L02', N'Lớp B', 'GV02', 'SV05'),
-('L03', N'Lớp C', 'GV02', 'SV06'),
-('L01', N'Lớp A', 'GV03', 'SV07'),
-('L02', N'Lớp B', 'GV03', 'SV08'),
-('L03', N'Lớp C', 'GV03', 'SV09'),
-('L01', N'Lớp A', 'GV04', 'SV10'),
-('L02', N'Lớp B', 'GV04', 'SV11'),
-('L03', N'Lớp C', 'GV04', 'SV12'),
-('L01', N'Lớp A', 'GV01', 'SV13'),
-('L02', N'Lớp B', 'GV01', 'SV14'),
-('L03', N'Lớp C', 'GV01', 'SV15'),
-('L01', N'Lớp A', 'GV02', 'SV16'),
-('L02', N'Lớp B', 'GV02', 'SV17'),
-('L03', N'Lớp C', 'GV02', 'SV18'),
-('L01', N'Lớp A', 'GV02', 'SV19'),
-('L02', N'Lớp B', 'GV02', 'SV20'),
-('L03', N'Lớp C', 'GV02', 'SV21'),
-('L01', N'Lớp A', 'GV02', 'SV22'),
-('L02', N'Lớp B', 'GV02', 'SV23'),
-('L03', N'Lớp C', 'GV02', 'SV24'),
-('L01', N'Lớp A', 'GV02', 'SV25');
-
 -- Thêm điểm cho 20 sinh viên
 INSERT INTO Qldiem (Magv, Masv, TenSV, Toan, Van, Anh, Su, Dia) VALUES
 ('GV01', 'SV01', N'Nguyễn Văn F', 8.5, 9.0, 7.5, 8.0, 9.0),
@@ -211,4 +174,3 @@ INSERT INTO Qldiem (Magv, Masv, TenSV, Toan, Van, Anh, Su, Dia) VALUES
 ('GV04', 'SV18', N'Lê Thị W', 7.0, 8.0, 7.5, 8.0, 8.5),
 ('GV04', 'SV19', N'Đặng Văn X', 8.5, 9.0, 8.0, 8.0, 8.5),
 ('GV04', 'SV20', N'Phạm Thị Y', 7.5, 8.5, 8.0, 7.0, 8.0);
-

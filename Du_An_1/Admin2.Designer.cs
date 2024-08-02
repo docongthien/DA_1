@@ -276,7 +276,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Turquoise;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(914, 611);
             Controls.Add(dateTimePicker1);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
