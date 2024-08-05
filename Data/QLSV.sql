@@ -43,7 +43,7 @@ CREATE TABLE SV (
     Ten NVARCHAR(50) not null,
     Email VARCHAR(100) not null,
     Sdt VARCHAR(15) not null,
-    Que_quan VARCHAR(100) not null,
+    Que_quan NVARCHAR(100) not null,
     ngay_sinh DATETIME not null,
 	Gioi_tinh NVARCHAR(10),
     Lop VARCHAR(20) not null,
