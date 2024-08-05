@@ -133,6 +133,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;

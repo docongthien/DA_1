@@ -13,7 +13,7 @@ namespace Du_An_1
 {
     public partial class Diemsv : Form
     {
-        static string connect = @"Data Source=MINH\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
+        static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True";
         static SqlConnection conn = new SqlConnection(connect);
         private string Tk;
         private string Mk;
@@ -66,23 +66,29 @@ namespace Du_An_1
 
         private void dgvDiemSinhVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                txtMaTK.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[0].Value.ToString();
-                txtMasv.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[1].Value.ToString();
-                txtTen.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtToan.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtVan.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[4].Value.ToString();
-                txtAnh.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[5].Value.ToString();
-                txtSu.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[6].Value.ToString();
-                txtDia.Text = dgvDiemSinhVien.Rows[e.RowIndex].Cells[7].Value.ToString();
-            }
-            catch (Exception ex) { }
+           
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvDiemSinhVien_CurrentCellChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtMaTK.Text = dgvDiemSinhVien.Rows[0].Cells[0].Value.ToString();
+                txtMasv.Text = dgvDiemSinhVien.Rows[0].Cells[1].Value.ToString();
+                txtTen.Text = dgvDiemSinhVien.Rows[0].Cells[2].Value.ToString();
+                txtToan.Text = dgvDiemSinhVien.Rows[0].Cells[3].Value.ToString();
+                txtVan.Text = dgvDiemSinhVien.Rows[0].Cells[4].Value.ToString();
+                txtAnh.Text = dgvDiemSinhVien.Rows[0].Cells[5].Value.ToString();
+                txtSu.Text = dgvDiemSinhVien.Rows[0].Cells[6].Value.ToString();
+                txtDia.Text = dgvDiemSinhVien.Rows[0].Cells[7].Value.ToString();
+            }
+            catch(Exception ex) { }
+
         }
     }
 }

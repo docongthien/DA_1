@@ -59,7 +59,7 @@
             dgvDiemSinhVien.RowTemplate.Height = 29;
             dgvDiemSinhVien.Size = new Size(887, 188);
             dgvDiemSinhVien.TabIndex = 49;
-            dgvDiemSinhVien.CellClick += dgvDiemSinhVien_CellClick;
+            dgvDiemSinhVien.CurrentCellChanged += dgvDiemSinhVien_CurrentCellChanged;
             // 
             // txtAnh
             // 
@@ -161,7 +161,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Raleway ExtraBold", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(287, 18);
+            label1.Location = new Point(241, 18);
             label1.Name = "label1";
             label1.Size = new Size(440, 47);
             label1.TabIndex = 36;
@@ -205,6 +205,7 @@
             // 
             txtMaTK.Location = new Point(50, 143);
             txtMaTK.Name = "txtMaTK";
+            txtMaTK.ReadOnly = true;
             txtMaTK.Size = new Size(244, 27);
             txtMaTK.TabIndex = 54;
             // 
@@ -222,6 +223,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Turquoise;
             ClientSize = new Size(936, 555);
             Controls.Add(btnThoat);
             Controls.Add(txtMaTK);
@@ -243,6 +245,7 @@
             Controls.Add(label4);
             Controls.Add(label1);
             Name = "Diemsv";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Diemsv";
             Load += Diemsv_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDiemSinhVien).EndInit();

@@ -25,11 +25,13 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+            SELECT SV.Masv, TK.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
             Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
             (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
-            FROM SV
-            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv;";
+            FROM TK
+			LEFT JOIN SV ON TK.MaTK = SV.MaTK
+            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+			WHERE TK.Macv = 'CV3';";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
             {
@@ -54,24 +56,42 @@ namespace Du_An_1
 
         private void AddStudent(string masv, string matk, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
         {
-            string query = @"
-            INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Lop, Gioi_tinh)
-            VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Lop, @Gioi_tinh)";
-
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            conn.Open();
+            string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
+            using (SqlCommand command = new SqlCommand(querycheckmasv, conn))
             {
-                cmd.Parameters.AddWithValue("@Masv", masv);
-                cmd.Parameters.AddWithValue("@MaTK", matk);
-                cmd.Parameters.AddWithValue("@Ten", ten);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Sdt", sdt);
-                cmd.Parameters.AddWithValue("@Que_quan", que_quan);
-                cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
-                cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
-                cmd.Parameters.AddWithValue("@Lop", lop);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                using (SqlDataReader reader = command.ExecuteReader())
+
+                {
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("Mã SV đã tồn tại");
+                    }
+                    else
+                    {
+                        reader.Close();
+                        string query = @"
+                                        INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Lop, Gioi_tinh)
+                                        VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Lop, @Gioi_tinh)";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Masv", masv);
+                            cmd.Parameters.AddWithValue("@MaTK", matk);
+                            cmd.Parameters.AddWithValue("@Ten", ten);
+                            cmd.Parameters.AddWithValue("@Email", email);
+                            cmd.Parameters.AddWithValue("@Sdt", sdt);
+                            cmd.Parameters.AddWithValue("@Que_quan", que_quan);
+                            cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
+                            cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
+                            cmd.Parameters.AddWithValue("@Lop", lop);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                }
+            }
+
             }
 
             LoadData(); // Refresh data after adding
@@ -103,7 +123,7 @@ namespace Du_An_1
 
             LoadData(); // Refresh data after updating
         }
-        private void UpdatediemStudent(int toan, int van, int anh, int su, int dia, string masv)
+        private void UpdatediemStudent(float toan, float van, float anh, float su, float dia, string masv)
         {
             conn.Open();
             string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
@@ -185,17 +205,18 @@ namespace Du_An_1
                     gioitinh = "Nữ";
                 }
 
-                string lop = txtLop.Text;
+                string lop = comboBox1.Text;
 
                 AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
                 clear();
+                MessageBox.Show("Thêm thành công");
             }
 
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (ValidateStudentInput())
+            if (ValidateStudentInput() && validatediem())
             {
                 string masv = txtMaSv.Text;
                 string ten = txtTenSv.Text;
@@ -212,20 +233,21 @@ namespace Du_An_1
                 {
                     gioitinh = "Nữ";
                 }
-                string lop = txtLop.Text;
+                string lop = comboBox1.Text;
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
-            }
-            if (validatediem())
-            {
-                int toan = int.Parse(txtDiemToan.Text);
-                int van = int.Parse(txtDiemVan.Text);
-                int anh = int.Parse(txtDiemTiengAnh.Text);
-                int su = int.Parse(txtDiemSu.Text);
-                int dia = int.Parse(txtDiemDia.Text);
-                string masv = txtMaSv.Text;
 
+                float toan = float.Parse(txtDiemToan.Text);
+                float van = float.Parse(txtDiemVan.Text);
+                float anh = float.Parse(txtDiemTiengAnh.Text);
+                float su = float.Parse(txtDiemSu.Text);
+                float dia = float.Parse(txtDiemDia.Text);
                 UpdatediemStudent(toan, van, anh, su, dia, masv);
+                MessageBox.Show("Sửa thành công");
+            }
+            else
+            {
+                MessageBox.Show("Sửa Thất bại");
             }
             clear();
         }
@@ -244,6 +266,7 @@ namespace Du_An_1
 
             DeleteStudent(masv);
             clear();
+            MessageBox.Show("Xóa thành công");
         }
 
         private void dgvDanhSachSV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -268,7 +291,15 @@ namespace Du_An_1
                 txtDiemDia.Text = row.Cells["Dia"].Value.ToString();
                 label10.Text = row.Cells["DiemTrungBinh"].Value.ToString();
 
-                dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+                string checkngaysinh = row.Cells["ngay_sinh"].Value.ToString();
+                if (checkngaysinh == "")
+                {
+                    dtpNgaySinh.Value = DateTime.Now;
+                }
+                else
+                {
+                    dtpNgaySinh.Value = Convert.ToDateTime(row.Cells["ngay_sinh"].Value);
+                }
                 string gioitinh = row.Cells["Gioi_tinh"].Value.ToString();
                 if (gioitinh == "Nam")
                 {
@@ -279,7 +310,7 @@ namespace Du_An_1
                     rdoNu.Checked = true;
                 }
 
-                txtLop.Text = row.Cells["Lop"].Value.ToString();
+                comboBox1.Text = row.Cells["Lop"].Value.ToString();
             }
 
 
@@ -294,7 +325,7 @@ namespace Du_An_1
                 string.IsNullOrWhiteSpace(txtSDT.Text) ||
                 string.IsNullOrWhiteSpace(txtQueQuan.Text) ||
 
-                string.IsNullOrWhiteSpace(txtLop.Text))
+                string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ các trường thông tin.");
                 return false;
@@ -344,11 +375,11 @@ namespace Du_An_1
                 return true;
             }
 
-            if (int.TryParse(txtDiemToan.Text, out int diemtoan)
-                && int.TryParse(txtDiemVan.Text, out int diemvan)
-                && int.TryParse(txtDiemTiengAnh.Text, out int diemanh)
-                && int.TryParse(txtDiemSu.Text, out int diemsu)
-                && int.TryParse(txtDiemDia.Text, out int diemdia))
+            if (float.TryParse(txtDiemToan.Text, out float diemtoan)
+                && float.TryParse(txtDiemVan.Text, out float diemvan)
+                && float.TryParse(txtDiemTiengAnh.Text, out float diemanh)
+                && float.TryParse(txtDiemSu.Text, out float diemsu)
+                && float.TryParse(txtDiemDia.Text, out float diemdia))
             {
                 if (diemtoan >= 0 && diemtoan <= 10
                     && diemvan >= 0 && diemvan <= 10
@@ -528,7 +559,7 @@ namespace Du_An_1
         private void btnSapXep_Click(object sender, EventArgs e)
         {
             string query = @"
-            SELECT SV.Masv, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Img, SV.Lop,
+            SELECT SV.Masv, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Lop,
                    Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
                    (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
             FROM SV
@@ -566,7 +597,7 @@ namespace Du_An_1
             txtMaTK.Text = "";
             txtTenSv.Text = "";
             txtEmail.Text = "";
-            txtLop.Text = "";
+            comboBox1.Text = "";
             txtSDT.Text = "";
             txtQueQuan.Text = "";
             txtDiemToan.Text = "";
@@ -587,14 +618,16 @@ namespace Du_An_1
             }
             else
             {
-                string query = @$"SELECT SV.Masv, SV.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+                string query = @$"SELECT SV.Masv, TK.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
                                 Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
                                 (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
-                                FROM SV
+                                FROM TK
+			                    LEFT JOIN SV ON TK.MaTK = SV.MaTK
                                 LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
-                                where SV.Masv like '%{txtTimkiem.Text}%' 
-                                or TenSV like N'%{txtTimkiem.Text}%'
-                                or SV.MaTK like N'%{txtTimkiem.Text}%'";
+			                    WHERE TK.Macv = 'CV3'
+                                and TK.MaTK like '%{txtTimkiem.Text}%' 
+								or SV.Masv like '%{txtTimkiem.Text}%' 
+                                or TenSV like N'%{txtTimkiem.Text}%' ";
                 SqlCommand sqlmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataReader reader = sqlmd.ExecuteReader();
