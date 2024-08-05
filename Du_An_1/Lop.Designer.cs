@@ -49,11 +49,13 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
+            dataGridView3 = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -159,6 +161,7 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.Turquoise;
+            tabPage2.Controls.Add(dataGridView3);
             tabPage2.Controls.Add(dataGridView2);
             tabPage2.Controls.Add(button4);
             tabPage2.Controls.Add(button5);
@@ -183,7 +186,7 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(741, 279);
+            dataGridView2.Size = new Size(209, 279);
             dataGridView2.TabIndex = 10;
             // 
             // button4
@@ -261,6 +264,16 @@
             label3.TabIndex = 0;
             label3.Text = "Mã Lớp";
             // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(221, 215);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowHeadersWidth = 51;
+            dataGridView3.RowTemplate.Height = 29;
+            dataGridView3.Size = new Size(526, 279);
+            dataGridView3.TabIndex = 11;
+            // 
             // Lop
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -280,6 +293,7 @@
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
         }
 
@@ -306,5 +320,6 @@
         private Label label4;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
+        private DataGridView dataGridView3;
     }
 }
