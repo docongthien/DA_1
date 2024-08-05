@@ -40,7 +40,6 @@
             textBox4 = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
-            textBox1 = new TextBox();
             label12 = new Label();
             button4 = new Button();
             button1 = new Button();
@@ -57,7 +56,6 @@
             label4 = new Label();
             label5 = new Label();
             dataGridView2 = new DataGridView();
-            Magv = new DataGridViewTextBoxColumn();
             Masv = new DataGridViewTextBoxColumn();
             TenSV = new DataGridViewTextBoxColumn();
             Toan = new DataGridViewTextBoxColumn();
@@ -75,13 +73,18 @@
             Img = new DataGridViewTextBoxColumn();
             Lop = new DataGridViewTextBoxColumn();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            dgvThongKe = new DataGridView();
+            comboBox2 = new ComboBox();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvThongKe).BeginInit();
             SuspendLayout();
             // 
             // tabPage1
@@ -97,7 +100,6 @@
             tabPage1.Controls.Add(textBox4);
             tabPage1.Controls.Add(textBox3);
             tabPage1.Controls.Add(textBox2);
-            tabPage1.Controls.Add(textBox1);
             tabPage1.Controls.Add(label12);
             tabPage1.Controls.Add(button4);
             tabPage1.Controls.Add(button1);
@@ -116,7 +118,6 @@
             tabPage1.Controls.Add(dataGridView2);
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(label3);
-            tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(label1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
@@ -124,7 +125,7 @@
             tabPage1.Size = new Size(858, 531);
             tabPage1.TabIndex = 0;
             tabPage1.Tag = "";
-            tabPage1.Text = "Điểm Sinh viên";
+            tabPage1.Text = "Điểm Học sinh";
             tabPage1.Click += tabPage1_Click;
             // 
             // label13
@@ -189,7 +190,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(310, 43);
+            textBox3.Location = new Point(167, 48);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(125, 27);
@@ -197,19 +198,11 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(164, 43);
+            textBox2.Location = new Point(21, 48);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(125, 27);
             textBox2.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(21, 43);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label12
             // 
@@ -338,17 +331,17 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(312, 15);
+            label4.Location = new Point(169, 20);
             label4.Name = "label4";
-            label4.Size = new Size(95, 20);
+            label4.Size = new Size(55, 20);
             label4.TabIndex = 8;
-            label4.Text = "Tên Sinh viên";
+            label4.Text = "Tên HS";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(376, 20);
+            label5.Location = new Point(233, 25);
             label5.Name = "label5";
             label5.Size = new Size(0, 46);
             label5.TabIndex = 7;
@@ -356,7 +349,7 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Magv, Masv, TenSV, Toan, Van, Su, Dia });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Masv, TenSV, Toan, Van, Su, Dia });
             dataGridView2.Location = new Point(21, 337);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
@@ -365,18 +358,10 @@
             dataGridView2.TabIndex = 6;
             dataGridView2.CellClick += dataGridView2_CellClick;
             // 
-            // Magv
-            // 
-            Magv.DataPropertyName = "Magv";
-            Magv.HeaderText = "Mã GV";
-            Magv.MinimumWidth = 6;
-            Magv.Name = "Magv";
-            Magv.Width = 125;
-            // 
             // Masv
             // 
             Masv.DataPropertyName = "Masv";
-            Masv.HeaderText = "Mã SV";
+            Masv.HeaderText = "Mã HS";
             Masv.MinimumWidth = 6;
             Masv.Name = "Masv";
             Masv.Width = 125;
@@ -384,7 +369,7 @@
             // TenSV
             // 
             TenSV.DataPropertyName = "TenSV";
-            TenSV.HeaderText = "Tên SV";
+            TenSV.HeaderText = "Tên HS";
             TenSV.MinimumWidth = 6;
             TenSV.Name = "TenSV";
             TenSV.Width = 125;
@@ -429,14 +414,14 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(304, 196);
+            dataGridView1.Size = new Size(233, 196);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
             // Masvs
             // 
             Masvs.DataPropertyName = "Masv";
-            Masvs.HeaderText = "Mã SV";
+            Masvs.HeaderText = "Mã HS";
             Masvs.MinimumWidth = 6;
             Masvs.Name = "Masvs";
             Masvs.Width = 125;
@@ -453,7 +438,7 @@
             // Ten
             // 
             Ten.DataPropertyName = "Ten";
-            Ten.HeaderText = "Tên SV";
+            Ten.HeaderText = "Tên HS";
             Ten.MinimumWidth = 6;
             Ten.Name = "Ten";
             Ten.Width = 125;
@@ -515,26 +500,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(166, 15);
+            label3.Location = new Point(23, 20);
             label3.Name = "label3";
-            label3.Size = new Size(93, 20);
+            label3.Size = new Size(53, 20);
             label3.TabIndex = 3;
-            label3.Text = "Mã Sinh viên";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Mã Giáo viên";
+            label3.Text = "Mã HS";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(230, 20);
+            label1.Location = new Point(87, 25);
             label1.Name = "label1";
             label1.Size = new Size(0, 46);
             label1.TabIndex = 0;
@@ -542,11 +518,57 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(866, 564);
             tabControl1.TabIndex = 1;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(858, 531);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Danh sách lớp";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            tabPage3.BackColor = Color.Turquoise;
+            tabPage3.Controls.Add(dgvThongKe);
+            tabPage3.Controls.Add(comboBox2);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(858, 531);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Thống kê";
+            // 
+            // dgvThongKe
+            // 
+            dgvThongKe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvThongKe.Location = new Point(2, 69);
+            dgvThongKe.Margin = new Padding(2, 3, 2, 3);
+            dgvThongKe.Name = "dgvThongKe";
+            dgvThongKe.RowHeadersWidth = 62;
+            dgvThongKe.RowTemplate.Height = 33;
+            dgvThongKe.Size = new Size(851, 456);
+            dgvThongKe.TabIndex = 12;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "học sinh xuất sắc", "học sinh giỏi", "học sinh khá", "học sinh trung bình", "học sinh yếu" });
+            comboBox2.Location = new Point(21, 29);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(187, 28);
+            comboBox2.TabIndex = 11;
+            comboBox2.Text = "Thống kê theo loại";
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // Diem_SV
             // 
@@ -564,6 +586,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabControl1.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvThongKe).EndInit();
             ResumeLayout(false);
         }
 
@@ -580,7 +604,6 @@
         private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
-        private TextBox textBox1;
         private Label label12;
         private Button button4;
         private Button button1;
@@ -597,14 +620,16 @@
         private Label label4;
         private Label label5;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn Magv;
+        private DataGridView dataGridView1;
+        private Label label3;
+        private Label label1;
+        private TabControl tabControl1;
         private DataGridViewTextBoxColumn Masv;
         private DataGridViewTextBoxColumn TenSV;
         private DataGridViewTextBoxColumn Toan;
         private DataGridViewTextBoxColumn Van;
         private DataGridViewTextBoxColumn Su;
         private DataGridViewTextBoxColumn Dia;
-        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Masvs;
         private DataGridViewTextBoxColumn MaTK;
         private DataGridViewTextBoxColumn Ten;
@@ -614,9 +639,9 @@
         private DataGridViewTextBoxColumn ngay_sinh;
         private DataGridViewTextBoxColumn Img;
         private DataGridViewTextBoxColumn Lop;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private TabControl tabControl1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private ComboBox comboBox2;
+        private DataGridView dgvThongKe;
     }
 }

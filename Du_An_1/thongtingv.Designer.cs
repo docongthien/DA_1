@@ -269,9 +269,9 @@
             label1.ForeColor = Color.Black;
             label1.Location = new Point(307, 29);
             label1.Name = "label1";
-            label1.Size = new Size(370, 47);
+            label1.Size = new Size(344, 47);
             label1.TabIndex = 26;
-            label1.Text = "Thông Tin Giảng Viên";
+            label1.Text = "Thông Tin Giáo viên";
             // 
             // label9
             // 

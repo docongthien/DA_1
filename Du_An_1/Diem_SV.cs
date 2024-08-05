@@ -59,6 +59,31 @@ namespace Du_An_1
             }
             laoddiemsv();
             loadsv();
+            string query = @"
+            SELECT SV.Masv, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh,
+                   Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
+                   (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+            FROM SV
+            INNER JOIN Qldiem ON SV.Masv = Qldiem.Masv";
+
+            using (SqlCommand sqlmd = new SqlCommand(query, conn))
+            {
+                try
+                {
+                    SqlDataReader reader = sqlmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    dgvThongKe.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi sắp xếp dữ liệu: {ex.Message}");
+                }
+                finally
+                {
+                    
+                }
+            }
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -87,7 +112,7 @@ namespace Du_An_1
                     else
                     {
                         reader.Close();
-                        string magv = textBox1.Text;
+
                         string masv = textBox2.Text;
                         string tensv = textBox3.Text;
                         string toan = textBox4.Text;
@@ -95,11 +120,11 @@ namespace Du_An_1
                         string anh = textBox6.Text;
                         string su = textBox9.Text;
                         string dia = textBox8.Text;
-                        int checktoan = int.Parse(toan);
-                        int checkvan = int.Parse(van);
-                        int checkanh = int.Parse(anh);
-                        int checksu = int.Parse(su);
-                        int checkdia = int.Parse(dia);
+                        float checktoan = float.Parse(toan);
+                        float checkvan = float.Parse(van);
+                        float checkanh = float.Parse(anh);
+                        float checksu = float.Parse(su);
+                        float checkdia = float.Parse(dia);
                         string[] diem = { toan, van, anh, su, dia };
                         int check = 0;
                         foreach (string diemMon in diem)
@@ -112,15 +137,15 @@ namespace Du_An_1
                             else
                             {
                                 check = 0;
-                                MessageBox.Show("Điểm không phải là một số.");
+                                MessageBox.Show("Điểm không được để trống và điểm phải là một số.");
                                 break;
                             }
 
-                        }
+                        }                      
                         if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
                         {
-                            string query1 = "insert into Qldiem(Magv,Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
-                            $"values('{magv}', '{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
+                            string query1 = "insert into Qldiem(Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
+                            $"values('{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
                             SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
                             sqlCommand1.ExecuteNonQuery();
 
@@ -140,7 +165,7 @@ namespace Du_An_1
                         }
                         else
                         {
-                            MessageBox.Show("Điểm không phải là một số.");
+                            MessageBox.Show("Điểm Phải >=0 và <= 10");
                         }
 
                     }
@@ -151,7 +176,6 @@ namespace Du_An_1
 
         public void load()
         {
-            textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
@@ -165,7 +189,6 @@ namespace Du_An_1
             try
             {
                 load();
-                textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                 textBox2.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
                 textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
                 textBox4.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -193,13 +216,10 @@ namespace Du_An_1
         private void button4_Click(object sender, EventArgs e)
         {
             conn.Close();
-            Form1 form = new Form1();
-            form.FormClosed += (a, b) => this.Show();
-            form.Show();
-            this.Hide();
+            this.Close();
         }
 
-        
+
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
@@ -271,7 +291,77 @@ namespace Du_An_1
             }
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = @"
+            SELECT SV.Masv AS ID, 
+                   SV.Ten AS HoTen, 
+                   SV.ngay_sinh AS NgaySinh, 
+                   CASE 
+                       WHEN (YEAR(GETDATE()) - YEAR(SV.ngay_sinh)) % 2 = 0 THEN 'Nam'
+                       ELSE 'Nu'
+                   END AS GioiTinh,
+                   SV.Email, 
+                   QL.Toan, 
+                   QL.Van, 
+                   QL.Anh, 
+                   QL.Su, 
+                   QL.Dia,
+                   (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 AS DiemTrungBinh
+            FROM SV
+            INNER JOIN Qldiem QL ON SV.Masv = QL.Masv
+            WHERE (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 >= @MinDiemTb
+            AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 < @MaxDiemTb";
 
+            double minDiemTb = 0;
+            double maxDiemTb = 10;
+
+            if (comboBox2.Text == "học sinh xuất sắc")
+            {
+                minDiemTb = 9;
+                maxDiemTb = 10;
+            }
+            else if (comboBox2.Text == "học sinh giỏi")
+            {
+                minDiemTb = 8;
+                maxDiemTb = 9;
+            }
+            else if (comboBox2.Text == "học sinh khá")
+            {
+                minDiemTb = 6.5;
+                maxDiemTb = 8;
+            }
+            else if (comboBox2.Text == "học sinh trung bình")
+            {
+                minDiemTb = 5;
+                maxDiemTb = 6.5;
+            }
+            else if (comboBox2.Text == "học sinh yếu")
+            {
+                minDiemTb = 0;
+                maxDiemTb = 5;
+            }
+            else
+            {
+                MessageBox.Show("Chọn loại bạn muốn thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(connect))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MinDiemTb", minDiemTb);
+                    command.Parameters.AddWithValue("@MaxDiemTb", maxDiemTb);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    dgvThongKe.DataSource = dataTable;
+                }
+            }
+        }
     }
 }
 

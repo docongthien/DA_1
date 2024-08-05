@@ -38,5 +38,13 @@ namespace Du_An_1
         {
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Dangky ttgv = new Dangky();
+            ttgv.FormClosed += (a, b) => this.Show();
+            ttgv.Show();
+            this.Hide();
+        }
     }
 }

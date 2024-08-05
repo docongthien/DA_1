@@ -48,7 +48,7 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(490, 99);
+            button3.Location = new Point(490, 161);
             button3.Name = "button3";
             button3.Size = new Size(170, 88);
             button3.TabIndex = 6;
@@ -59,22 +59,22 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(276, 99);
+            button2.Location = new Point(276, 161);
             button2.Name = "button2";
             button2.Size = new Size(170, 88);
             button2.TabIndex = 5;
-            button2.Text = "Xem Điểm Sinh Viên";
+            button2.Text = "Xem Điểm Học Sinh";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(56, 99);
+            button1.Location = new Point(56, 161);
             button1.Name = "button1";
             button1.Size = new Size(170, 88);
             button1.TabIndex = 4;
-            button1.Text = "Xem Thông Tin Sinh viên";
+            button1.Text = "Xem Thông Tin Học Sinh";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -90,7 +90,7 @@
             Controls.Add(button1);
             Name = "MenuSV";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MenuSV";
+            Text = "Menu Học Sinh";
             Load += MenuSV_Load;
             ResumeLayout(false);
         }

@@ -85,12 +85,12 @@ namespace Du_An_1
                             cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
                             cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
                             cmd.Parameters.AddWithValue("@Lop", lop);
-                            conn.Open();
+
                             cmd.ExecuteNonQuery();
                             conn.Close();
                         }
+                    }
                 }
-            }
 
             }
 
@@ -123,53 +123,10 @@ namespace Du_An_1
 
             LoadData(); // Refresh data after updating
         }
-        private void UpdatediemStudent(float toan, float van, float anh, float su, float dia, string masv)
-        {
-            conn.Open();
-            string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
-            using (SqlCommand command = new SqlCommand(querycheckmasv, conn))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Close();
-                        string query = @"
-                            update Qldiem 
-                            SET Toan = @Toan ,Van = @Van ,Anh = @Anh ,Su = @Su ,Dia = @Dia  
-                            WHERE Masv = @Masv ";
-
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@Masv", masv);
-                            cmd.Parameters.AddWithValue("@Toan", toan);
-                            cmd.Parameters.AddWithValue("@Van", van);
-                            cmd.Parameters.AddWithValue("@Anh", anh);
-                            cmd.Parameters.AddWithValue("@Su", su);
-                            cmd.Parameters.AddWithValue("@dia", dia);
-
-                            cmd.ExecuteNonQuery();
-                            conn.Close();
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sinh viên có mã vừa nhập Không tồn tại!");
-
-                    }
-                }
-            }
-
-
-
-            LoadData(); // Refresh data after updating
-        }
         private void DeleteStudent(string masv)
         {
             string query = @"
-            DELETE FROM SV
+            DELETE FROM Qldiem and Qldiem
             WHERE Masv = @Masv";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -216,7 +173,7 @@ namespace Du_An_1
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (ValidateStudentInput() && validatediem())
+            if (ValidateStudentInput())
             {
                 string masv = txtMaSv.Text;
                 string ten = txtTenSv.Text;
@@ -236,13 +193,6 @@ namespace Du_An_1
                 string lop = comboBox1.Text;
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
-
-                float toan = float.Parse(txtDiemToan.Text);
-                float van = float.Parse(txtDiemVan.Text);
-                float anh = float.Parse(txtDiemTiengAnh.Text);
-                float su = float.Parse(txtDiemSu.Text);
-                float dia = float.Parse(txtDiemDia.Text);
-                UpdatediemStudent(toan, van, anh, su, dia, masv);
                 MessageBox.Show("Sửa thành công");
             }
             else
@@ -284,12 +234,6 @@ namespace Du_An_1
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtSDT.Text = row.Cells["Sdt"].Value.ToString();
                 txtQueQuan.Text = row.Cells["Que_quan"].Value.ToString();
-                txtDiemToan.Text = row.Cells["Toan"].Value.ToString();
-                txtDiemVan.Text = row.Cells["Van"].Value.ToString();
-                txtDiemTiengAnh.Text = row.Cells["Anh"].Value.ToString();
-                txtDiemSu.Text = row.Cells["Su"].Value.ToString();
-                txtDiemDia.Text = row.Cells["Dia"].Value.ToString();
-                label10.Text = row.Cells["DiemTrungBinh"].Value.ToString();
 
                 string checkngaysinh = row.Cells["ngay_sinh"].Value.ToString();
                 if (checkngaysinh == "")
@@ -348,70 +292,18 @@ namespace Du_An_1
                 MessageBox.Show("Số điện thoại phải gồm 10 chữ số.");
                 return false;
             }
+            DateTime minDate = new DateTime(1990, 1, 1); // Ngày nhỏ nhất
+            DateTime maxDate = DateTime.Now; // Ngày lớn nhất
 
-            // Thực hiện các kiểm tra khác nếu cần
+            if (dtpNgaySinh.Value < minDate || dtpNgaySinh.Value > maxDate)
+            {
+                // Hiển thị thông báo lỗi
+                MessageBox.Show("Ngày sinh không hợp lệ");
+                // Thực hiện các kiểm tra khác nếu cần
 
+                return false;
+            }
             return true;
-        }
-        private bool validatediem()
-        {
-            if (string.IsNullOrEmpty(txtMaSv.Text))
-            {
-                MessageBox.Show("Mã sinh viên không được để trống.");
-                txtMaSv.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtDiemToan.Text)
-                && string.IsNullOrEmpty(txtDiemVan.Text)
-                && string.IsNullOrEmpty(txtDiemTiengAnh.Text)
-                && string.IsNullOrEmpty(txtDiemSu.Text)
-                && string.IsNullOrEmpty(txtDiemDia.Text))
-            {
-                txtDiemToan.Text = "0";
-                txtDiemVan.Text = "0";
-                txtDiemTiengAnh.Text = "0";
-                txtDiemSu.Text = "0";
-                txtDiemDia.Text = "0";
-                return true;
-            }
-
-            if (float.TryParse(txtDiemToan.Text, out float diemtoan)
-                && float.TryParse(txtDiemVan.Text, out float diemvan)
-                && float.TryParse(txtDiemTiengAnh.Text, out float diemanh)
-                && float.TryParse(txtDiemSu.Text, out float diemsu)
-                && float.TryParse(txtDiemDia.Text, out float diemdia))
-            {
-                if (diemtoan >= 0 && diemtoan <= 10
-                    && diemvan >= 0 && diemvan <= 10
-                    && diemanh >= 0 && diemanh <= 10
-                    && diemsu >= 0 && diemsu <= 10
-                    && diemdia >= 0 && diemdia <= 10)
-                {
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show($"Điểm phải từ 0 đến 10.");
-                    txtDiemToan.Focus();
-                    txtDiemVan.Focus();
-                    txtDiemTiengAnh.Focus();
-                    txtDiemSu.Focus();
-                    txtDiemDia.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show($"Điểm phải là số.");
-                txtDiemToan.Focus();
-                txtDiemVan.Focus();
-                txtDiemTiengAnh.Focus();
-                txtDiemSu.Focus();
-                txtDiemDia.Focus();
-                return false;
-            }
-
-
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -483,78 +375,7 @@ namespace Du_An_1
             this.Close();
         }
 
-        private void bntThongKe_Click(object sender, EventArgs e)
-        {
-            string query = @"
-            SELECT SV.Masv AS ID, 
-                   SV.Ten AS HoTen, 
-                   SV.ngay_sinh AS NgaySinh, 
-                   CASE 
-                       WHEN (YEAR(GETDATE()) - YEAR(SV.ngay_sinh)) % 2 = 0 THEN 'Nam'
-                       ELSE 'Nu'
-                   END AS GioiTinh,
-                   SV.Email, 
-                   SV.Lop,
-                   QL.Toan, 
-                   QL.Van, 
-                   QL.Anh, 
-                   QL.Su, 
-                   QL.Dia,
-                   (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 AS DiemTrungBinh
-            FROM SV
-            INNER JOIN Qldiem QL ON SV.Masv = QL.Masv
-            WHERE (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 >= @MinDiemTb
-            AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 < @MaxDiemTb";
 
-            double minDiemTb = 0;
-            double maxDiemTb = 10;
-
-            if (rdoXuatSac.Checked)
-            {
-                minDiemTb = 9;
-                maxDiemTb = 10;
-            }
-            else if (rdoGioi.Checked)
-            {
-                minDiemTb = 8;
-                maxDiemTb = 9;
-            }
-            else if (rdoKha.Checked)
-            {
-                minDiemTb = 6.5;
-                maxDiemTb = 8;
-            }
-            else if (rdoTb.Checked)
-            {
-                minDiemTb = 5;
-                maxDiemTb = 6.5;
-            }
-            else if (rdoTruot.Checked)
-            {
-                minDiemTb = 0;
-                maxDiemTb = 5;
-            }
-            else
-            {
-                MessageBox.Show("Chọn loại bạn muốn thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            using (SqlConnection connection = new SqlConnection(connect))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@MinDiemTb", minDiemTb);
-                    command.Parameters.AddWithValue("@MaxDiemTb", maxDiemTb);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    dgvThongKe.DataSource = dataTable;
-                }
-            }
-        }
 
         private void btnSapXep_Click(object sender, EventArgs e)
         {
@@ -587,6 +408,7 @@ namespace Du_An_1
             }
         }
 
+
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
@@ -600,12 +422,7 @@ namespace Du_An_1
             comboBox1.Text = "";
             txtSDT.Text = "";
             txtQueQuan.Text = "";
-            txtDiemToan.Text = "";
-            txtDiemVan.Text = "";
-            txtDiemTiengAnh.Text = "";
-            txtDiemSu.Text = "";
-            txtDiemDia.Text = "";
-            label10.Text = "";
+
             rdoNam.Checked = true;
             dtpNgaySinh.Value = DateTime.Now;
         }
@@ -639,6 +456,20 @@ namespace Du_An_1
                 reader.Close();
                 conn.Close();
             }
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+  
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

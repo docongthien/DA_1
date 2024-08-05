@@ -150,9 +150,9 @@
             label1.Location = new Point(82, 91);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(146, 23);
+            label1.Size = new Size(147, 23);
             label1.TabIndex = 37;
-            label1.Text = "Mã SV , Mã GV";
+            label1.Text = "Mã HS , Mã GV";
             // 
             // textBox1
             // 

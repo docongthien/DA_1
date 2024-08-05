@@ -139,9 +139,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(467, 107);
             label5.Name = "label5";
-            label5.Size = new Size(97, 20);
+            label5.Size = new Size(55, 20);
             label5.TabIndex = 58;
-            label5.Text = "Ten Sinh Vien";
+            label5.Text = "Ten HS";
             label5.Click += label5_Click;
             // 
             // label3
@@ -165,11 +165,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(150, 107);
+            label4.Location = new Point(133, 107);
             label4.Name = "label4";
-            label4.Size = new Size(95, 20);
+            label4.Size = new Size(53, 20);
             label4.TabIndex = 55;
-            label4.Text = "Ma Sinh Vien";
+            label4.Text = "Ma HS";
             label4.Click += label4_Click;
             // 
             // label1
@@ -179,9 +179,9 @@
             label1.ForeColor = Color.Black;
             label1.Location = new Point(293, 33);
             label1.Name = "label1";
-            label1.Size = new Size(345, 47);
+            label1.Size = new Size(337, 47);
             label1.TabIndex = 54;
-            label1.Text = "Thông Tin Sinh Viên";
+            label1.Text = "Thông Tin Học Sinh";
             // 
             // dateTimePicker1
             // 
