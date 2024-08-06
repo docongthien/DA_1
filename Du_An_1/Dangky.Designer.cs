@@ -214,6 +214,7 @@
             Controls.Add(tabControl1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Dangky";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dangky";
             Load += RegisterForm_Load;
             tabControl1.ResumeLayout(false);

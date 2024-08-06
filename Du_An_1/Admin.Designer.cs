@@ -409,7 +409,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Admin";
+            Text = "8";
             Load += Admin_Load;
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();

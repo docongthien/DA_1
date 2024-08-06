@@ -99,6 +99,7 @@
             button5.TabIndex = 6;
             button5.Text = "Tạo lớp";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // Menu
             // 

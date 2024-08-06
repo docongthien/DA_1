@@ -46,5 +46,13 @@ namespace Du_An_1
             ttgv.Show();
             this.Hide();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Lop l = new Lop();
+            l.FormClosed += (a, b) => this.Show();
+            l.Show();
+            this.Hide();
+        }
     }
 }

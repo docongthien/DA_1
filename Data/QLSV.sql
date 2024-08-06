@@ -32,7 +32,6 @@ CREATE TABLE GV (
 	FOREIGN KEY (MaTK) REFERENCES TK(MaTK),
 )
 go
-
 -- Tạo bảng QLsv (Quản lý sinh viên)
 CREATE TABLE SV (
     Masv VARCHAR(20) PRIMARY KEY not null,
@@ -51,14 +50,21 @@ CREATE TABLE Lop (
 	Tenlop NVARCHAR(50) not null,
 )
 go
-CREATE TABLE Lopchitiet (
-	malopchitiet int identity(1,1) PRIMARY KEY not null,
+CREATE TABLE Lopgv (
+	malopgv int identity(1,1) PRIMARY KEY not null,
 	Malop VARCHAR(20)  not null,
 	Magv VARCHAR(20) not null,
-	Masv VARCHAR(20)  not null,
 	FOREIGN KEY (Magv) REFERENCES GV(Magv),
-	FOREIGN KEY (Masv) REFERENCES SV(Masv),
 	FOREIGN KEY (Malop) REFERENCES Lop(Malop)
+)
+go
+
+CREATE TABLE Lopchitiet (
+	malopchitiet int identity(1,1) PRIMARY KEY not null,
+	malopgv int  not null,
+	Masv VARCHAR(20)  not null,
+	FOREIGN KEY (Masv) REFERENCES SV(Masv),
+	FOREIGN KEY (malopgv) REFERENCES Lopgv(malopgv)
 )
 go
 -- Tạo bảng Qldiem (Quản lý điểm)
