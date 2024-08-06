@@ -222,6 +222,7 @@
             ClientSize = new Size(874, 649);
             Controls.Add(tabControl1);
             Name = "Dangky";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dangky";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
