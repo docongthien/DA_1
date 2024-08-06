@@ -16,6 +16,7 @@ namespace Du_An_1
     {
         static string connect = @"Data Source=DESKTOP-U541KH8\SQLEXPRESS;Initial Catalog=QLSVDA1;Integrated Security=True;";
         static SqlConnection conn = new SqlConnection(connect);
+
         public thongtingv()
         {
             InitializeComponent();
@@ -23,8 +24,13 @@ namespace Du_An_1
 
         private void thongtingv_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             conn.Open();
-            string query = @$"SELECT * FROM GV";
+            string query = @"SELECT * FROM GV";
             SqlCommand sqlmd = new SqlCommand(query, conn);
 
             SqlDataReader reader = sqlmd.ExecuteReader();
@@ -41,14 +47,14 @@ namespace Du_An_1
         {
             try
             {
-                TbxMaTK.Text = dgvGiangVien.Rows[e.RowIndex].Cells["txbMaTK"].Value.ToString();
-                TbxMaGV.Text = dgvGiangVien.Rows[e.RowIndex].Cells["txbMatk"].Value.ToString();
-                TbxTenGV.Text = dgvGiangVien.Rows[e.RowIndex].Cells["txbTengv"].Value.ToString();
-                TbxSDT.Text = dgvGiangVien.Rows[e.RowIndex].Cells["Txbsdt"].Value.ToString();
-                TbxEmail.Text = dgvGiangVien.Rows[e.RowIndex].Cells["txbemail"].Value.ToString();
-                dateTimePicker1.Value = Convert.ToDateTime(dgvGiangVien.Rows[e.RowIndex].Cells["txbNgaysinh"].Value);
+                TbxMaTK.Text = dgvGiangVien.Rows[e.RowIndex].Cells["MaTK"].Value.ToString();
+                TbxMaGV.Text = dgvGiangVien.Rows[e.RowIndex].Cells["Magv"].Value.ToString();
+                TbxTenGV.Text = dgvGiangVien.Rows[e.RowIndex].Cells["Ten"].Value.ToString();
+                TbxSDT.Text = dgvGiangVien.Rows[e.RowIndex].Cells["Sdt"].Value.ToString();
+                TbxEmail.Text = dgvGiangVien.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(dgvGiangVien.Rows[e.RowIndex].Cells["NgaySinh"].Value);
 
-                string gioitinh = dgvGiangVien.Rows[e.RowIndex].Cells["Gioi_tinh"].Value.ToString();
+                string gioitinh = dgvGiangVien.Rows[e.RowIndex].Cells["GioiTinh"].Value.ToString();
                 if (gioitinh.ToLower() == "nam")
                 {
                     radioButton1.Checked = true;
@@ -60,24 +66,22 @@ namespace Du_An_1
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Error: " + ex.Message);
             }
-
         }
-
 
         private void txbtimkiem_TextChanged(object sender, EventArgs e)
         {
             if (txbtimkiem.Text == "")
             {
-                thongtingv_Load(sender, e);
+                LoadData();
             }
             else
             {
                 string query = @$"SELECT * FROM GV
-			                    WHERE GV.MaTK like '%{txbtimkiem.Text}%' 
-								or GV.Magv like '%{txbtimkiem.Text}%' 
-                                or Ten like N'%{txbtimkiem.Text}%' ";
+			                    WHERE MaTK like '%{txbtimkiem.Text}%' 
+								or Magv like '%{txbtimkiem.Text}%' 
+                                or Ten like N'%{txbtimkiem.Text}%'";
                 SqlCommand sqlmd = new SqlCommand(query, conn);
                 conn.Open();
                 SqlDataReader reader = sqlmd.ExecuteReader();
@@ -87,6 +91,82 @@ namespace Du_An_1
                 ds.Tables.Add(dt);
                 dgvGiangVien.DataSource = ds.Tables[0];
                 reader.Close();
+                conn.Close();
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string query = @"INSERT INTO GV (MaTK, Magv, Ten, Sdt, Email, NgaySinh, GioiTinh)
+                                 VALUES (@MaTK, @Magv, @Ten, @Sdt, @Email, @NgaySinh, @GioiTinh)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MaTK", TbxMaTK.Text);
+                cmd.Parameters.AddWithValue("@Magv", TbxMaGV.Text);
+                cmd.Parameters.AddWithValue("@Ten", TbxTenGV.Text);
+                cmd.Parameters.AddWithValue("@Sdt", TbxSDT.Text);
+                cmd.Parameters.AddWithValue("@Email", TbxEmail.Text);
+                cmd.Parameters.AddWithValue("@NgaySinh", dateTimePicker1.Value);
+                cmd.Parameters.AddWithValue("@GioiTinh", radioButton1.Checked ? "Nam" : "Nữ");
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                LoadData();
+                MessageBox.Show("Thêm mới thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                conn.Close();
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string query = @"UPDATE GV
+                                 SET Ten = @Ten, Sdt = @Sdt, Email = @Email, NgaySinh = @NgaySinh, GioiTinh = @GioiTinh
+                                 WHERE MaTK = @MaTK AND Magv = @Magv";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MaTK", TbxMaTK.Text);
+                cmd.Parameters.AddWithValue("@Magv", TbxMaGV.Text);
+                cmd.Parameters.AddWithValue("@Ten", TbxTenGV.Text);
+                cmd.Parameters.AddWithValue("@Sdt", TbxSDT.Text);
+                cmd.Parameters.AddWithValue("@Email", TbxEmail.Text);
+                cmd.Parameters.AddWithValue("@NgaySinh", dateTimePicker1.Value);
+                cmd.Parameters.AddWithValue("@GioiTinh", radioButton1.Checked ? "Nam" : "Nữ");
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                LoadData();
+                MessageBox.Show("Cập nhật thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                conn.Close();
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string query = @"DELETE FROM GV WHERE MaTK = @MaTK AND Magv = @Magv";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@MaTK", TbxMaTK.Text);
+                cmd.Parameters.AddWithValue("@Magv", TbxMaGV.Text);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                LoadData();
+                MessageBox.Show("Xóa thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
                 conn.Close();
             }
         }
