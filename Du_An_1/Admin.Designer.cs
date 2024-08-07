@@ -31,7 +31,6 @@
             tabPage1 = new TabPage();
             comboBox3 = new ComboBox();
             label7 = new Label();
-            comboBox1 = new ComboBox();
             label22 = new Label();
             txtMaTK = new TextBox();
             txtQueQuan = new TextBox();
@@ -50,7 +49,6 @@
             rdoNu = new RadioButton();
             rdoNam = new RadioButton();
             dtpNgaySinh = new DateTimePicker();
-            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -68,7 +66,6 @@
             tabPage1.BackColor = Color.Turquoise;
             tabPage1.Controls.Add(comboBox3);
             tabPage1.Controls.Add(label7);
-            tabPage1.Controls.Add(comboBox1);
             tabPage1.Controls.Add(label22);
             tabPage1.Controls.Add(txtMaTK);
             tabPage1.Controls.Add(txtQueQuan);
@@ -87,7 +84,6 @@
             tabPage1.Controls.Add(rdoNu);
             tabPage1.Controls.Add(rdoNam);
             tabPage1.Controls.Add(dtpNgaySinh);
-            tabPage1.Controls.Add(label6);
             tabPage1.Controls.Add(label5);
             tabPage1.Controls.Add(label4);
             tabPage1.Controls.Add(label3);
@@ -107,7 +103,7 @@
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "Hoạt Động", "Không Hoạt Động" });
-            comboBox3.Location = new Point(523, 219);
+            comboBox3.Location = new Point(523, 176);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(199, 28);
             comboBox3.TabIndex = 157;
@@ -115,21 +111,12 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(424, 224);
+            label7.Location = new Point(424, 181);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(75, 20);
             label7.TabIndex = 156;
             label7.Text = "Trạng thái";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "L01", "L02", "L03" });
-            comboBox1.Location = new Point(524, 93);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(198, 28);
-            comboBox1.TabIndex = 155;
             // 
             // label22
             // 
@@ -151,7 +138,7 @@
             // 
             // txtQueQuan
             // 
-            txtQueQuan.Location = new Point(524, 174);
+            txtQueQuan.Location = new Point(524, 131);
             txtQueQuan.Margin = new Padding(2, 3, 2, 3);
             txtQueQuan.Name = "txtQueQuan";
             txtQueQuan.Size = new Size(199, 27);
@@ -159,7 +146,7 @@
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(523, 134);
+            txtSDT.Location = new Point(523, 91);
             txtSDT.Margin = new Padding(2, 3, 2, 3);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(199, 27);
@@ -211,7 +198,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(424, 185);
+            label20.Location = new Point(424, 142);
             label20.Margin = new Padding(2, 0, 2, 0);
             label20.Name = "label20";
             label20.Size = new Size(75, 20);
@@ -221,7 +208,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(457, 145);
+            label19.Location = new Point(457, 102);
             label19.Margin = new Padding(2, 0, 2, 0);
             label19.Name = "label19";
             label19.Size = new Size(36, 20);
@@ -318,16 +305,6 @@
             dtpNgaySinh.Size = new Size(198, 27);
             dtpNgaySinh.TabIndex = 134;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(457, 101);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(34, 20);
-            label6.TabIndex = 123;
-            label6.Text = "Lớp";
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -420,7 +397,6 @@
 
         #endregion
         private TabPage tabPage1;
-        private ComboBox comboBox1;
         private Label label22;
         private TextBox txtMaTK;
         private TextBox txtQueQuan;
@@ -439,7 +415,6 @@
         private RadioButton rdoNu;
         private RadioButton rdoNam;
         private DateTimePicker dtpNgaySinh;
-        private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;

@@ -142,5 +142,9 @@ namespace Du_An_1
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
+        private void loadtk()
+        {
+
+        }
     }
 }

@@ -52,7 +52,7 @@
             button2.Name = "button2";
             button2.Size = new Size(170, 88);
             button2.TabIndex = 1;
-            button2.Text = "Nhập Điểm Học Sinh";
+            button2.Text = "Nhập Điểm, Thêm học sinh vào lớp";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

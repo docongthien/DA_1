@@ -25,7 +25,7 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, TK.MaTK, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh, SV.Lop,
+            SELECT SV.Masv, TK.MaTK,TK.Trangthai, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh,
             Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
             (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
             FROM TK
@@ -45,7 +45,6 @@ namespace Du_An_1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Đã xảy ra lỗi khi tải dữ liệu: {ex.Message}");
                 }
                 finally
                 {
@@ -54,7 +53,7 @@ namespace Du_An_1
             }
         }
 
-        private void AddStudent(string masv, string matk, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
+        private void AddStudent(string masv, string matk, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh,string gioitinh)
         {
             conn.Open();
             string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
@@ -71,7 +70,7 @@ namespace Du_An_1
                     {
                         reader.Close();
                         string query = @"
-                                        INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Lop, Gioi_tinh)
+                                        INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Gioi_tinh)
                                         VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Lop, @Gioi_tinh)";
 
                         using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -84,9 +83,9 @@ namespace Du_An_1
                             cmd.Parameters.AddWithValue("@Que_quan", que_quan);
                             cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
                             cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
-                            cmd.Parameters.AddWithValue("@Lop", lop);
 
                             cmd.ExecuteNonQuery();
+                            MessageBox.Show("Thêm thành công");
                             conn.Close();
                         }
                     }
@@ -97,11 +96,11 @@ namespace Du_An_1
             LoadData(); // Refresh data after adding
         }
 
-        private void UpdateStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string lop, string gioitinh)
+        private void UpdateStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string gioitinh)
         {
             string query = @"
             UPDATE SV
-            SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Lop = @Lop, Gioi_tinh = @Gioi_tinh
+            SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Gioi_tinh = @Gioi_tinh
             WHERE Masv = @Masv";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -113,8 +112,6 @@ namespace Du_An_1
                 cmd.Parameters.AddWithValue("@Que_quan", que_quan);
                 cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
                 cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
-
-                cmd.Parameters.AddWithValue("@Lop", lop);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -164,12 +161,8 @@ namespace Du_An_1
                     gioitinh = "Nữ";
                 }
 
-                string lop = comboBox1.Text;
-
-                AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
-                clear();
-                MessageBox.Show("Thêm thành công");
-            }
+                AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, gioitinh);
+                clear();            }
 
         }
 
@@ -192,9 +185,8 @@ namespace Du_An_1
                 {
                     gioitinh = "Nữ";
                 }
-                string lop = comboBox1.Text;
 
-                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, lop, gioitinh);
+                UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, gioitinh);
                 MessageBox.Show("Sửa thành công");
             }
             else
@@ -236,7 +228,7 @@ namespace Du_An_1
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 txtSDT.Text = row.Cells["Sdt"].Value.ToString();
                 txtQueQuan.Text = row.Cells["Que_quan"].Value.ToString();
-
+                comboBox3.Text = row.Cells["Trangthai"].Value.ToString();
                 string checkngaysinh = row.Cells["ngay_sinh"].Value.ToString();
                 if (checkngaysinh == "")
                 {
@@ -256,7 +248,6 @@ namespace Du_An_1
                     rdoNu.Checked = true;
                 }
 
-                comboBox1.Text = row.Cells["Lop"].Value.ToString();
             }
 
 
@@ -265,13 +256,13 @@ namespace Du_An_1
         {
             // Kiểm tra các trường thông tin cần thiết
             if (string.IsNullOrWhiteSpace(txtMaSv.Text) ||
-
+                string.IsNullOrWhiteSpace(txtMaTK.Text) ||
                 string.IsNullOrWhiteSpace(txtTenSv.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
                 string.IsNullOrWhiteSpace(txtSDT.Text) ||
-                string.IsNullOrWhiteSpace(txtQueQuan.Text) ||
+                string.IsNullOrWhiteSpace(txtQueQuan.Text)||
+                string.IsNullOrWhiteSpace(comboBox3.Text))
 
-                string.IsNullOrWhiteSpace(comboBox1.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ các trường thông tin.");
                 return false;
@@ -386,7 +377,6 @@ namespace Du_An_1
             txtMaTK.Text = "";
             txtTenSv.Text = "";
             txtEmail.Text = "";
-            comboBox1.Text = "";
             txtSDT.Text = "";
             txtQueQuan.Text = "";
 

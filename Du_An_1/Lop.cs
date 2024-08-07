@@ -77,7 +77,7 @@ namespace Du_An_1
                             $"values('{MaLop}', N'{TenLop}')";
                             SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
                             sqlCommand1.ExecuteNonQuery();
-                            MessageBox.Show("Lưu thành công");
+                            MessageBox.Show("thêm thành công");
                             load();
                             loadlopcogv();
                             loadgv();
@@ -141,7 +141,7 @@ namespace Du_An_1
                         }
                         else
                         {
-                            MessageBox.Show("Điểm không được để trống.");
+                            MessageBox.Show("Tên ớp không được để trống.");
                         }
                     }
 
@@ -262,7 +262,7 @@ namespace Du_An_1
                 loadgv();
                 loadlopcogv();
                 clearlopgv();
-                MessageBox.Show("Lưu thành công");
+                MessageBox.Show("thêm thành công");
             }
             else
             {

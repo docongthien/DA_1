@@ -51,11 +51,10 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Location = new Point(4, 9);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
+            tabControl1.Location = new Point(5, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(758, 476);
+            tabControl1.Size = new Size(866, 635);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -74,62 +73,57 @@
             tabPage1.Controls.Add(label4);
             tabPage1.Controls.Add(label3);
             tabPage1.Controls.Add(label2);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(750, 448);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(858, 602);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Đăng Ký Tài khoản";
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(5, 208);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(6, 277);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(740, 238);
+            dataGridView1.Size = new Size(846, 317);
             dataGridView1.TabIndex = 19;
             // 
             // comboBoxTrangThai
             // 
             comboBoxTrangThai.FormattingEnabled = true;
             comboBoxTrangThai.Items.AddRange(new object[] { "Hoạt Động", "Không Hoạt Động" });
-            comboBoxTrangThai.Location = new Point(449, 32);
-            comboBoxTrangThai.Margin = new Padding(3, 2, 3, 2);
+            comboBoxTrangThai.Location = new Point(513, 43);
             comboBoxTrangThai.Name = "comboBoxTrangThai";
-            comboBoxTrangThai.Size = new Size(148, 23);
+            comboBoxTrangThai.Size = new Size(169, 28);
             comboBoxTrangThai.TabIndex = 17;
             comboBoxTrangThai.Text = "Không Hoạt Động";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(359, 35);
+            label7.Location = new Point(410, 47);
             label7.Name = "label7";
-            label7.Size = new Size(59, 15);
+            label7.Size = new Size(75, 20);
             label7.TabIndex = 16;
             label7.Text = "Trạng thái";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button3
             // 
-            button3.Location = new Point(626, 160);
-            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Location = new Point(715, 213);
             button3.Name = "button3";
-            button3.Size = new Size(97, 30);
+            button3.Size = new Size(111, 40);
             button3.TabIndex = 15;
             button3.Text = "Thoát";
             button3.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(626, 34);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(715, 45);
             button1.Name = "button1";
-            button1.Size = new Size(97, 50);
+            button1.Size = new Size(111, 67);
             button1.TabIndex = 13;
             button1.Text = "Dăng ký";
             button1.UseVisualStyleBackColor = true;
@@ -138,43 +132,38 @@
             // comboBoxChucVu
             // 
             comboBoxChucVu.FormattingEnabled = true;
-            comboBoxChucVu.Items.AddRange(new object[] { "CV2", "CV3" });
-            comboBoxChucVu.Location = new Point(181, 145);
-            comboBoxChucVu.Margin = new Padding(3, 2, 3, 2);
+            comboBoxChucVu.Location = new Point(207, 193);
             comboBoxChucVu.Name = "comboBoxChucVu";
-            comboBoxChucVu.Size = new Size(148, 23);
+            comboBoxChucVu.Size = new Size(169, 28);
             comboBoxChucVu.TabIndex = 12;
             // 
             // txtMatKhau
             // 
-            txtMatKhau.Location = new Point(181, 104);
-            txtMatKhau.Margin = new Padding(3, 2, 3, 2);
+            txtMatKhau.Location = new Point(207, 139);
             txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(148, 23);
+            txtMatKhau.Size = new Size(169, 27);
             txtMatKhau.TabIndex = 10;
             // 
             // txtTaiKhoan
             // 
-            txtTaiKhoan.Location = new Point(181, 66);
-            txtTaiKhoan.Margin = new Padding(3, 2, 3, 2);
+            txtTaiKhoan.Location = new Point(207, 88);
             txtTaiKhoan.Name = "txtTaiKhoan";
-            txtTaiKhoan.Size = new Size(148, 23);
+            txtTaiKhoan.Size = new Size(169, 27);
             txtTaiKhoan.TabIndex = 9;
             // 
             // txtMaTK
             // 
-            txtMaTK.Location = new Point(181, 33);
-            txtMaTK.Margin = new Padding(3, 2, 3, 2);
+            txtMaTK.Location = new Point(207, 44);
             txtMaTK.Name = "txtMaTK";
-            txtMaTK.Size = new Size(148, 23);
+            txtMaTK.Size = new Size(169, 27);
             txtMaTK.TabIndex = 8;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(89, 148);
+            label5.Location = new Point(102, 197);
             label5.Name = "label5";
-            label5.Size = new Size(52, 15);
+            label5.Size = new Size(63, 20);
             label5.TabIndex = 6;
             label5.Text = "Chức Vụ";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -182,37 +171,36 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 106);
+            label4.Location = new Point(96, 141);
             label4.Name = "label4";
-            label4.Size = new Size(57, 15);
+            label4.Size = new Size(70, 20);
             label4.TabIndex = 5;
             label4.Text = "Mật khẩu";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(59, 68);
+            label3.Location = new Point(67, 91);
             label3.Name = "label3";
-            label3.Size = new Size(78, 15);
+            label3.Size = new Size(99, 20);
             label3.TabIndex = 4;
             label3.Text = "Tên tài Khoản";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(104, 35);
+            label2.Location = new Point(119, 47);
             label2.Name = "label2";
-            label2.Size = new Size(40, 15);
+            label2.Size = new Size(51, 20);
             label2.TabIndex = 3;
             label2.Text = "Mã TK";
             // 
             // Dangky
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(765, 487);
+            ClientSize = new Size(874, 649);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Dangky";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dangky";

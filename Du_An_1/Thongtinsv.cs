@@ -37,7 +37,7 @@ namespace Du_An_1
                 conn.Open();
             }
             string query = @$"SELECT 
-                                SV.Masv, Sv.Ten, SV.Email,SV.Sdt,sv.Que_quan,ngay_sinh,Sv.Lop
+                                SV.Masv, Sv.Ten, SV.Email,SV.Sdt,sv.Que_quan,ngay_sinh
                             FROM TK
                             INNER JOIN 
                                 SV ON TK.MaTK = SV.MaTK

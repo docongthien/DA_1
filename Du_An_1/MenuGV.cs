@@ -32,7 +32,7 @@ namespace Du_An_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Diem_SV diem = new Diem_SV();
+            Diem_SV diem = new Diem_SV(Tk, Mk);
             diem.FormClosed += (a, b) => this.Show();
             diem.Show();
             this.Hide();
