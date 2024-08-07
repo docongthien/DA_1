@@ -118,6 +118,7 @@ namespace Du_An_1
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             LoadChucVu();
+            LoadDataToGridView();
         }
 
         private void LoadChucVu()
@@ -142,9 +143,25 @@ namespace Du_An_1
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
-        private void loadtk()
+        private void LoadDataToGridView()
         {
+            string query = "SELECT MaTK, Taikhoan, Matkhau, Macv, Trangthai FROM TK";
 
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
     }
 }
