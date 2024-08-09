@@ -75,7 +75,7 @@
             tabPage1.Controls.Add(label2);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(858, 602);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Đăng Ký Tài khoản";
@@ -83,11 +83,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 277);
+            dataGridView1.Location = new Point(63, 279);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(846, 317);
+            dataGridView1.Size = new Size(715, 317);
             dataGridView1.TabIndex = 19;
             // 
             // comboBoxTrangThai

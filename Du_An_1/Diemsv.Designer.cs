@@ -52,6 +52,7 @@
             // 
             // dgvDiemSinhVien
             // 
+            dgvDiemSinhVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDiemSinhVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDiemSinhVien.Location = new Point(20, 359);
             dgvDiemSinhVien.Name = "dgvDiemSinhVien";

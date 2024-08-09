@@ -117,11 +117,11 @@ INSERT INTO TK(MaTK,Taikhoan,Macv,Matkhau,Trangthai) VALUES
 ('TK29', 'member23', 'CV3', '123',N'Hoạt Động'),
 ('TK30', 'member24', 'CV3', '123',N'Hoạt Động'),
 ('TK31', 'member25', 'CV3', '123',N'Hoạt Động'),
-('TK32', 'member26', 'CV3', '123',N'Hoạt Động'),
-('TK33', 'member27', 'CV3', '123',N'Hoạt Động'),
-('TK34', 'member28', 'CV3', '123',N'Hoạt Động'),
-('TK35', 'member29', 'CV3', '123',N'Hoạt Động'),
-('TK36', 'member30', 'CV3', '123',N'Hoạt Động');
+('TK32', 'member26', 'CV3', '123',N'Không Hoạt Động'),
+('TK33', 'member27', 'CV3', '123',N'Không Hoạt Động'),
+('TK34', 'member28', 'CV3', '123',N'Không Hoạt Động'),
+('TK35', 'member29', 'CV3', '123',N'Không Hoạt Động'),
+('TK36', 'member30', 'CV3', '123',N'Không Hoạt Động');
 
 -- Thêm dữ liệu mẫu cho bảng GV
 INSERT INTO GV (MaTK, Magv, Ten, Ngaysinh, Gioi_tinh, Email, Sdt) VALUES
@@ -187,3 +187,146 @@ INSERT INTO Qldiem (Masv, TenSV, Toan, Van, Anh, Su, Dia) VALUES
 ('SV18', N'Lê Thị W', 7.0, 8.0, 7.5, 8.0, 8.5),
 ('SV19', N'Đặng Văn X', 8.5, 9.0, 8.0, 8.0, 8.5),
 ('SV20', N'Phạm Thị Y', 7.5, 8.5, 8.0, 7.0, 8.0);
+
+SELECT gv.Magv, gv.Ten
+                            FROM TK 
+                            LEFT JOIN GV gv ON TK.MaTK = gv.MaTK
+							LEFT JOIN Lopgv lg ON GV.Magv = lg.Magv
+                            WHERE lg.Magv IS NULL AND TK.Trangthai = N'Hoạt Động';
+							
+							SELECT g.Magv, g.Ten
+                            FROM GV g
+                            LEFT JOIN Lopgv lg ON g.Magv = lg.Magv
+                            WHERE lg.Magv IS NULL
+
+							SELECT gv.Magv, gv.Ten
+
+SELECT g.Magv, g.Ten
+FROM GV g
+LEFT JOIN Lopgv lg ON g.Magv = lg.Magv
+WHERE lg.Magv IS NULL
+AND EXISTS (
+    SELECT 1
+    FROM TK t
+    WHERE t.MaTK = g.MaTK
+    AND t.Trangthai = N'Hoạt Động'
+);
+
+SELECT 
+    lct.malopchitiet,
+    lct.Masv,
+    l.Tenlop
+FROM 
+    Lopchitiet lct
+JOIN 
+    Lopgv lgv ON lct.malopgv = lgv.malopgv
+JOIN 
+    Lop l ON lgv.Malop = l.Malop
+WHERE 
+    l.Malop = 'L01'; 
+
+	SELECT 
+                                lct.malopchitiet,l.malopgv,g.Magv, lct.Masv
+                            FROM Lopchitiet lct
+							JOIN 
+                                Lopgv l ON lct.malopgv = l.malopgv
+							JOIN 
+								Lop ON l.Malop = Lop.Malop
+							JOIN 
+                                GV g ON l.Magv = g.Magv
+							JOIN 
+                                SV ON lct.Masv = SV.Masv
+							WHERE 
+								l.Malop = 'L02';
+
+
+SELECT *
+FROM Lopchitiet
+where malopgv = 1
+
+select Qldiem.Masv, Qldiem.TenSV, Qldiem.Toan,Qldiem.Van, Qldiem.Anh,Qldiem.Su,Qldiem.Dia,
+			 (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 AS DiemTrungBinh
+From Lopchitiet 
+join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+join SV on Lopchitiet.Masv = SV.Masv
+join Qldiem on SV.Masv = Qldiem.Masv
+join GV on Lopgv.Magv = GV.Magv
+join TK on GV.MaTK = TK.MaTK
+where TK.Taikhoan = 'member1' AND TK.Matkhau = '123'
+    AND (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 >= @MinDiemTb
+    AND (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 <= @MaxDiemTb;
+
+SELECT SV.Masv, SV.Ten TenSV
+	FROM Lopchitiet 
+	JOIN Lopgv ON Lopchitiet.malopgv = Lopgv.malopgv
+	JOIN SV ON Lopchitiet.Masv = SV.Masv
+	LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+	JOIN GV ON Lopgv.Magv = GV.Magv
+	JOIN TK ON GV.MaTK = TK.MaTK
+	WHERE TK.Taikhoan = 'staff1' AND TK.Matkhau = '123' and Qldiem.Masv IS NULL;
+
+
+	SELECT 
+    Qldiem.Masv, 
+    Qldiem.TenSV, 
+    Qldiem.Toan,
+    Qldiem.Van,
+    Qldiem.Anh,
+    Qldiem.Su,
+    Qldiem.Dia
+	 (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 AS DiemTrungBinh
+FROM 
+    Lopchitiet 
+JOIN 
+    Lopgv ON Lopchitiet.malopgv = Lopgv.malopgv
+JOIN 
+    SV ON Lopchitiet.Masv = SV.Masv
+LEFT JOIN 
+    Qldiem QL ON SV.Masv = Qldiem.Masv
+JOIN 
+    GV ON Lopgv.Magv = GV.Magv
+JOIN 
+    TK ON GV.MaTK = TK.MaTK
+WHERE 
+    TK.Taikhoan = 'staff1' AND TK.Matkhau = '123'
+    AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 >=7
+    AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 <= 8;
+
+	select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where GV.Magv = 'GV01'
+
+                            AND ( Lop.Tenlop = N'%{textBox1.Text}%' 
+							OR  CAST(Lopchitiet.malopchitiet AS VARCHAR) LIKE '%{textBox1.Text}%'
+							OR GV.Magv LIKE '%{textBox1.Text}%' 
+							OR  GV.Ten LIKE N'%{textBox1.Text}%' 
+							OR SV.Masv LIKE '%{textBox1.Text}%' 
+							OR SV.Ten LIKE N'%{textBox1.Text}%' );
+
+	select GV.Magv From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where TK.Taikhoan = 'member1' AND TK.Matkhau = '123'
+
+
+
+	select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where GV.Magv IN (	select GV.Magv From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where TK.Taikhoan = 'member2' AND TK.Matkhau = '123') 

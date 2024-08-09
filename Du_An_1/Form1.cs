@@ -32,7 +32,7 @@ namespace Du_An_1
             string password = textBox2.Text;
             Tk = username;
             Mk = password;
-            string query = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Trangthai = 'Hoạt Động'";
+            string query = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Trangthai = N'Hoạt Động'";
             using (SqlCommand command = new SqlCommand(query, conn))
             {
                 using (SqlDataReader reader = command.ExecuteReader())

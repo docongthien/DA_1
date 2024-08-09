@@ -51,6 +51,7 @@ namespace Du_An_1
             ds.Tables.Add(dt);
             dgvTTSinhVien.DataSource = ds.Tables[0];
             reader.Close();
+            danhsachlop();
         }
 
 
@@ -67,18 +68,39 @@ namespace Du_An_1
 
         private void dgvTTSinhVien_CurrentCellChanged(object sender, EventArgs e)
         {
-            try
-            {
-                txtEmail.Text = dgvTTSinhVien.Rows[0].Cells[2].Value.ToString();
-                txtMasv.Text = dgvTTSinhVien.Rows[0].Cells[0].Value.ToString();
-                txtLop.Text = dgvTTSinhVien.Rows[0].Cells[6].Value.ToString();
-                txtTen.Text = dgvTTSinhVien.Rows[0].Cells[1].Value.ToString();
-                txtSDT.Text = dgvTTSinhVien.Rows[0].Cells[3].Value.ToString();
-                dateTimePicker1.Value = Convert.ToDateTime(dgvTTSinhVien.Rows[0].Cells[5].Value);
-                txtDiaChi.Text = dgvTTSinhVien.Rows[0].Cells[4].Value.ToString();
-            }
-            catch(Exception ex) { }
+            txtEmail.Text = dgvTTSinhVien.Rows[0].Cells[2].Value.ToString();
+            txtMasv.Text = dgvTTSinhVien.Rows[0].Cells[0].Value.ToString();
+            txtTen.Text = dgvTTSinhVien.Rows[0].Cells[1].Value.ToString();
+            txtSDT.Text = dgvTTSinhVien.Rows[0].Cells[3].Value.ToString();
+            dateTimePicker1.Value = Convert.ToDateTime(dgvTTSinhVien.Rows[0].Cells[5].Value);
+            txtDiaChi.Text = dgvTTSinhVien.Rows[0].Cells[4].Value.ToString();
 
+        }
+
+        private void danhsachlop()
+        {
+            string query = @$"	select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where GV.Magv IN (	select GV.Magv From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on SV.MaTK = TK.MaTK
+                            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}') ";
+            SqlCommand sqlmd = new SqlCommand(query, conn);
+
+            SqlDataReader reader = sqlmd.ExecuteReader();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            ds.Tables.Add(dt);
+            dataGridView1.DataSource = ds.Tables[0];
+            reader.Close();
         }
     }
 }

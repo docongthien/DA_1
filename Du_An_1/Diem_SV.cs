@@ -34,14 +34,18 @@ namespace Du_An_1
             }
             laoddiemsv();
             loadsv();
-            datasv();
-            datalopchitiet();
-            datalopgv();
             loadthongke();
+            danhsachlop();
         }
         private void laoddiemsv()
         {
-            string query = "select * from Qldiem";
+            string query = @$"select Qldiem.Masv, Qldiem.TenSV, Qldiem.Toan,Qldiem.Van, Qldiem.Anh,Qldiem.Su,Qldiem.Dia From Lopchitiet 
+            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+            join SV on Lopchitiet.Masv = SV.Masv
+            join Qldiem on SV.Masv = Qldiem.Masv
+            join GV on Lopgv.Magv = GV.Magv
+            join TK on GV.MaTK = TK.MaTK
+            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}';";
             SqlCommand sqlmd = new SqlCommand(query, conn);
 
             SqlDataReader reader = sqlmd.ExecuteReader();
@@ -54,10 +58,14 @@ namespace Du_An_1
         }
         private void loadsv()
         {
-            string query2 = @"SELECT s.Masv, s.Ten
-                            FROM SV s
-                            LEFT JOIN Qldiem q ON s.Masv = q.Masv
-                            WHERE q.Masv IS NULL;";
+            string query2 = @$"SELECT SV.Masv, SV.Ten
+	                            FROM Lopchitiet 
+	                            JOIN Lopgv ON Lopchitiet.malopgv = Lopgv.malopgv
+	                            JOIN SV ON Lopchitiet.Masv = SV.Masv
+	                            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+	                            JOIN GV ON Lopgv.Magv = GV.Magv
+	                            JOIN TK ON GV.MaTK = TK.MaTK
+	                            WHERE TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}' and Qldiem.Masv IS NULL;";
             SqlCommand sqlmd2 = new SqlCommand(query2, conn);
 
             SqlDataReader reader2 = sqlmd2.ExecuteReader();
@@ -70,12 +78,16 @@ namespace Du_An_1
         }
         private void loadthongke()
         {
-            string query = @"
-            SELECT SV.Masv, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh,
-                   Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
-                   (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
-            FROM SV
-            INNER JOIN Qldiem ON SV.Masv = Qldiem.Masv";
+            string query = @$"
+            select Qldiem.Masv, Qldiem.TenSV, Qldiem.Toan,Qldiem.Van, Qldiem.Anh,Qldiem.Su,Qldiem.Dia,
+			 (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 AS DiemTrungBinh
+            From Lopchitiet 
+            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+            join SV on Lopchitiet.Masv = SV.Masv
+            join Qldiem on SV.Masv = Qldiem.Masv
+            join GV on Lopgv.Magv = GV.Magv
+            join TK on GV.MaTK = TK.MaTK
+            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
             {
@@ -124,42 +136,54 @@ namespace Du_An_1
                         string anh = textBox6.Text;
                         string su = textBox9.Text;
                         string dia = textBox8.Text;
-                        float checktoan = float.Parse(toan);
-                        float checkvan = float.Parse(van);
-                        float checkanh = float.Parse(anh);
-                        float checksu = float.Parse(su);
-                        float checkdia = float.Parse(dia);
-                        string[] diem = { toan, van, anh, su, dia };
-                        int check = 0;
-                        foreach (string diemMon in diem)
+                        if (toan == "" || van == "" || anh == "" || su == "" || dia == "")
                         {
-                            float diemSo;
-                            if (float.TryParse(diemMon, out diemSo))
-                            {
-                                check = 1;
-                            }
-                            else
-                            {
-                                check = 0;
-                                MessageBox.Show("Điểm không được để trống và điểm phải là một số.");
-                                break;
-                            }
-
-                        }
-                        if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
-                        {
-                            string query1 = "insert into Qldiem(Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
-                            $"values('{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
-                            SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                            sqlCommand1.ExecuteNonQuery();
-
-                            load();
-                            Diem_SV_Load(sender, e);
+                            MessageBox.Show("Điểm không được để trống");
                         }
                         else
                         {
-                            MessageBox.Show("Điểm Phải >=0 và <= 10");
+                            try
+                            {
+                                float checktoan = float.Parse(toan);
+                                float checkvan = float.Parse(van);
+                                float checkanh = float.Parse(anh);
+                                float checksu = float.Parse(su);
+                                float checkdia = float.Parse(dia);
+                                string[] diem = { toan, van, anh, su, dia };
+                                int check = 0;
+                                foreach (string diemMon in diem)
+                                {
+                                    float diemSo;
+                                    if (float.TryParse(diemMon, out diemSo))
+                                    {
+                                        check = 1;
+                                    }
+                                    else
+                                    {
+                                        check = 0;
+                                        MessageBox.Show("điểm phải là một số.");
+                                        break;
+                                    }
+
+                                }
+                                if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
+                                {
+                                    string query1 = "insert into Qldiem(Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
+                                    $"values('{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
+                                    SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
+                                    sqlCommand1.ExecuteNonQuery();
+
+                                    load();
+                                    Diem_SV_Load(sender, e);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Điểm Phải >=0 và <= 10");
+                                }
+                            }
+                            catch (Exception ex) { MessageBox.Show(" điểm phải là một số."); }
                         }
+
 
                     }
                 }
@@ -191,49 +215,62 @@ namespace Du_An_1
                         string anh = textBox6.Text;
                         string su = textBox9.Text;
                         string dia = textBox8.Text;
-                        float checktoan = float.Parse(toan);
-                        float checkvan = float.Parse(van);
-                        float checkanh = float.Parse(anh);
-                        float checksu = float.Parse(su);
-                        float checkdia = float.Parse(dia);
-                        string[] diem = { toan, van, anh, su, dia };
-                        int check = 0;
-                        foreach (string diemMon in diem)
+                        if (toan == "" || van == "" || anh == "" || su == "" || dia == "")
                         {
-                            float diemSo;
-                            if (float.TryParse(diemMon, out diemSo))
-                            {
-                                check = 1;
-                            }
-                            else
-                            {
-                                check = 0;
-                                MessageBox.Show("Điểm không được để trống và điểm phải là một số.");
-                                break;
-                            }
-
+                            MessageBox.Show("Điểm không được để trống");
                         }
-                        if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
+                        else
                         {
-                            string query1 = @$"UPDATE Qldiem
-                                                SET TenSV = {tensv}, 
-                                                    Toan = {toan}, 
+                            try
+                            {
+
+
+                                float checktoan = float.Parse(toan);
+                                float checkvan = float.Parse(van);
+                                float checkanh = float.Parse(anh);
+                                float checksu = float.Parse(su);
+                                float checkdia = float.Parse(dia);
+                                string[] diem = { toan, van, anh, su, dia };
+                                int check = 0;
+                                foreach (string diemMon in diem)
+                                {
+                                    float diemSo;
+                                    if (float.TryParse(diemMon, out diemSo))
+                                    {
+                                        check = 1;
+                                    }
+                                    else
+                                    {
+                                        check = 0;
+
+                                        break;
+                                    }
+
+                                }
+                                if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
+                                {
+                                    string query1 = @$"UPDATE Qldiem
+                                                SET Toan = {toan}, 
                                                     Van = {van},
                                                     Anh = {anh},
                                                     Su = {su},
                                                     Dia = {dia}
                                                 WHERE Masv = '{masv}';";
 
-                            SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                            sqlCommand1.ExecuteNonQuery();
+                                    SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
+                                    sqlCommand1.ExecuteNonQuery();
 
-                            load();
-                            Diem_SV_Load(sender, e);
+                                    load();
+                                    Diem_SV_Load(sender, e);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Điểm Phải >=0 và <= 10");
+                                }
+                            }
+                            catch (Exception ex) { MessageBox.Show(" điểm phải là một số."); }
                         }
-                        else
-                        {
-                            MessageBox.Show("Điểm Phải >=0 và <= 10");
-                        }
+
 
                     }
                 }
@@ -296,7 +333,16 @@ namespace Du_An_1
             }
             else
             {
-                string query = $"select * from SV where Masv like '%{textBox10.Text}%' or Ten like N'%{textBox10.Text}%'";
+                string query = @$"SELECT SV.Masv, SV.Ten
+	                            FROM Lopchitiet 
+	                            JOIN Lopgv ON Lopchitiet.malopgv = Lopgv.malopgv
+	                            JOIN SV ON Lopchitiet.Masv = SV.Masv
+	                            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+	                            JOIN GV ON Lopgv.Magv = GV.Magv
+	                            JOIN TK ON GV.MaTK = TK.MaTK
+	                            WHERE TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}' and Qldiem.Masv IS NULL
+                                AND ( SV.Masv like '%{textBox10.Text}%' 
+                                OR SV.Ten like N'%{textBox10.Text}%' )";
                 SqlCommand sqlmd = new SqlCommand(query, conn);
 
                 SqlDataReader reader = sqlmd.ExecuteReader();
@@ -337,7 +383,15 @@ namespace Du_An_1
             }
             else
             {
-                string query = $"select * from Qldiem where Masv like '%{textBox7.Text}%' or TenSV like N'%{textBox7.Text}%'";
+                string query = @$"select Qldiem.Masv, Qldiem.TenSV, Qldiem.Toan,Qldiem.Van, Qldiem.Anh,Qldiem.Su,Qldiem.Dia From Lopchitiet 
+            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+            join SV on Lopchitiet.Masv = SV.Masv
+            join Qldiem on SV.Masv = Qldiem.Masv
+            join GV on Lopgv.Magv = GV.Magv
+            join TK on GV.MaTK = TK.MaTK
+            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}' 
+            AND ( Qldiem.Masv like '%{textBox7.Text}%' 
+            OR Qldiem.TenSV like N'%{textBox7.Text}%' )";
                 SqlCommand sqlmd = new SqlCommand(query, conn);
 
                 SqlDataReader reader = sqlmd.ExecuteReader();
@@ -360,43 +414,36 @@ namespace Du_An_1
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = @"
-            SELECT SV.Masv AS ID, 
-                   SV.Ten AS HoTen, 
-                   SV.ngay_sinh AS NgaySinh, 
-                   CASE 
-                       WHEN (YEAR(GETDATE()) - YEAR(SV.ngay_sinh)) % 2 = 0 THEN 'Nam'
-                       ELSE 'Nu'
-                   END AS GioiTinh,
-                   SV.Email, 
-                   QL.Toan, 
-                   QL.Van, 
-                   QL.Anh, 
-                   QL.Su, 
-                   QL.Dia,
-                   (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 AS DiemTrungBinh
-            FROM SV
-            INNER JOIN Qldiem QL ON SV.Masv = QL.Masv
-            WHERE (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 >= @MinDiemTb
-            AND (QL.Toan + QL.Van + QL.Anh + QL.Su + QL.Dia) / 5 < @MaxDiemTb";
+            string query = @$"
+                            select Qldiem.Masv, Qldiem.TenSV, Qldiem.Toan,Qldiem.Van, Qldiem.Anh,Qldiem.Su,Qldiem.Dia,
+			                             (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 AS DiemTrungBinh
+                            From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Qldiem on SV.Masv = Qldiem.Masv
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on GV.MaTK = TK.MaTK
+                            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'
+                                AND (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 >= @MinDiemTb
+                                AND (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5 <= @MaxDiemTb;";
 
             double minDiemTb = 0;
             double maxDiemTb = 10;
 
             if (comboBox2.Text == "học sinh xuất sắc")
             {
-                minDiemTb = 9;
+                minDiemTb = 10;
                 maxDiemTb = 10;
             }
             else if (comboBox2.Text == "học sinh giỏi")
             {
                 minDiemTb = 8;
-                maxDiemTb = 9;
+                maxDiemTb = 9.9;
             }
             else if (comboBox2.Text == "học sinh khá")
             {
-                minDiemTb = 6.5;
-                maxDiemTb = 8;
+                minDiemTb = 6.6;
+                maxDiemTb = 7.9;
             }
             else if (comboBox2.Text == "học sinh trung bình")
             {
@@ -406,7 +453,7 @@ namespace Du_An_1
             else if (comboBox2.Text == "học sinh yếu")
             {
                 minDiemTb = 0;
-                maxDiemTb = 5;
+                maxDiemTb = 4.9;
             }
             else
             {
@@ -429,258 +476,54 @@ namespace Du_An_1
                 }
             }
         }
-        public void datalopchitiet()
-        {
-            string query = @$"SELECT 
-                                lct.malopchitiet,l.malopgv, g.Magv,g.Ten TenGV, lct.Masv, SV.Ten TenSV
-                            FROM Lopchitiet lct
-							JOIN 
-                                Lopgv l ON lct.malopgv = l.malopgv
-							JOIN 
-                                GV g ON l.Magv = g.Magv
-                            JOIN 
-                                TK t ON g.MaTK = t.MaTK
-							JOIN 
-                                SV ON lct.Masv = SV.Masv
-
-                            WHERE 
-                                t.Taikhoan = '{Tk}' AND t.Matkhau = '{Mk}';";
-            SqlCommand sqlmd = new SqlCommand(query, conn);
-
-            SqlDataReader reader = sqlmd.ExecuteReader();
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            ds.Tables.Add(dt);
-            dataGridView3.DataSource = ds.Tables[0];
-            reader.Close();
-        }
-        public void datasv()
-        {
-            string query2 = @"SELECT s.Masv, s.Ten
-                            FROM SV s
-                            LEFT JOIN Lopchitiet lc ON s.Masv = lc.Masv
-                            WHERE lc.Masv IS NULL;";
-            SqlCommand sqlmd2 = new SqlCommand(query2, conn);
-
-            SqlDataReader reader2 = sqlmd2.ExecuteReader();
-            DataSet ds2 = new DataSet();
-            DataTable dt2 = new DataTable();
-            dt2.Load(reader2);
-            ds2.Tables.Add(dt2);
-            dataGridView4.DataSource = ds2.Tables[0];
-            reader2.Close();
-        }
-        public void datalopgv()
-        {
-            string query2 = @$"SELECT 
-                                l.malopgv, g.Magv,g.Ten TenGV
-                            FROM Lopgv l
-							JOIN 
-                                GV g ON l.Magv = g.Magv
-                            JOIN 
-                                TK t ON g.MaTK = t.MaTK
-                            WHERE 
-                                t.Taikhoan = '{Tk}' AND t.Matkhau = '{Mk}'";
-            SqlCommand sqlmd2 = new SqlCommand(query2, conn);
-
-            SqlDataReader reader2 = sqlmd2.ExecuteReader();
-            DataSet ds2 = new DataSet();
-            DataTable dt2 = new DataTable();
-            dt2.Load(reader2);
-            ds2.Tables.Add(dt2);
-            dataGridView5.DataSource = ds2.Tables[0];
-            reader2.Close();
-        }
-        private void cleards()
-        {
-            textBox1.Text = "";
-            textBox11.Text = "";
-        }
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            string Malopgv = textBox1.Text.Trim();
-            string Masv = textBox11.Text.Trim();
-
-            if (Malopgv != "" && Masv != "")
-            {
-                string query1 = "insert into Lopchitiet(malopgv,Masv)" +
-                $"values('{Malopgv}', '{Masv}')";
-                SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                sqlCommand1.ExecuteNonQuery();
-                cleards();
-                datalopchitiet();
-                datalopgv();
-                datasv();
-                MessageBox.Show("thêm thành công");
-            }
-            else
-            {
-                MessageBox.Show("Mã Lớp và mã sinh viên không được để trống.");
-            }
-
-        }
-        private string malopct;
-        private void button6_Click(object sender, EventArgs e)
-        {
-            string query = $@"select * from Lopchitiet where malopchitiet = '{malopct}'";
-            using (SqlCommand command = new SqlCommand(query, conn))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-
-                {
-                    if (!reader.HasRows)
-                    {
-                        reader.Close();
-                        MessageBox.Show("xin mời chọn lớp để sửa");
-                    }
-                    else
-                    {
-                        reader.Close();
-                        string Malopgv = textBox1.Text;
-                        string Masv = textBox11.Text;
-
-                        string query1 = @$"UPDATE Lopchitiet
-                                                SET malopgv = '{Malopgv}',
-                                                Masv = '{Masv}'
-                                                WHERE malopchitiet = '{malopct}'";
-                        SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
-                        sqlCommand1.ExecuteNonQuery();
-
-                        cleards();
-                        datalopchitiet();
-                        datalopgv();
-                        datasv();
-                        MessageBox.Show("Sửa thành công");
-
-                    }
-
-                }
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            string query = $@"select * from Lopchitiet where malopchitiet = '{malopct}'";
-            using (SqlCommand command = new SqlCommand(query, conn))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-
-                {
-                    if (!reader.HasRows)
-                    {
-                        reader.Close();
-                        MessageBox.Show("xin mời chọn lớp Có giáo viên để Xóa");
-                    }
-                    else
-                    {
-                        reader.Close();
-                        string delete = @$"DELETE FROM Lopchitiet 
-                                           WHERE malopchitiet = '{malopct}';";
-                        SqlCommand cmd = new SqlCommand(delete, conn);
-                        cmd.ExecuteNonQuery();
-
-                        cleards();
-                        datalopchitiet();
-                        datalopgv();
-                        datasv();
-                        MessageBox.Show("Xóa thành công");
-
-                    }
-
-                }
-            }
-        }
-
-        private void dataGridView5_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                textBox1.Text = dataGridView5.Rows[e.RowIndex].Cells[0].Value.ToString();
-            }
-            catch (Exception ex) { }
-        }
-
-        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                textBox11.Text = dataGridView4.Rows[e.RowIndex].Cells[0].Value.ToString();
-            }
-            catch (Exception ex) { }
-        }
-
-        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                malopct = dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString();
-                textBox1.Text = dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString();
-                textBox11.Text = dataGridView3.Rows[e.RowIndex].Cells[4].Value.ToString();
-            }
-            catch (Exception ex) { }
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-            string timkiem = textBox12.Text;
-            tksv(timkiem);
-            tklop(timkiem);
-        }
-        private void tksv(string timkiem)
-        {
-            string query2 = @$"SELECT s.Masv, s.Ten
-FROM SV s
-LEFT JOIN Lopchitiet lc ON s.Masv = lc.Masv
-WHERE lc.Masv IS NULL;";
-            SqlCommand sqlmd2 = new SqlCommand(query2, conn);
-
-            SqlDataReader reader2 = sqlmd2.ExecuteReader();
-            DataSet ds2 = new DataSet();
-            DataTable dt2 = new DataTable();
-            dt2.Load(reader2);
-            ds2.Tables.Add(dt2);
-            dataGridView4.DataSource = ds2.Tables[0];
-            reader2.Close();
-        }
-        private void tklop(string timkiem)
-        {
-            string query = @$"SELECT 
-                                     lct.malopchitiet,l.malopgv, g.Magv,g.Ten TenGV, lct.Masv, SV.Ten TenSV
-                                 FROM Lopchitiet lct
-                                 JOIN 
-                                     Lopgv l ON lct.malopgv = l.malopgv
-                                 JOIN 
-                                     GV g ON l.Magv = g.Magv
-                                 JOIN 
-                                     TK t ON g.MaTK = t.MaTK
-                                 JOIN 
-                                     SV ON lct.Masv = SV.Masv
-                                 WHERE 
-                                     t.Taikhoan = '{Tk}' AND t.Matkhau = '{Mk}'
-                                 AND ( l.malopgv LIKE '%{timkiem}%'
-                                 OR lct.malopchitiet LIKE '%{timkiem}%'
-                                 OR l.malopgv LIKE '%{timkiem}%'
-                                 OR  g.Magv LIKE '%{timkiem}%'
-                                 OR g.Ten LIKE N'%{timkiem}%'
-                                 OR  lct.Masv LIKE '%{timkiem}%'
-                                 OR SV.Ten LIKE N'%{timkiem}%' );";
-            SqlCommand sqlmd = new SqlCommand(query, conn);
-
-            SqlDataReader reader = sqlmd.ExecuteReader();
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            ds.Tables.Add(dt);
-            dataGridView3.DataSource = ds.Tables[0];
-            reader.Close();
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             loadthongke();
+        }
+        private void danhsachlop()
+        {
+            string query = @$"select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on GV.MaTK = TK.MaTK
+                            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'";
+            SqlCommand sqlmd = new SqlCommand(query, conn);
+
+            SqlDataReader reader = sqlmd.ExecuteReader();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            ds.Tables.Add(dt);
+            dataGridView3.DataSource = ds.Tables[0];
+            reader.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string query = @$"	select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+                            join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
+                            join SV on Lopchitiet.Masv = SV.Masv
+                            join Lop on Lopgv.Malop = Lop.Malop
+                            join GV on Lopgv.Magv = GV.Magv
+                            join TK on GV.MaTK = TK.MaTK
+                            where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'
+                            AND ( Lop.Tenlop = N'%{textBox1.Text}%' 
+							OR  CAST(Lopchitiet.malopchitiet AS VARCHAR) LIKE '%{textBox1.Text}%'
+							OR GV.Magv LIKE '%{textBox1.Text}%' 
+							OR  GV.Ten LIKE N'%{textBox1.Text}%' 
+							OR SV.Masv LIKE '%{textBox1.Text}%' 
+							OR SV.Ten LIKE N'%{textBox1.Text}%' );";
+            SqlCommand sqlmd = new SqlCommand(query, conn);
+
+            SqlDataReader reader = sqlmd.ExecuteReader();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            ds.Tables.Add(dt);
+            dataGridView3.DataSource = ds.Tables[0];
+            reader.Close();
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Du_An_1
 {
@@ -25,12 +26,11 @@ namespace Du_An_1
         private void LoadData()
         {
             string query = @"
-            SELECT SV.Masv, TK.MaTK,TK.Trangthai, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh,
-            Qldiem.Toan, Qldiem.Van, Qldiem.Anh, Qldiem.Su, Qldiem.Dia,
-            (Qldiem.Toan + Qldiem.Van + Qldiem.Anh + Qldiem.Su + Qldiem.Dia) / 5.0 AS DiemTrungBinh
+            SELECT SV.Masv, TK.MaTK,TK.Trangthai, SV.Ten AS TenSV, SV.Email, SV.Sdt, SV.Que_quan, SV.ngay_sinh, SV.Gioi_tinh
+
             FROM TK
 			LEFT JOIN SV ON TK.MaTK = SV.MaTK
-            LEFT JOIN Qldiem ON SV.Masv = Qldiem.Masv
+
 			WHERE TK.Macv = 'CV3';";
 
             using (SqlCommand sqlmd = new SqlCommand(query, conn))
@@ -64,14 +64,14 @@ namespace Du_An_1
                 {
                     if (reader.HasRows)
                     {
-                        MessageBox.Show("Mã SV đã tồn tại");
+                        MessageBox.Show("Mã Học Sinh đã tồn tại");
                     }
                     else
                     {
                         reader.Close();
                         string query = @"
                                         INSERT INTO SV (Masv, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Gioi_tinh)
-                                        VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Lop, @Gioi_tinh)";
+                                        VALUES (@Masv, @MaTK, @Ten, @Email, @Sdt, @Que_quan, @Ngay_sinh, @Gioi_tinh)";
 
                         using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
@@ -83,8 +83,10 @@ namespace Du_An_1
                             cmd.Parameters.AddWithValue("@Que_quan", que_quan);
                             cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
                             cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
-
                             cmd.ExecuteNonQuery();
+                            string TK = txtMaTK.Text;
+                            string TrangThai = comboBox3.Text;
+                            UpdateStudenttrangthai(TK, TrangThai);
                             MessageBox.Show("Thêm thành công");
                             conn.Close();
                         }
@@ -93,53 +95,127 @@ namespace Du_An_1
 
             }
 
+
             LoadData(); // Refresh data after adding
         }
 
         private void UpdateStudent(string masv, string ten, string email, string sdt, string que_quan, DateTime ngay_sinh, string gioitinh)
         {
+            conn.Open();
+            string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
+            using (SqlCommand command = new SqlCommand(querycheckmasv, conn))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+
+                {
+                    if (!reader.HasRows)
+                    {
+                        MessageBox.Show("Mã SV đã tồn tại");
+                    }
+                    else
+                    {
+                        reader.Close();
+
+                        string query = @"UPDATE SV
+                                        SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Gioi_tinh = @Gioi_tinh
+                                        WHERE Masv = @Masv";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Masv", masv);
+                            cmd.Parameters.AddWithValue("@Ten", ten);
+                            cmd.Parameters.AddWithValue("@Email", email);
+                            cmd.Parameters.AddWithValue("@Sdt", sdt);
+                            cmd.Parameters.AddWithValue("@Que_quan", que_quan);
+                            cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
+                            cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
+                            cmd.ExecuteNonQuery();
+                            string TK = txtMaTK.Text;
+                            string TrangThai = comboBox3.Text;
+                            UpdateStudenttrangthai(TK, TrangThai);
+                            MessageBox.Show("Sửa Thành công");
+                            conn.Close();
+                        }
+
+                        LoadData(); // Refresh data after updating
+
+                    }
+                }
+
+            }
+         
+        }
+        private void UpdateStudenttrangthai(string TK, string TrangThai)
+        {
             string query = @"
-            UPDATE SV
-            SET Ten = @Ten, Email = @Email, Sdt = @Sdt, Que_quan = @Que_quan, ngay_sinh = @Ngay_sinh, Gioi_tinh = @Gioi_tinh
-            WHERE Masv = @Masv";
+            UPDATE TK
+            SET Trangthai = @Trangthai
+            WHERE MaTK = @MaTK";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@Masv", masv);
-                cmd.Parameters.AddWithValue("@Ten", ten);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Sdt", sdt);
-                cmd.Parameters.AddWithValue("@Que_quan", que_quan);
-                cmd.Parameters.AddWithValue("@Ngay_sinh", ngay_sinh);
-                cmd.Parameters.AddWithValue("@Gioi_tinh", gioitinh);
+                cmd.Parameters.AddWithValue("@MaTK", TK);
+                cmd.Parameters.AddWithValue("@Trangthai", TrangThai);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
-            }
 
-            LoadData(); // Refresh data after updating
+            }
         }
         private void DeleteStudent(string masv)
         {
+            conn.Open();
+            string querycheckmasv = $"select * from SV where Masv = '{txtMaSv.Text}'";
+            using (SqlCommand command = new SqlCommand(querycheckmasv, conn))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+
+                {
+                    if (!reader.HasRows)
+                    {
+                        MessageBox.Show("Không tìm thấy Học Sinh");
+                    }
+                    else
+                    {
+                        reader.Close();
+
+                        string query = @"DELETE FROM Lopchitiet WHERE Masv = @Masv;
+                                        DELETE FROM Qldiem WHERE Masv = @Masv;
+
+                                        DELETE FROM SV WHERE Masv = @Masv;";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Masv", masv);
+                            cmd.ExecuteNonQuery();
+
+                            string TK = txtMaTK.Text;
+                            DeleteStudentchuyentrangthai(TK);
+                            conn.Close();
+                            MessageBox.Show("Xóa thành công");
+
+                        }
+                        LoadData(); // Refresh data after deleting
+
+                    }
+                }
+            }
+
+ 
+        }
+        private void DeleteStudentchuyentrangthai(string TK)
+        {
             string query = @"
-            DELETE FROM Qldiem 
-            WHERE Masv = @Masv
-            DELETE FROM SV 
-            WHERE Masv = @Masv";
+            UPDATE TK
+            SET Trangthai = N'Không Hoạt Động'
+            WHERE MaTK = @MaTK";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@Masv", masv);
+                cmd.Parameters.AddWithValue("@MaTK", TK);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
             }
-
-            LoadData(); // Refresh data after deleting
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (ValidateStudentInput())
@@ -160,9 +236,10 @@ namespace Du_An_1
                 {
                     gioitinh = "Nữ";
                 }
-
                 AddStudent(masv, matk, ten, email, sdt, que_quan, ngay_sinh, gioitinh);
-                clear();            }
+                LoadData();
+                clear();
+            }
 
         }
 
@@ -187,7 +264,7 @@ namespace Du_An_1
                 }
 
                 UpdateStudent(masv, ten, email, sdt, que_quan, ngay_sinh, gioitinh);
-                MessageBox.Show("Sửa thành công");
+                LoadData();
             }
             else
             {
@@ -209,6 +286,8 @@ namespace Du_An_1
             // Thực hiện kiểm tra thêm nếu cần
 
             DeleteStudent(masv);
+
+            LoadData();
             clear();
             MessageBox.Show("Xóa thành công");
         }
@@ -286,7 +365,7 @@ namespace Du_An_1
                 return false;
             }
             DateTime minDate = new DateTime(1990, 1, 1); // Ngày nhỏ nhất
-            DateTime maxDate = DateTime.Now; // Ngày lớn nhất
+            DateTime maxDate = DateTime.Now.AddYears(-6); // Ngày lớn nhất
 
             if (dtpNgaySinh.Value < minDate || dtpNgaySinh.Value > maxDate)
             {
@@ -417,7 +496,7 @@ namespace Du_An_1
 
         private void Admin_Load(object sender, EventArgs e)
         {
-  
+
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

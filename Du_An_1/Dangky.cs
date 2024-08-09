@@ -26,6 +26,7 @@ namespace Du_An_1
             if (ValidateInput(maTK, taiKhoan, matKhau, macv))
             {
                 RegisterUser(maTK, taiKhoan, matKhau, macv, trangThai);
+                loadtk();
             }
         }
 
@@ -102,7 +103,7 @@ namespace Du_An_1
 
                     connection.Open();
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("User registered successfully.");
+                    MessageBox.Show("Đăng ký thành công.");
                 }
             }
             catch (Exception ex)
@@ -118,6 +119,7 @@ namespace Du_An_1
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             LoadChucVu();
+            loadtk();
         }
 
         private void LoadChucVu()
@@ -144,7 +146,18 @@ namespace Du_An_1
         }
         private void loadtk()
         {
+            connection.Open();
+            string query = @"SELECT * FROM TK ";
+            SqlCommand sqlmd = new SqlCommand(query, connection);
 
+            SqlDataReader reader = sqlmd.ExecuteReader();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            ds.Tables.Add(dt);
+            dataGridView1.DataSource = ds.Tables[0];
+            reader.Close();
+            connection.Close();
         }
     }
 }

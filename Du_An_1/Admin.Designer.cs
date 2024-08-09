@@ -94,7 +94,7 @@
             tabPage1.Margin = new Padding(2, 3, 2, 3);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(2, 3, 2, 3);
-            tabPage1.Size = new Size(1038, 698);
+            tabPage1.Size = new Size(1198, 698);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Thông tin học sinh";
             tabPage1.Click += tabPage1_Click;
@@ -279,13 +279,13 @@
             rdoNu.Name = "rdoNu";
             rdoNu.Size = new Size(50, 24);
             rdoNu.TabIndex = 136;
-            rdoNu.TabStop = true;
             rdoNu.Text = "Nữ";
             rdoNu.UseVisualStyleBackColor = true;
             // 
             // rdoNam
             // 
             rdoNam.AutoSize = true;
+            rdoNam.Checked = true;
             rdoNam.Location = new Point(115, 224);
             rdoNam.Margin = new Padding(2, 3, 2, 3);
             rdoNam.Name = "rdoNam";
@@ -357,13 +357,14 @@
             // 
             // dgvDanhSachSV
             // 
+            dgvDanhSachSV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDanhSachSV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDanhSachSV.Location = new Point(2, 352);
             dgvDanhSachSV.Margin = new Padding(2, 3, 2, 3);
             dgvDanhSachSV.Name = "dgvDanhSachSV";
             dgvDanhSachSV.RowHeadersWidth = 62;
             dgvDanhSachSV.RowTemplate.Height = 33;
-            dgvDanhSachSV.Size = new Size(1033, 342);
+            dgvDanhSachSV.Size = new Size(1189, 342);
             dgvDanhSachSV.TabIndex = 71;
             dgvDanhSachSV.CellClick += dgvDanhSachSV_CellClick;
             // 
@@ -374,14 +375,14 @@
             tabControl1.Margin = new Padding(2, 3, 2, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1046, 731);
+            tabControl1.Size = new Size(1206, 731);
             tabControl1.TabIndex = 2;
             // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1049, 746);
+            ClientSize = new Size(1208, 746);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin";

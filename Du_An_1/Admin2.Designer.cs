@@ -162,6 +162,7 @@
             // 
             // dgvGiangVien
             // 
+            dgvGiangVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGiangVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGiangVien.Columns.AddRange(new DataGridViewColumn[] { txbMatk, txbMagv, txbTengv, txbNgaysinh, Gioi_tinh, txbemail, Txbsdt });
             dgvGiangVien.Location = new Point(14, 397);
@@ -178,7 +179,6 @@
             txbMatk.HeaderText = "Mã TK";
             txbMatk.MinimumWidth = 6;
             txbMatk.Name = "txbMatk";
-            txbMatk.Width = 125;
             // 
             // txbMagv
             // 
@@ -186,7 +186,6 @@
             txbMagv.HeaderText = "Mã GV";
             txbMagv.MinimumWidth = 6;
             txbMagv.Name = "txbMagv";
-            txbMagv.Width = 125;
             // 
             // txbTengv
             // 
@@ -194,7 +193,6 @@
             txbTengv.HeaderText = "TênGV";
             txbTengv.MinimumWidth = 6;
             txbTengv.Name = "txbTengv";
-            txbTengv.Width = 125;
             // 
             // txbNgaysinh
             // 
@@ -202,7 +200,6 @@
             txbNgaysinh.HeaderText = "Ngày sinh";
             txbNgaysinh.MinimumWidth = 6;
             txbNgaysinh.Name = "txbNgaysinh";
-            txbNgaysinh.Width = 125;
             // 
             // Gioi_tinh
             // 
@@ -210,7 +207,6 @@
             Gioi_tinh.HeaderText = "Giới tính";
             Gioi_tinh.MinimumWidth = 6;
             Gioi_tinh.Name = "Gioi_tinh";
-            Gioi_tinh.Width = 125;
             // 
             // txbemail
             // 
@@ -218,7 +214,6 @@
             txbemail.HeaderText = "Email";
             txbemail.MinimumWidth = 6;
             txbemail.Name = "txbemail";
-            txbemail.Width = 125;
             // 
             // Txbsdt
             // 
@@ -226,7 +221,6 @@
             Txbsdt.HeaderText = "SĐT";
             Txbsdt.MinimumWidth = 6;
             Txbsdt.Name = "Txbsdt";
-            Txbsdt.Width = 125;
             // 
             // label8
             // 

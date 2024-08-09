@@ -57,6 +57,13 @@
             label4 = new Label();
             label5 = new Label();
             dataGridView2 = new DataGridView();
+            Masv = new DataGridViewTextBoxColumn();
+            TenSV = new DataGridViewTextBoxColumn();
+            Toan = new DataGridViewTextBoxColumn();
+            Van = new DataGridViewTextBoxColumn();
+            Anh = new DataGridViewTextBoxColumn();
+            Su = new DataGridViewTextBoxColumn();
+            Dia = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
             Masvs = new DataGridViewTextBoxColumn();
             MaTK = new DataGridViewTextBoxColumn();
@@ -71,36 +78,18 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            textBox12 = new TextBox();
-            label19 = new Label();
-            dataGridView5 = new DataGridView();
-            button7 = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            textBox11 = new TextBox();
-            textBox1 = new TextBox();
-            label18 = new Label();
-            label2 = new Label();
-            dataGridView4 = new DataGridView();
             dataGridView3 = new DataGridView();
+            textBox1 = new TextBox();
+            label2 = new Label();
             tabPage3 = new TabPage();
             button3 = new Button();
             dgvThongKe = new DataGridView();
             comboBox2 = new ComboBox();
-            Masv = new DataGridViewTextBoxColumn();
-            TenSV = new DataGridViewTextBoxColumn();
-            Toan = new DataGridViewTextBoxColumn();
-            Van = new DataGridViewTextBoxColumn();
-            Anh = new DataGridViewTextBoxColumn();
-            Su = new DataGridViewTextBoxColumn();
-            Dia = new DataGridViewTextBoxColumn();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThongKe).BeginInit();
@@ -142,7 +131,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(858, 531);
+            tabPage1.Size = new Size(956, 561);
             tabPage1.TabIndex = 0;
             tabPage1.Tag = "";
             tabPage1.Text = "Điểm Học sinh";
@@ -152,7 +141,7 @@
             button2.BackColor = Color.Yellow;
             button2.Image = Properties.Resources.kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(740, 76);
+            button2.Location = new Point(825, 77);
             button2.Name = "button2";
             button2.Size = new Size(85, 29);
             button2.TabIndex = 33;
@@ -249,7 +238,7 @@
             // button4
             // 
             button4.BackColor = Color.Transparent;
-            button4.Location = new Point(713, 289);
+            button4.Location = new Point(825, 289);
             button4.Name = "button4";
             button4.Size = new Size(112, 29);
             button4.TabIndex = 28;
@@ -262,7 +251,7 @@
             button1.BackColor = Color.Chartreuse;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(740, 20);
+            button1.Location = new Point(825, 21);
             button1.Name = "button1";
             button1.Size = new Size(85, 29);
             button1.TabIndex = 25;
@@ -381,25 +370,76 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Masv, TenSV, Toan, Van, Anh, Su, Dia });
-            dataGridView2.Location = new Point(21, 337);
+            dataGridView2.Location = new Point(17, 337);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(831, 188);
+            dataGridView2.Size = new Size(929, 218);
             dataGridView2.TabIndex = 6;
             dataGridView2.CellClick += dataGridView2_CellClick;
             // 
+            // Masv
+            // 
+            Masv.DataPropertyName = "Masv";
+            Masv.HeaderText = "Mã HS";
+            Masv.MinimumWidth = 6;
+            Masv.Name = "Masv";
+            // 
+            // TenSV
+            // 
+            TenSV.DataPropertyName = "TenSV";
+            TenSV.HeaderText = "Tên HS";
+            TenSV.MinimumWidth = 6;
+            TenSV.Name = "TenSV";
+            // 
+            // Toan
+            // 
+            Toan.DataPropertyName = "Toan";
+            Toan.HeaderText = "Môn Toán";
+            Toan.MinimumWidth = 6;
+            Toan.Name = "Toan";
+            // 
+            // Van
+            // 
+            Van.DataPropertyName = "Van";
+            Van.HeaderText = "Môn Văn";
+            Van.MinimumWidth = 6;
+            Van.Name = "Van";
+            // 
+            // Anh
+            // 
+            Anh.DataPropertyName = "Anh";
+            Anh.HeaderText = "Môn Anh";
+            Anh.MinimumWidth = 6;
+            Anh.Name = "Anh";
+            // 
+            // Su
+            // 
+            Su.DataPropertyName = "Su";
+            Su.HeaderText = "Môn Sử";
+            Su.MinimumWidth = 6;
+            Su.Name = "Su";
+            // 
+            // Dia
+            // 
+            Dia.DataPropertyName = "Dia";
+            Dia.HeaderText = "Môn Địa";
+            Dia.MinimumWidth = 6;
+            Dia.Name = "Dia";
+            // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Masvs, MaTK, Ten, Email, Sdt, Que_quan, ngay_sinh, Img, Lop });
             dataGridView1.Location = new Point(479, 76);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(233, 196);
+            dataGridView1.Size = new Size(306, 208);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
@@ -409,7 +449,6 @@
             Masvs.HeaderText = "Mã HS";
             Masvs.MinimumWidth = 6;
             Masvs.Name = "Masvs";
-            Masvs.Width = 125;
             // 
             // MaTK
             // 
@@ -418,7 +457,6 @@
             MaTK.MinimumWidth = 6;
             MaTK.Name = "MaTK";
             MaTK.Visible = false;
-            MaTK.Width = 125;
             // 
             // Ten
             // 
@@ -426,7 +464,6 @@
             Ten.HeaderText = "Tên HS";
             Ten.MinimumWidth = 6;
             Ten.Name = "Ten";
-            Ten.Width = 125;
             // 
             // Email
             // 
@@ -435,7 +472,6 @@
             Email.MinimumWidth = 6;
             Email.Name = "Email";
             Email.Visible = false;
-            Email.Width = 125;
             // 
             // Sdt
             // 
@@ -444,7 +480,6 @@
             Sdt.MinimumWidth = 6;
             Sdt.Name = "Sdt";
             Sdt.Visible = false;
-            Sdt.Width = 125;
             // 
             // Que_quan
             // 
@@ -453,7 +488,6 @@
             Que_quan.MinimumWidth = 6;
             Que_quan.Name = "Que_quan";
             Que_quan.Visible = false;
-            Que_quan.Width = 125;
             // 
             // ngay_sinh
             // 
@@ -462,7 +496,6 @@
             ngay_sinh.MinimumWidth = 6;
             ngay_sinh.Name = "ngay_sinh";
             ngay_sinh.Visible = false;
-            ngay_sinh.Width = 125;
             // 
             // Img
             // 
@@ -471,7 +504,6 @@
             Img.MinimumWidth = 6;
             Img.Name = "Img";
             Img.Visible = false;
-            Img.Width = 125;
             // 
             // Lop
             // 
@@ -480,7 +512,6 @@
             Lop.MinimumWidth = 6;
             Lop.Name = "Lop";
             Lop.Visible = false;
-            Lop.Width = 125;
             // 
             // label3
             // 
@@ -508,156 +539,49 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(866, 564);
+            tabControl1.Size = new Size(964, 594);
             tabControl1.TabIndex = 1;
             // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.Turquoise;
-            tabPage2.Controls.Add(textBox12);
-            tabPage2.Controls.Add(label19);
-            tabPage2.Controls.Add(dataGridView5);
-            tabPage2.Controls.Add(button7);
-            tabPage2.Controls.Add(button6);
-            tabPage2.Controls.Add(button5);
-            tabPage2.Controls.Add(textBox11);
-            tabPage2.Controls.Add(textBox1);
-            tabPage2.Controls.Add(label18);
-            tabPage2.Controls.Add(label2);
-            tabPage2.Controls.Add(dataGridView4);
             tabPage2.Controls.Add(dataGridView3);
+            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(label2);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(858, 531);
+            tabPage2.Size = new Size(956, 561);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Danh sách lớp";
             // 
-            // textBox12
+            // dataGridView3
             // 
-            textBox12.Location = new Point(136, 223);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(251, 27);
-            textBox12.TabIndex = 11;
-            textBox12.TextChanged += textBox12_TextChanged;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(47, 226);
-            label19.Name = "label19";
-            label19.Size = new Size(70, 20);
-            label19.TabIndex = 10;
-            label19.Text = "Tìm kiếm";
-            // 
-            // dataGridView5
-            // 
-            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Location = new Point(582, 6);
-            dataGridView5.Name = "dataGridView5";
-            dataGridView5.RowHeadersWidth = 51;
-            dataGridView5.RowTemplate.Height = 29;
-            dataGridView5.Size = new Size(267, 119);
-            dataGridView5.TabIndex = 9;
-            dataGridView5.CellClick += dataGridView5_CellClick;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.Red;
-            button7.Image = Properties.Resources.kisspng_computer_icons_clip_art_check_mark_x_mark_astrolog_filegartoon_actions_cancel_svg_wikimedia_common_5c53792fbb7cb5_625824561548974383768;
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(436, 129);
-            button7.Name = "button7";
-            button7.Size = new Size(94, 29);
-            button7.TabIndex = 8;
-            button7.Text = "Xóa";
-            button7.TextAlign = ContentAlignment.MiddleRight;
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click;
-            // 
-            // button6
-            // 
-            button6.BackColor = Color.Yellow;
-            button6.Image = Properties.Resources.kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071;
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(436, 80);
-            button6.Name = "button6";
-            button6.Size = new Size(94, 29);
-            button6.TabIndex = 7;
-            button6.Text = "Sửa";
-            button6.TextAlign = ContentAlignment.MiddleRight;
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.Lime;
-            button5.Image = Properties.Resources.green_add_button_12023;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(436, 35);
-            button5.Name = "button5";
-            button5.Size = new Size(94, 29);
-            button5.TabIndex = 6;
-            button5.Text = "Thêm";
-            button5.TextAlign = ContentAlignment.MiddleRight;
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
-            // 
-            // textBox11
-            // 
-            textBox11.Location = new Point(154, 105);
-            textBox11.Name = "textBox11";
-            textBox11.ReadOnly = true;
-            textBox11.Size = new Size(186, 27);
-            textBox11.TabIndex = 5;
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(93, 92);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowHeadersWidth = 51;
+            dataGridView3.RowTemplate.Height = 29;
+            dataGridView3.Size = new Size(785, 397);
+            dataGridView3.TabIndex = 2;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(154, 41);
+            textBox1.Location = new Point(109, 40);
             textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(186, 27);
-            textBox1.TabIndex = 4;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(54, 105);
-            label18.Name = "label18";
-            label18.Size = new Size(51, 20);
-            label18.TabIndex = 3;
-            label18.Text = "Mã SV";
+            textBox1.Size = new Size(214, 27);
+            textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(23, 44);
+            label2.Location = new Point(33, 43);
             label2.Name = "label2";
-            label2.Size = new Size(82, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Mã Lớp GV";
-            // 
-            // dataGridView4
-            // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(582, 131);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.RowHeadersWidth = 51;
-            dataGridView4.RowTemplate.Height = 29;
-            dataGridView4.Size = new Size(267, 394);
-            dataGridView4.TabIndex = 1;
-            dataGridView4.CellClick += dataGridView4_CellClick;
-            // 
-            // dataGridView3
-            // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(6, 261);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.RowTemplate.Height = 29;
-            dataGridView3.Size = new Size(570, 264);
-            dataGridView3.TabIndex = 0;
-            dataGridView3.CellClick += dataGridView3_CellClick;
+            label2.Size = new Size(70, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Tìm kiếm";
             // 
             // tabPage3
             // 
@@ -668,7 +592,7 @@
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(858, 531);
+            tabPage3.Size = new Size(956, 561);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Thống kê";
             // 
@@ -684,13 +608,14 @@
             // 
             // dgvThongKe
             // 
+            dgvThongKe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvThongKe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThongKe.Location = new Point(2, 69);
             dgvThongKe.Margin = new Padding(2, 3, 2, 3);
             dgvThongKe.Name = "dgvThongKe";
             dgvThongKe.RowHeadersWidth = 62;
             dgvThongKe.RowTemplate.Height = 33;
-            dgvThongKe.Size = new Size(851, 456);
+            dgvThongKe.Size = new Size(949, 486);
             dgvThongKe.TabIndex = 12;
             // 
             // comboBox2
@@ -704,67 +629,11 @@
             comboBox2.Text = "Thống kê theo loại";
             comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
-            // Masv
-            // 
-            Masv.DataPropertyName = "Masv";
-            Masv.HeaderText = "Mã HS";
-            Masv.MinimumWidth = 6;
-            Masv.Name = "Masv";
-            Masv.Width = 125;
-            // 
-            // TenSV
-            // 
-            TenSV.DataPropertyName = "TenSV";
-            TenSV.HeaderText = "Tên HS";
-            TenSV.MinimumWidth = 6;
-            TenSV.Name = "TenSV";
-            TenSV.Width = 125;
-            // 
-            // Toan
-            // 
-            Toan.DataPropertyName = "Toan";
-            Toan.HeaderText = "Môn Toán";
-            Toan.MinimumWidth = 6;
-            Toan.Name = "Toan";
-            Toan.Width = 125;
-            // 
-            // Van
-            // 
-            Van.DataPropertyName = "Van";
-            Van.HeaderText = "Môn Văn";
-            Van.MinimumWidth = 6;
-            Van.Name = "Van";
-            Van.Width = 125;
-            // 
-            // Anh
-            // 
-            Anh.DataPropertyName = "Anh";
-            Anh.HeaderText = "Môn Anh";
-            Anh.MinimumWidth = 6;
-            Anh.Name = "Anh";
-            Anh.Width = 125;
-            // 
-            // Su
-            // 
-            Su.DataPropertyName = "Su";
-            Su.HeaderText = "Môn Sử";
-            Su.MinimumWidth = 6;
-            Su.Name = "Su";
-            Su.Width = 125;
-            // 
-            // Dia
-            // 
-            Dia.DataPropertyName = "Dia";
-            Dia.HeaderText = "Môn Địa";
-            Dia.MinimumWidth = 6;
-            Dia.Name = "Dia";
-            Dia.Width = 125;
-            // 
             // Diem_SV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(890, 588);
+            ClientSize = new Size(978, 609);
             Controls.Add(tabControl1);
             Name = "Diem_SV";
             StartPosition = FormStartPosition.CenterScreen;
@@ -778,8 +647,6 @@
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvThongKe).EndInit();
@@ -832,19 +699,7 @@
         private TabPage tabPage3;
         private ComboBox comboBox2;
         private DataGridView dgvThongKe;
-        private Label label18;
-        private Label label2;
-        private DataGridView dataGridView4;
-        private DataGridView dataGridView3;
         private Button button2;
-        private TextBox textBox11;
-        private TextBox textBox1;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private DataGridView dataGridView5;
-        private TextBox textBox12;
-        private Label label19;
         private Button button3;
         private DataGridViewTextBoxColumn Masv;
         private DataGridViewTextBoxColumn TenSV;
@@ -853,5 +708,8 @@
         private DataGridViewTextBoxColumn Anh;
         private DataGridViewTextBoxColumn Su;
         private DataGridViewTextBoxColumn Dia;
+        private DataGridView dataGridView3;
+        private TextBox textBox1;
+        private Label label2;
     }
 }

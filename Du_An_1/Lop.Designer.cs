@@ -51,6 +51,19 @@
             textBox3 = new TextBox();
             label4 = new Label();
             label3 = new Label();
+            tabPage3 = new TabPage();
+            button10 = new Button();
+            comboBox1 = new ComboBox();
+            dataGridView5 = new DataGridView();
+            dataGridView6 = new DataGridView();
+            dataGridView7 = new DataGridView();
+            button7 = new Button();
+            button8 = new Button();
+            button9 = new Button();
+            textBox7 = new TextBox();
+            textBox8 = new TextBox();
+            label7 = new Label();
+            label8 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -58,16 +71,21 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView7).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Location = new Point(-6, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(761, 694);
+            tabControl1.Size = new Size(921, 685);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -84,24 +102,25 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(753, 661);
+            tabPage1.Size = new Size(913, 652);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Tạo Lớp";
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(471, 76);
+            dataGridView1.Location = new Point(592, 95);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(276, 567);
+            dataGridView1.Size = new Size(276, 484);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // button3
             // 
-            button3.Location = new Point(333, 182);
+            button3.Location = new Point(352, 201);
             button3.Name = "button3";
             button3.Size = new Size(100, 43);
             button3.TabIndex = 6;
@@ -111,7 +130,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(333, 126);
+            button2.Location = new Point(352, 145);
             button2.Name = "button2";
             button2.Size = new Size(100, 43);
             button2.TabIndex = 5;
@@ -121,7 +140,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(333, 76);
+            button1.Location = new Point(352, 95);
             button1.Name = "button1";
             button1.Size = new Size(100, 43);
             button1.TabIndex = 4;
@@ -131,14 +150,14 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(95, 126);
+            textBox2.Location = new Point(114, 145);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(187, 27);
             textBox2.TabIndex = 3;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(95, 76);
+            textBox1.Location = new Point(114, 95);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(187, 27);
             textBox1.TabIndex = 2;
@@ -146,7 +165,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(17, 129);
+            label2.Location = new Point(36, 148);
             label2.Name = "label2";
             label2.Size = new Size(61, 20);
             label2.TabIndex = 1;
@@ -155,7 +174,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(17, 79);
+            label1.Location = new Point(36, 98);
             label1.Name = "label1";
             label1.Size = new Size(59, 20);
             label1.TabIndex = 0;
@@ -179,13 +198,13 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(753, 661);
+            tabPage2.Size = new Size(913, 652);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thêm GV Vào Lớp";
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(82, 214);
+            textBox5.Location = new Point(82, 220);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(278, 27);
             textBox5.TabIndex = 14;
@@ -194,7 +213,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(6, 217);
+            label5.Location = new Point(6, 223);
             label5.Name = "label5";
             label5.Size = new Size(70, 20);
             label5.TabIndex = 13;
@@ -202,40 +221,43 @@
             // 
             // dataGridView4
             // 
+            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(330, 256);
+            dataGridView4.Location = new Point(44, 275);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.RowHeadersWidth = 51;
             dataGridView4.RowTemplate.Height = 29;
-            dataGridView4.Size = new Size(417, 399);
+            dataGridView4.Size = new Size(432, 368);
             dataGridView4.TabIndex = 12;
             dataGridView4.CellClick += dataGridView4_CellClick;
             // 
             // dataGridView3
             // 
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(6, 456);
+            dataGridView3.Location = new Point(547, 275);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowHeadersWidth = 51;
             dataGridView3.RowTemplate.Height = 29;
-            dataGridView3.Size = new Size(318, 199);
+            dataGridView3.Size = new Size(307, 368);
             dataGridView3.TabIndex = 11;
             dataGridView3.CellClick += dataGridView3_CellClick;
             // 
             // dataGridView2
             // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(6, 256);
+            dataGridView2.Location = new Point(547, 16);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(318, 194);
+            dataGridView2.Size = new Size(307, 231);
             dataGridView2.TabIndex = 10;
             dataGridView2.CellClick += dataGridView2_CellClick;
             // 
             // button4
             // 
-            button4.Location = new Point(628, 162);
+            button4.Location = new Point(396, 139);
             button4.Name = "button4";
             button4.Size = new Size(103, 47);
             button4.TabIndex = 9;
@@ -245,7 +267,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(628, 99);
+            button5.Location = new Point(396, 76);
             button5.Name = "button5";
             button5.Size = new Size(103, 47);
             button5.TabIndex = 8;
@@ -255,7 +277,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(628, 39);
+            button6.Location = new Point(396, 16);
             button6.Name = "button6";
             button6.Size = new Size(103, 47);
             button6.TabIndex = 7;
@@ -265,7 +287,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(226, 134);
+            textBox4.Location = new Point(124, 105);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(193, 27);
@@ -273,7 +295,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(226, 78);
+            textBox3.Location = new Point(124, 49);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(193, 27);
@@ -282,7 +304,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(131, 134);
+            label4.Location = new Point(29, 105);
             label4.Name = "label4";
             label4.Size = new Size(53, 20);
             label4.TabIndex = 1;
@@ -291,18 +313,160 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(131, 81);
+            label3.Location = new Point(29, 52);
             label3.Name = "label3";
             label3.Size = new Size(59, 20);
             label3.TabIndex = 0;
             label3.Text = "Mã Lớp";
+            // 
+            // tabPage3
+            // 
+            tabPage3.BackColor = Color.Turquoise;
+            tabPage3.Controls.Add(button10);
+            tabPage3.Controls.Add(comboBox1);
+            tabPage3.Controls.Add(dataGridView5);
+            tabPage3.Controls.Add(dataGridView6);
+            tabPage3.Controls.Add(dataGridView7);
+            tabPage3.Controls.Add(button7);
+            tabPage3.Controls.Add(button8);
+            tabPage3.Controls.Add(button9);
+            tabPage3.Controls.Add(textBox7);
+            tabPage3.Controls.Add(textBox8);
+            tabPage3.Controls.Add(label7);
+            tabPage3.Controls.Add(label8);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(913, 652);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Thêm SV vào lớp";
+            // 
+            // button10
+            // 
+            button10.Location = new Point(172, 190);
+            button10.Name = "button10";
+            button10.Size = new Size(75, 28);
+            button10.TabIndex = 28;
+            button10.Text = "Load";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(14, 190);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(133, 28);
+            comboBox1.TabIndex = 27;
+            comboBox1.Text = "Lọc Lớp";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dataGridView5
+            // 
+            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView5.Location = new Point(6, 244);
+            dataGridView5.Name = "dataGridView5";
+            dataGridView5.RowHeadersWidth = 51;
+            dataGridView5.RowTemplate.Height = 29;
+            dataGridView5.Size = new Size(576, 399);
+            dataGridView5.TabIndex = 24;
+            dataGridView5.CellClick += dataGridView5_CellClick;
+            // 
+            // dataGridView6
+            // 
+            dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView6.Location = new Point(588, 206);
+            dataGridView6.Name = "dataGridView6";
+            dataGridView6.RowHeadersWidth = 51;
+            dataGridView6.RowTemplate.Height = 29;
+            dataGridView6.Size = new Size(318, 437);
+            dataGridView6.TabIndex = 23;
+            dataGridView6.CellClick += dataGridView6_CellClick;
+            // 
+            // dataGridView7
+            // 
+            dataGridView7.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView7.Location = new Point(588, 6);
+            dataGridView7.Name = "dataGridView7";
+            dataGridView7.RowHeadersWidth = 51;
+            dataGridView7.RowTemplate.Height = 29;
+            dataGridView7.Size = new Size(318, 194);
+            dataGridView7.TabIndex = 22;
+            dataGridView7.CellClick += dataGridView7_CellClick;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(438, 107);
+            button7.Name = "button7";
+            button7.Size = new Size(103, 34);
+            button7.TabIndex = 21;
+            button7.Text = "Xóa";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(438, 61);
+            button8.Name = "button8";
+            button8.Size = new Size(103, 34);
+            button8.TabIndex = 20;
+            button8.Text = "Sửa ";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(438, 19);
+            button9.Name = "button9";
+            button9.Size = new Size(103, 34);
+            button9.TabIndex = 19;
+            button9.Text = "Thêm";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(132, 75);
+            textBox7.Name = "textBox7";
+            textBox7.ReadOnly = true;
+            textBox7.Size = new Size(213, 27);
+            textBox7.TabIndex = 18;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(132, 19);
+            textBox8.Name = "textBox8";
+            textBox8.ReadOnly = true;
+            textBox8.Size = new Size(213, 27);
+            textBox8.TabIndex = 17;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(37, 75);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 20);
+            label7.TabIndex = 16;
+            label7.Text = "Mã SV";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(37, 22);
+            label8.Name = "label8";
+            label8.Size = new Size(82, 20);
+            label8.TabIndex = 15;
+            label8.Text = "Mã Lớp GV";
             // 
             // Lop
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(767, 708);
+            ClientSize = new Size(916, 696);
             Controls.Add(tabControl1);
             Name = "Lop";
             StartPosition = FormStartPosition.CenterScreen;
@@ -318,6 +482,11 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView7).EndInit();
             ResumeLayout(false);
         }
 
@@ -346,5 +515,18 @@
         private DataGridView dataGridView4;
         private TextBox textBox5;
         private Label label5;
+        private TabPage tabPage3;
+        private DataGridView dataGridView5;
+        private DataGridView dataGridView6;
+        private DataGridView dataGridView7;
+        private Button button7;
+        private Button button8;
+        private Button button9;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private Label label7;
+        private Label label8;
+        private Button button10;
+        private ComboBox comboBox1;
     }
 }
