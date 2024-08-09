@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Số điện thoại liên hệ giải đáp ý kiến sinh viên: 1900996686 
+Địa chỉ email các phòng ban:
+        + Phòng dịch vụ sinh viên: dvsvpoly.hn@poly.edu.vn
+Phòng Tổ chức và quản lý đào tạo:
+         + Đào tạo: daotaopoly.hn@fe.edu.vn
+         + Khảo thí: khaothipolyhn@fe.edu.vn
+         + Phòng hành chính: hanhchinhfplhn@fe.edu.vn
+Phòng quan hệ doanh nghiệp: qhdn.poly@fe.edu.vn</value>
+  </data>
 </root>
