@@ -36,7 +36,13 @@ namespace Du_An_1
             diemsv.Show();
             this.Hide();
         }
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HoTro ht = new HoTro(Tk, Mk);
+            ht.FormClosed += (a, b) => this.Show();
+            ht.Show();
+            this.Hide();
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -47,12 +53,12 @@ namespace Du_An_1
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void MenuSV_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HoTro ht = new HoTro();
-            ht.FormClosed += (a, b) => this.Show();
-            ht.Show();
-            this.Hide();
+            if (MessageBox.Show("Bạn có muốn Đăng xuất", "Xác Nhận Thoát", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -148,7 +148,7 @@
             Controls.Add(label1);
             Name = "QuenMK";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "QuenMK";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             FormClosing += QuenMK_FormClosing;
             Load += QuenMK_Load;
             ResumeLayout(false);

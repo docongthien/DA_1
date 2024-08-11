@@ -247,7 +247,7 @@
             Controls.Add(label1);
             Name = "Diemsv";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Diemsv";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += Diemsv_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDiemSinhVien).EndInit();
             ResumeLayout(false);

@@ -120,32 +120,44 @@
             // 
             // button3
             // 
+            button3.BackColor = Color.Red;
+            button3.Image = Properties.Resources.kisspng_computer_icons_clip_art_check_mark_x_mark_astrolog_filegartoon_actions_cancel_svg_wikimedia_common_5c53792fbb7cb5_625824561548974383768;
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
             button3.Location = new Point(352, 201);
             button3.Name = "button3";
             button3.Size = new Size(100, 43);
             button3.TabIndex = 6;
             button3.Text = "Xóa";
-            button3.UseVisualStyleBackColor = true;
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.Yellow;
+            button2.Image = Properties.Resources.kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(352, 145);
             button2.Name = "button2";
             button2.Size = new Size(100, 43);
             button2.TabIndex = 5;
             button2.Text = "Sửa ";
-            button2.UseVisualStyleBackColor = true;
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
+            button1.BackColor = Color.Lime;
+            button1.Image = Properties.Resources.green_add_button_12023;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(352, 95);
             button1.Name = "button1";
             button1.Size = new Size(100, 43);
             button1.TabIndex = 4;
             button1.Text = "Thêm";
-            button1.UseVisualStyleBackColor = true;
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // textBox2
@@ -257,32 +269,44 @@
             // 
             // button4
             // 
+            button4.BackColor = Color.Red;
+            button4.Image = Properties.Resources.kisspng_computer_icons_clip_art_check_mark_x_mark_astrolog_filegartoon_actions_cancel_svg_wikimedia_common_5c53792fbb7cb5_625824561548974383768;
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
             button4.Location = new Point(396, 139);
             button4.Name = "button4";
             button4.Size = new Size(103, 47);
             button4.TabIndex = 9;
             button4.Text = "Xóa";
-            button4.UseVisualStyleBackColor = true;
+            button4.TextAlign = ContentAlignment.MiddleRight;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button5
             // 
+            button5.BackColor = Color.Yellow;
+            button5.Image = Properties.Resources.kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071;
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
             button5.Location = new Point(396, 76);
             button5.Name = "button5";
             button5.Size = new Size(103, 47);
             button5.TabIndex = 8;
             button5.Text = "Sửa ";
-            button5.UseVisualStyleBackColor = true;
+            button5.TextAlign = ContentAlignment.MiddleRight;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // button6
             // 
+            button6.BackColor = Color.Lime;
+            button6.Image = Properties.Resources.green_add_button_12023;
+            button6.ImageAlign = ContentAlignment.MiddleLeft;
             button6.Location = new Point(396, 16);
             button6.Name = "button6";
             button6.Size = new Size(103, 47);
             button6.TabIndex = 7;
             button6.Text = "Thêm";
-            button6.UseVisualStyleBackColor = true;
+            button6.TextAlign = ContentAlignment.MiddleRight;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
             // textBox4
@@ -343,12 +367,13 @@
             // 
             // button10
             // 
+            button10.BackColor = Color.White;
             button10.Location = new Point(172, 190);
             button10.Name = "button10";
             button10.Size = new Size(75, 28);
             button10.TabIndex = 28;
             button10.Text = "Load";
-            button10.UseVisualStyleBackColor = true;
+            button10.UseVisualStyleBackColor = false;
             button10.Click += button10_Click;
             // 
             // comboBox1
@@ -399,32 +424,44 @@
             // 
             // button7
             // 
+            button7.BackColor = Color.Red;
+            button7.Image = Properties.Resources.kisspng_computer_icons_clip_art_check_mark_x_mark_astrolog_filegartoon_actions_cancel_svg_wikimedia_common_5c53792fbb7cb5_625824561548974383768;
+            button7.ImageAlign = ContentAlignment.MiddleLeft;
             button7.Location = new Point(438, 107);
             button7.Name = "button7";
             button7.Size = new Size(103, 34);
             button7.TabIndex = 21;
             button7.Text = "Xóa";
-            button7.UseVisualStyleBackColor = true;
+            button7.TextAlign = ContentAlignment.MiddleRight;
+            button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
             // button8
             // 
+            button8.BackColor = Color.Yellow;
+            button8.Image = Properties.Resources.kisspng_pencil_ico_icon_pencil_icon_png_5aa1fc84aca021_6696863715205653807071;
+            button8.ImageAlign = ContentAlignment.MiddleLeft;
             button8.Location = new Point(438, 61);
             button8.Name = "button8";
             button8.Size = new Size(103, 34);
             button8.TabIndex = 20;
             button8.Text = "Sửa ";
-            button8.UseVisualStyleBackColor = true;
+            button8.TextAlign = ContentAlignment.MiddleRight;
+            button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
             // button9
             // 
+            button9.BackColor = Color.Lime;
+            button9.Image = Properties.Resources.green_add_button_12023;
+            button9.ImageAlign = ContentAlignment.MiddleLeft;
             button9.Location = new Point(438, 19);
             button9.Name = "button9";
             button9.Size = new Size(103, 34);
             button9.TabIndex = 19;
             button9.Text = "Thêm";
-            button9.UseVisualStyleBackColor = true;
+            button9.TextAlign = ContentAlignment.MiddleRight;
+            button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
             // textBox7
@@ -470,7 +507,7 @@
             Controls.Add(tabControl1);
             Name = "Lop";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Lop";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             FormClosing += Lop_FormClosing;
             Load += Lop_Load;
             tabControl1.ResumeLayout(false);

@@ -254,7 +254,7 @@
             Controls.Add(tabControl1);
             Name = "Thongtinsv";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Thongtinsv";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += Thongtinsv_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

@@ -394,7 +394,7 @@
             Controls.Add(label1);
             Name = "thongtingv";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "thongtingv";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += thongtingv_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGiangVien).EndInit();
             ResumeLayout(false);

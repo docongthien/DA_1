@@ -49,24 +49,26 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.White;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(74, 117);
             button1.Name = "button1";
             button1.Size = new Size(173, 66);
             button1.TabIndex = 2;
             button1.Text = "Thông Tin Học Sinh";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.White;
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(432, 117);
             button2.Name = "button2";
             button2.Size = new Size(173, 66);
             button2.TabIndex = 3;
             button2.Text = "Thông Tin Giáo viên";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
@@ -81,24 +83,26 @@
             // 
             // button4
             // 
+            button4.BackColor = Color.White;
             button4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button4.Location = new Point(74, 227);
             button4.Name = "button4";
             button4.Size = new Size(173, 66);
             button4.TabIndex = 5;
             button4.Text = "Đăng ký tài khoản";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button5
             // 
+            button5.BackColor = Color.White;
             button5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button5.Location = new Point(432, 227);
             button5.Name = "button5";
             button5.Size = new Size(173, 66);
             button5.TabIndex = 6;
             button5.Text = "Tạo lớp";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // Menu
@@ -115,7 +119,8 @@
             Controls.Add(label1);
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Menu";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
+            FormClosing += Menu_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

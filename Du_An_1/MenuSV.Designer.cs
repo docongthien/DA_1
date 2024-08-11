@@ -47,35 +47,38 @@
             // 
             // button3
             // 
+            button3.BackColor = Color.White;
             button3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button3.Location = new Point(490, 161);
             button3.Name = "button3";
             button3.Size = new Size(170, 88);
             button3.TabIndex = 6;
             button3.Text = "Hỗ Trợ";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.White;
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(276, 161);
             button2.Name = "button2";
             button2.Size = new Size(170, 88);
             button2.TabIndex = 5;
             button2.Text = "Xem Điểm Học Sinh";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
+            button1.BackColor = Color.White;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(56, 161);
             button1.Name = "button1";
             button1.Size = new Size(170, 88);
             button1.TabIndex = 4;
             button1.Text = "Xem Thông Tin Học Sinh";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // MenuSV
@@ -90,7 +93,8 @@
             Controls.Add(button1);
             Name = "MenuSV";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Menu Học Sinh";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
+            FormClosing += MenuSV_FormClosing;
             Load += MenuSV_Load;
             ResumeLayout(false);
         }

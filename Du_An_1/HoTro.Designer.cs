@@ -159,6 +159,7 @@
             textBox1.Location = new Point(85, 123);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(321, 27);
             textBox1.TabIndex = 36;
             // 
@@ -182,7 +183,8 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "HoTro";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "HoTro";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
+            FormClosing += HoTro_FormClosing;
             Load += HoTro_Load;
             ResumeLayout(false);
             PerformLayout();

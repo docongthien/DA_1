@@ -54,5 +54,13 @@ namespace Du_An_1
             l.Show();
             this.Hide();
         }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn Đăng xuất", "Xác Nhận Thoát", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -79,7 +79,7 @@ namespace Du_An_1
 
         private void danhsachlop()
         {
-            string query = @$"	select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+            string query = @$"	select Lop.Tenlop, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
                             join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
                             join SV on Lopchitiet.Masv = SV.Masv
                             join Lop on Lopgv.Malop = Lop.Malop

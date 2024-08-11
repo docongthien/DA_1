@@ -598,12 +598,13 @@
             // 
             // button3
             // 
+            button3.BackColor = Color.White;
             button3.Location = new Point(711, 28);
             button3.Name = "button3";
             button3.Size = new Size(94, 29);
             button3.TabIndex = 13;
             button3.Text = "Load";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // dgvThongKe
@@ -637,7 +638,7 @@
             Controls.Add(tabControl1);
             Name = "Diem_SV";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Diem_SV";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             FormClosing += Diem_SV_FormClosing;
             Load += Diem_SV_Load;
             tabPage1.ResumeLayout(false);

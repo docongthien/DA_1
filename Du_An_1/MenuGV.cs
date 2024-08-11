@@ -17,14 +17,14 @@ namespace Du_An_1
         public MenuGV(string tk, string mk)
         {
             InitializeComponent();
-            Tk = tk; 
+            Tk = tk;
             Mk = mk;
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Admin2 ttgv = new Admin2(Tk,Mk);
+            Admin2 ttgv = new Admin2(Tk, Mk);
             ttgv.FormClosed += (a, b) => this.Show();
             ttgv.Show();
             this.Hide();
@@ -40,7 +40,7 @@ namespace Du_An_1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            HoTro hotro = new HoTro();
+            HoTro hotro = new HoTro(Tk, Mk);
             hotro.FormClosed += (a, b) => this.Show();
             hotro.Show();
             this.Hide();
@@ -49,6 +49,14 @@ namespace Du_An_1
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void MenuGV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn Đăng xuất", "Xác Nhận Thoát", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

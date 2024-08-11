@@ -291,7 +291,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin2";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Admin2";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += Admin2_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGiangVien).EndInit();
             ResumeLayout(false);
