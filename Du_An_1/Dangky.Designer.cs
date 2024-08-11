@@ -121,12 +121,13 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.Lime;
             button1.Location = new Point(715, 45);
             button1.Name = "button1";
             button1.Size = new Size(111, 67);
             button1.TabIndex = 13;
             button1.Text = "Dăng ký";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += btnRegister_Click;
             // 
             // comboBoxChucVu
@@ -203,7 +204,7 @@
             Controls.Add(tabControl1);
             Name = "Dangky";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Dangky";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += RegisterForm_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

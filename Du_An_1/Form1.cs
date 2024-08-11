@@ -18,16 +18,19 @@ namespace Du_An_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-            if (conn.State == ConnectionState.Closed)
+            if(conn.State == ConnectionState.Closed) 
             {
                 conn.Open();
             }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
             string username = textBox1.Text;
             string password = textBox2.Text;
             Tk = username;
@@ -35,11 +38,16 @@ namespace Du_An_1
             string query = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Trangthai = N'Hoạt Động'";
             using (SqlCommand command = new SqlCommand(query, conn))
             {
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
                     {
                         reader.Close();
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
                         string query2 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV2'";
                         using (SqlCommand cmd = new SqlCommand(query2, conn))
                         {
@@ -48,13 +56,23 @@ namespace Du_An_1
                                 if (render2.HasRows)
                                 {
                                     render2.Close();
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
                                     MessageBox.Show("Đăng nhập thành công!");
                                     MenuGV mngv = new MenuGV(Tk,Mk);
                                     mngv.FormClosed += (a, b) => this.Show();
                                     mngv.Show();
                                     this.Hide();
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
                                 }
                             }
+                        }
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
                         }
                         string query3 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV1'";
                         using (SqlCommand cmd3 = new SqlCommand(query3, conn))
@@ -64,13 +82,23 @@ namespace Du_An_1
                                 if (render3.HasRows)
                                 {
                                     render3.Close();
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
                                     MessageBox.Show("Đăng nhập thành công!");
                                     Menu mn = new Menu();
                                     mn.FormClosed += (a, b) => this.Show();
                                     mn.Show();
                                     this.Hide();
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
                                 }
                             }
+                        }
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
                         }
                         string query4 = $"SELECT * FROM TK WHERE Taikhoan = '{username}' and Matkhau = '{password}' and Macv = 'CV3'";
                         using (SqlCommand cmd4 = new SqlCommand(query4, conn))
@@ -80,17 +108,27 @@ namespace Du_An_1
                                 if (render4.HasRows)
                                 {
                                     render4.Close();
+                                    if (conn.State == ConnectionState.Open)
+                                    {
+                                        conn.Close();
+                                    }
                                     MessageBox.Show("Đăng nhập thành công!");
                                     MenuSV mnsv = new MenuSV(Tk,Mk);
                                     mnsv.FormClosed += (a, b) => this.Show();
                                     mnsv.Show();
                                     this.Hide();
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
                                 }
                             }
                         }
                     }
                     else
                     {
+                        if (conn.State == ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
                         MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác hoặc tài khoản không hoạt động!");
                     }
                 }
@@ -111,11 +149,20 @@ namespace Du_An_1
             quenmk.FormClosed += (a, b) => this.Show();
             quenmk.Show();
             this.Hide();
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            conn.Close();
+            if (MessageBox.Show("Bạn có muốn Thoát không", "Xác Nhận Thoát", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                e.Cancel = true;
+            }
         }
     }
 }

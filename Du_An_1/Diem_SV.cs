@@ -120,10 +120,14 @@ namespace Du_An_1
                 using (SqlDataReader reader = command.ExecuteReader())
 
                 {
-                    if (reader.HasRows)
+                    if(checkmasv.Trim() == "")
+                    {
+                        MessageBox.Show("Mã Học Sinh Không được để trống");
+                    }
+                    else if (reader.HasRows)
                     {
                         reader.Close();
-                        MessageBox.Show("Sinh viên có mã vừa nhập đã tồn tại!");
+                        MessageBox.Show("Mã Học sinh có mã vừa nhập đã tồn tại!");
                     }
                     else
                     {
@@ -144,11 +148,17 @@ namespace Du_An_1
                         {
                             try
                             {
-                                float checktoan = float.Parse(toan);
-                                float checkvan = float.Parse(van);
-                                float checkanh = float.Parse(anh);
-                                float checksu = float.Parse(su);
-                                float checkdia = float.Parse(dia);
+                                float checktoan = float.Parse(toan.Replace(".", ","));
+                                float checkvan = float.Parse(van.Replace(".", ","));
+                                float checkanh = float.Parse(anh.Replace(".", ","));
+                                float checksu = float.Parse(su.Replace(".", ","));
+                                float checkdia = float.Parse(dia.Replace(".", ","));
+
+                                string chuyentoan = checktoan.ToString().Replace(",", ".");
+                                string chuyenvan = checkvan.ToString().Replace(",", ".");
+                                string chuyenanh = checkanh.ToString().Replace(",", ".");
+                                string chuyensu = checksu.ToString().Replace(",", ".");
+                                string chuyendia = checkdia.ToString().Replace(",", ".");
                                 string[] diem = { toan, van, anh, su, dia };
                                 int check = 0;
                                 foreach (string diemMon in diem)
@@ -169,10 +179,10 @@ namespace Du_An_1
                                 if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
                                 {
                                     string query1 = "insert into Qldiem(Masv,TenSV,Toan,Van,Anh,Su,Dia )" +
-                                    $"values('{masv}', N'{tensv}', '{toan}', {van}, '{anh}', '{su}', '{dia}')";
+                                    $"values('{masv}', N'{tensv}', '{chuyentoan}', {chuyenvan}, '{chuyenanh}', '{chuyensu}', '{chuyendia}')";
                                     SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
                                     sqlCommand1.ExecuteNonQuery();
-
+                                    MessageBox.Show("Thêm thành công");
                                     load();
                                     Diem_SV_Load(sender, e);
                                 }
@@ -202,7 +212,7 @@ namespace Du_An_1
                     if (!reader.HasRows)
                     {
                         reader.Close();
-                        MessageBox.Show("Sinh viên có mã vừa nhập Không tồn tại!");
+                        MessageBox.Show("Học sinh có mã vừa nhập Không tồn tại!");
                     }
                     else
                     {
@@ -224,12 +234,17 @@ namespace Du_An_1
                             try
                             {
 
+                                float checktoan = float.Parse(toan.Replace(".", ","));
+                                float checkvan = float.Parse(van.Replace(".", ","));
+                                float checkanh = float.Parse(anh.Replace(".", ","));
+                                float checksu = float.Parse(su.Replace(".", ","));
+                                float checkdia = float.Parse(dia.Replace(".", ","));
 
-                                float checktoan = float.Parse(toan);
-                                float checkvan = float.Parse(van);
-                                float checkanh = float.Parse(anh);
-                                float checksu = float.Parse(su);
-                                float checkdia = float.Parse(dia);
+                                string chuyentoan = checktoan.ToString().Replace(",", ".");
+                                string chuyenvan = checkvan.ToString().Replace(",", ".");
+                                string chuyenanh = checkanh.ToString().Replace(",", ".");
+                                string chuyensu = checksu.ToString().Replace(",", ".");
+                                string chuyendia = checkdia.ToString().Replace(",", ".");
                                 string[] diem = { toan, van, anh, su, dia };
                                 int check = 0;
                                 foreach (string diemMon in diem)
@@ -250,16 +265,16 @@ namespace Du_An_1
                                 if (check == 1 && checktoan >= 0 && checktoan <= 10 && checkvan >= 0 && checkvan <= 10 && checkanh >= 0 && checkanh <= 10 && checksu >= 0 && checksu <= 10 && checkdia >= 0 && checkdia <= 10)
                                 {
                                     string query1 = @$"UPDATE Qldiem
-                                                SET Toan = {toan}, 
-                                                    Van = {van},
-                                                    Anh = {anh},
-                                                    Su = {su},
-                                                    Dia = {dia}
+                                                SET Toan = {chuyentoan}, 
+                                                    Van = {chuyenvan},
+                                                    Anh = {chuyenanh},
+                                                    Su = {chuyensu},
+                                                    Dia = {chuyendia}
                                                 WHERE Masv = '{masv}';";
 
                                     SqlCommand sqlCommand1 = new SqlCommand(query1, conn);
                                     sqlCommand1.ExecuteNonQuery();
-
+                                    MessageBox.Show("Sửa thành công");
                                     load();
                                     Diem_SV_Load(sender, e);
                                 }
@@ -482,7 +497,7 @@ namespace Du_An_1
         }
         private void danhsachlop()
         {
-            string query = @$"select Lop.Tenlop, Lopchitiet.malopchitiet, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
+            string query = @$"select Lop.Tenlop, GV.Magv, GV.Ten TenGV, SV.Masv, SV.Ten TenSV From Lopchitiet 
                             join Lopgv on Lopchitiet.malopgv = Lopgv.malopgv
                             join SV on Lopchitiet.Masv = SV.Masv
                             join Lop on Lopgv.Malop = Lop.Malop

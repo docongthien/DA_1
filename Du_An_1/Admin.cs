@@ -110,7 +110,7 @@ namespace Du_An_1
                 {
                     if (!reader.HasRows)
                     {
-                        MessageBox.Show("Mã SV đã tồn tại");
+                        MessageBox.Show("Mã Học sinh đã tồn tại");
                     }
                     else
                     {
@@ -279,7 +279,7 @@ namespace Du_An_1
 
             if (string.IsNullOrWhiteSpace(masv))
             {
-                MessageBox.Show("Vui lòng nhập mã sinh viên để xóa.");
+                MessageBox.Show("Vui lòng nhập mã Học sinh để xóa.");
                 return;
             }
 
@@ -289,7 +289,6 @@ namespace Du_An_1
 
             LoadData();
             clear();
-            MessageBox.Show("Xóa thành công");
         }
 
         private void dgvDanhSachSV_CellClick(object sender, DataGridViewCellEventArgs e)

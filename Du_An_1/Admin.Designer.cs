@@ -387,7 +387,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "8";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
             Load += Admin_Load;
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();

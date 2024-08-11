@@ -36,35 +36,38 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.White;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(74, 174);
             button1.Name = "button1";
             button1.Size = new Size(170, 88);
             button1.TabIndex = 0;
             button1.Text = "Xem Thông Tin Giáo Viên";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.White;
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(294, 174);
             button2.Name = "button2";
             button2.Size = new Size(170, 88);
             button2.TabIndex = 1;
             button2.Text = "Nhập Điểm, Thêm học sinh vào lớp";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
+            button3.BackColor = Color.White;
             button3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             button3.Location = new Point(508, 174);
             button3.Name = "button3";
             button3.Size = new Size(170, 88);
             button3.TabIndex = 2;
             button3.Text = "Hỗ Trợ";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
@@ -90,7 +93,8 @@
             Controls.Add(button1);
             Name = "MenuGV";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MenuGV";
+            Text = "Phần mềm Quản lý Thông Tin và Điểm ";
+            FormClosing += MenuGV_FormClosing;
             ResumeLayout(false);
         }
 
