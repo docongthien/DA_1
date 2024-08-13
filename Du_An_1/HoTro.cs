@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Mail;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,58 +42,55 @@ namespace Du_An_1
             {
                 if (DialogResult.Yes == MessageBox.Show("Bạn thực sự muốn thao tác", "Xác nhận", MessageBoxButtons.YesNo))
                 {
-                    string path = @$"E:\OneDrive - Đại học FPT- FPT University\floly\Dự án 1\DA_1\DA_1\Help\{textBox1.Text}.txt";
-                    if (File.Exists(path))
-                    {
-                        FileStream fr = new FileStream(path, FileMode.Append, FileAccess.Write);
-                        StreamWriter sw = new StreamWriter(fr);
+                    string subject = "Hỗ Trợ";
+                    string body = @$"Ngày gửi:{DateTime.Now}
+                                     Mã người hỗ trợ: {textBox1.Text}
+                                     Tên người hỗ trợ: {textBox2.Text}
+                                     Email người hỗ trợ: {textBox3.Text}
+                                     Loại Hỗ trợ: {comboBox1.Text}
+                                     Nội Dung hỗ trợ: {tb_ch.Text} ";
 
-                        try
-                        {
-                            sw.WriteLine("Ngày gửi:" + DateTime.Now);
-                            sw.WriteLine("Mã GV,SV: " + textBox1.Text);
-                            sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
-                            sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
-                            sw.WriteLine("");
-                            MessageBox.Show("Ghi thành công");
-                            sw.Close();
-                            fr.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Ghi thất bại");
-                        }
+                    MailMessage mail = new MailMessage();
+
+                    mail.From = new MailAddress("thiendocong18@gmail.com");
+
+                    mail.To.Add("docongthien123@gmail.com");
+
+                    mail.Subject = subject;
+
+                    mail.Body = body;
+
+
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                    SmtpServer.Port = 587; // 
+
+                    SmtpServer.Credentials = new NetworkCredential("thiendcph46905@fpt.edu.vn", "aecqifebvorzepsg");
+
+                    SmtpServer.EnableSsl = true; // True nếu máy chủ yêu cầu SSL
+
+                    try
+
+                    {
+
+                        // Gửi email
+
+                        SmtpServer.Send(mail);
+
+                        MessageBox.Show("Gửi thành công");
+
                     }
-                    else
-                    {
-                        FileStream fr = new FileStream(path, FileMode.Create, FileAccess.Write);
-                        StreamWriter sw = new StreamWriter(fr);
 
-                        try
-                        {
-                            sw.WriteLine("Ngày gửi:" + DateTime.Now);
-                            sw.WriteLine("Mã GV,SV: " + textBox1.Text);
-                            sw.WriteLine("Loại hỗ trợ: " + comboBox1.Text);
-                            sw.WriteLine("Câu hỏi hỗ trợ: " + tb_ch.Text);
-                            sw.WriteLine("");
-                            MessageBox.Show("Ghi thành công");
-                            sw.Close();
-                            fr.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Ghi thất bại");
-                        }
+                    catch (Exception ex)
+
+                    {
+
+                        MessageBox.Show("Có lỗi xảy ra");
+
                     }
 
                 }
-
             }
-            else
-            {
-                MessageBox.Show(" Các Trường dữ liệu không được để trống");
-            }
-
         }
         private void checktk()
         {
@@ -138,7 +137,7 @@ namespace Du_An_1
         private void LoadHS()
         {
             conn.Open();
-            string query = @$"select Masv from SV
+            string query = @$"select Masv, Ten,Email from SV
                             join TK on SV.MaTK = TK.MaTK
                             where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'";
 
@@ -154,6 +153,10 @@ namespace Du_An_1
 
                         string columnName1 = reader4["Masv"].ToString();
                         textBox1.Text = columnName1;
+                        string columnName2 = reader4["Ten"].ToString();
+                        textBox2.Text = columnName2;
+                        string columnName3 = reader4["Email"].ToString();
+                        textBox3.Text = columnName3;
                     }
                     reader4.Close();
                     conn.Close() ;
@@ -167,7 +170,7 @@ namespace Du_An_1
         private void LoadGV()
         {
             conn.Open();
-            string query = @$"select Magv from gv
+            string query = @$"select Magv, Ten, Email from gv
                             join TK on GV.MaTK = TK.MaTK
                             where TK.Taikhoan = '{Tk}' AND TK.Matkhau = '{Mk}'";
 
@@ -183,6 +186,10 @@ namespace Du_An_1
 
                         string columnName1 = reader4["Magv"].ToString();
                         textBox1.Text = columnName1;
+                        string columnName2 = reader4["Ten"].ToString();
+                        textBox2.Text = columnName2;
+                        string columnName3 = reader4["Email"].ToString();
+                        textBox3.Text = columnName3;
                     }
                     reader4.Close();
                     conn.Close();

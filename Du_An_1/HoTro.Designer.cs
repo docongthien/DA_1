@@ -40,6 +40,10 @@
             label17 = new Label();
             label1 = new Label();
             textBox1 = new TextBox();
+            label2 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox3 = new TextBox();
             SuspendLayout();
             // 
             // button2
@@ -83,7 +87,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "DvSV", "Khảo Thí", "Đào Tạo ", "Hành Chính", "IT" });
-            comboBox1.Location = new Point(564, 119);
+            comboBox1.Location = new Point(567, 92);
             comboBox1.Margin = new Padding(2, 3, 2, 3);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(263, 28);
@@ -104,7 +108,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(85, 188);
+            label15.Location = new Point(564, 155);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
             label15.Size = new Size(79, 23);
@@ -115,7 +119,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(564, 91);
+            label16.Location = new Point(567, 64);
             label16.Margin = new Padding(2, 0, 2, 0);
             label16.Name = "label16";
             label16.Size = new Size(98, 23);
@@ -124,11 +128,11 @@
             // 
             // tb_ch
             // 
-            tb_ch.Location = new Point(85, 216);
+            tb_ch.Location = new Point(564, 183);
             tb_ch.Margin = new Padding(2, 3, 2, 3);
             tb_ch.Multiline = true;
             tb_ch.Name = "tb_ch";
-            tb_ch.Size = new Size(321, 240);
+            tb_ch.Size = new Size(321, 159);
             tb_ch.TabIndex = 28;
             // 
             // label17
@@ -147,7 +151,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(82, 91);
+            label1.Location = new Point(85, 64);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(147, 23);
@@ -156,12 +160,52 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(85, 123);
+            textBox1.Location = new Point(88, 96);
             textBox1.Margin = new Padding(2, 3, 2, 3);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(321, 27);
             textBox1.TabIndex = 36;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(85, 167);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(91, 23);
+            label2.TabIndex = 39;
+            label2.Text = "Họ và tên";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(88, 199);
+            textBox2.Margin = new Padding(2, 3, 2, 3);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(321, 27);
+            textBox2.TabIndex = 38;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(85, 266);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(58, 23);
+            label3.TabIndex = 41;
+            label3.Text = "Email";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(88, 298);
+            textBox3.Margin = new Padding(2, 3, 2, 3);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(321, 27);
+            textBox3.TabIndex = 40;
             // 
             // HoTro
             // 
@@ -169,6 +213,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Turquoise;
             ClientSize = new Size(940, 579);
+            Controls.Add(label3);
+            Controls.Add(textBox3);
+            Controls.Add(label2);
+            Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(button2);
@@ -203,5 +251,9 @@
         private Label label17;
         private Label label1;
         private TextBox textBox1;
+        private Label label2;
+        private TextBox textBox2;
+        private Label label3;
+        private TextBox textBox3;
     }
 }
